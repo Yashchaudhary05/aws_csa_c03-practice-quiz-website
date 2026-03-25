@@ -1,24 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWS Quiz</title>
+    <meta name="description" content="AWS Certified Solutions Architect C03 Practice Quiz — Test your knowledge with 20 questions covering S3, EC2, VPC, IAM, and more.">
+    <meta name="theme-color" content="#6200ea">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';">
+    <title>AWS SAA-C03 Practice Quiz</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☁️</text></svg>">
 </head>
 <body>
-    <div id="quiz-container">
-        <h1>AWS Quiz</h1>
-        <div id="timer">Time Remaining: <span id="time">3600</span> seconds</div>
-        <div id="question-card">
-            <div id="question"></div>
-            <div id="options"></div>
-            <div id="result"></div>
-            <button id="submit">Submit</button>
-            <button id="next" class="hidden">Next</button>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="app-header">
+        <h1>☁️ AWS SAA-C03 Practice Quiz</h1>
+        <div class="header-controls">
+            <button id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme (T)">🌙</button>
         </div>
-        <div id="final-result" class="hidden"></div>
-    </div>
-    <script src="index.js"></script>
+    </header>
+
+    <main id="main-content">
+        <!-- Start Screen -->
+        <section id="start-screen" aria-label="Quiz setup">
+            <div class="card start-card">
+                <h2>Welcome to the AWS SAA-C03 Practice Quiz</h2>
+                <p class="start-description">Test your knowledge with 20 questions covering core AWS services. Choose your quiz mode below.</p>
+
+                <fieldset class="mode-selector">
+                    <legend>Quiz Mode</legend>
+                    <label class="mode-option">
+                        <input type="radio" name="quiz-mode" value="exam" checked>
+                        <span class="mode-card">
+                            <strong>📝 Exam Mode</strong>
+                            <small>Timed, results shown at the end</small>
+                        </span>
+                    </label>
+                    <label class="mode-option">
+                        <input type="radio" name="quiz-mode" value="practice">
+                        <span class="mode-card">
+                            <strong>📖 Practice Mode</strong>
+                            <small>Untimed, instant feedback with explanations</small>
+                        </span>
+                    </label>
+                    <label class="mode-option">
+                        <input type="radio" name="quiz-mode" value="review">
+                        <span class="mode-card">
+                            <strong>🔍 Review Mode</strong>
+                            <small>Browse all questions and answers</small>
+                        </span>
+                    </label>
+                </fieldset>
+
+                <fieldset class="topic-filter">
+                    <legend>Filter by Topic <small>(optional)</small></legend>
+                    <div id="topic-checkboxes" class="topic-grid"></div>
+                </fieldset>
+
+                <button id="start-quiz" class="btn btn-primary btn-large">Start Quiz</button>
+            </div>
+        </section>
+
+        <!-- Quiz Screen -->
+        <section id="quiz-screen" class="hidden" aria-label="Quiz questions">
+            <!-- Timer Bar -->
+            <div id="timer-bar" role="timer" aria-live="polite" aria-label="Time remaining">
+                <div id="timer-fill"></div>
+                <span id="timer-text">60:00</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-section">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div id="progress-fill"></div>
+                </div>
+                <span id="progress-text" class="progress-text">0 / 20</span>
+            </div>
+
+            <!-- Question Navigator -->
+            <nav id="question-nav" aria-label="Question navigator">
+                <div id="nav-buttons" class="nav-buttons-grid"></div>
+            </nav>
+
+            <!-- Question Card -->
+            <article id="question-card" class="card" aria-live="polite">
+                <header class="question-header">
+                    <span id="question-number" class="question-number"></span>
+                    <div class="question-meta">
+                        <span id="question-topic" class="badge badge-topic"></span>
+                        <span id="question-difficulty" class="badge badge-difficulty"></span>
+                    </div>
+                    <button id="flag-btn" class="btn btn-icon" aria-label="Flag this question for review" title="Flag for review (F)">🚩</button>
+                </header>
+
+                <div id="question-text" class="question-text"></div>
+
+                <form id="options-form" aria-label="Answer options">
+                    <fieldset id="options-fieldset">
+                        <legend id="options-legend" class="sr-only">Select your answer</legend>
+                        <div id="options-container"></div>
+                    </fieldset>
+                </form>
+
+                <div id="result-feedback" class="result-feedback hidden" role="alert"></div>
+                <div id="explanation-box" class="explanation-box hidden"></div>
+
+                <footer class="question-actions">
+                    <button id="prev-btn" class="btn btn-secondary" disabled aria-label="Previous question">← Prev</button>
+                    <button id="submit-btn" class="btn btn-primary" aria-label="Submit answer">Submit</button>
+                    <button id="next-btn" class="btn btn-primary hidden" aria-label="Next question">Next →</button>
+                    <button id="finish-btn" class="btn btn-accent hidden" aria-label="Finish quiz">Finish Quiz</button>
+                </footer>
+            </article>
+
+            <div class="keyboard-hints">
+                <small>Keyboard: <kbd>Enter</kbd> Submit · <kbd>→</kbd> Next · <kbd>←</kbd> Prev · <kbd>F</kbd> Flag · <kbd>1-5</kbd> Select option</small>
+            </div>
+        </section>
+
+        <!-- Results Screen -->
+        <section id="results-screen" class="hidden" aria-label="Quiz results">
+            <div class="card results-card">
+                <h2>Quiz Complete!</h2>
+
+                <div class="score-display">
+                    <div id="score-circle" class="score-circle" role="img" aria-label="Score">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="54" class="score-bg"></circle>
+                            <circle id="score-ring" cx="60" cy="60" r="54" class="score-fg"></circle>
+                        </svg>
+                        <span id="score-percent" class="score-percent"></span>
+                    </div>
+                    <div class="score-details">
+                        <p id="score-text" class="score-text"></p>
+                        <p id="time-taken" class="time-taken"></p>
+                    </div>
+                </div>
+
+                <div id="analytics-panel" class="analytics-panel">
+                    <h3>Performance Breakdown</h3>
+                    <div id="topic-stats" class="topic-stats-grid"></div>
+                    <div id="difficulty-stats" class="difficulty-stats"></div>
+                </div>
+
+                <h3>Question Review</h3>
+                <div id="review-list" class="review-list"></div>
+
+                <footer class="results-actions">
+                    <button id="retake-btn" class="btn btn-primary btn-large">Retake Quiz</button>
+                    <button id="export-btn" class="btn btn-secondary">Export Results (CSV)</button>
+                </footer>
+            </div>
+        </section>
+
+        <!-- Error Screen -->
+        <section id="error-screen" class="hidden" aria-label="Error">
+            <div class="card error-card">
+                <h2>⚠️ Something went wrong</h2>
+                <p id="error-message">Failed to load questions. Please check your connection and try again.</p>
+                <button id="retry-btn" class="btn btn-primary">Retry</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>Built for AWS SAA-C03 exam preparation · <a href="https://github.com/Yashchaudhary05/aws_csa_c03-practice-quiz-website" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>

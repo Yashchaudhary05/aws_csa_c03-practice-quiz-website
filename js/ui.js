@@ -1,0 +1,473 @@
+/**
+ * UI rendering — all DOM updates happen here.
+ * Uses textContent for user-facing strings to prevent XSS.
+ */
+import { getState, setState, saveToStorage } from './state.js';
+import { recordAnswer, isCorrect, calculateScore, getAnalytics, toggleFlag } from './quiz.js';
+import { startTimer, stopTimer, updateTimerUI } from './timer.js';
+import { escapeHtml, formatTime, getTopics, shuffle, generateCSV, downloadFile, getDifficultyColor } from './utils.js';
+
+// ─── Screen Management ────────────────────────────────────────
+export function showScreen(screen) {
+  ['start-screen', 'quiz-screen', 'results-screen', 'error-screen'].forEach(id => {
+    document.getElementById(id).classList.add('hidden');
+  });
+  document.getElementById(`${screen}-screen`).classList.remove('hidden');
+  setState({ screen });
+}
+
+// ─── Start Screen ──────────────────────────────────────────────
+export function renderStartScreen(questions) {
+  const topics = getTopics(questions);
+  const container = document.getElementById('topic-checkboxes');
+  container.innerHTML = '';
+
+  topics.forEach(topic => {
+    const label = document.createElement('label');
+    label.className = 'topic-checkbox';
+
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.value = topic;
+    input.checked = true;
+
+    const span = document.createElement('span');
+    span.textContent = topic;
+
+    label.appendChild(input);
+    label.appendChild(span);
+    container.appendChild(label);
+  });
+}
+
+// ─── Question Navigator ────────────────────────────────────────
+export function renderNavigator() {
+  const state = getState();
+  const container = document.getElementById('nav-buttons');
+  container.innerHTML = '';
+
+  state.filteredQuestions.forEach((q, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'nav-btn';
+    btn.textContent = i + 1;
+    btn.setAttribute('aria-label', `Go to question ${i + 1}`);
+
+    // Status classes
+    if (i === state.currentIndex) btn.classList.add('current');
+    if (state.answers[q.id]) btn.classList.add('answered');
+    if (state.flagged.has(q.id)) btn.classList.add('flagged');
+
+    btn.addEventListener('click', () => {
+      saveQuestionTime();
+      setState({ currentIndex: i, questionStartTime: Date.now() });
+      renderQuestion();
+      renderNavigator();
+      saveToStorage();
+    });
+
+    container.appendChild(btn);
+  });
+}
+
+// ─── Question Rendering ────────────────────────────────────────
+export function renderQuestion() {
+  const state = getState();
+  const q = state.filteredQuestions[state.currentIndex];
+  if (!q) return;
+
+  // Question number & meta
+  document.getElementById('question-number').textContent = `Question ${state.currentIndex + 1} of ${state.filteredQuestions.length}`;
+  document.getElementById('question-topic').textContent = q.topic;
+  document.getElementById('question-difficulty').textContent = q.difficulty;
+  document.getElementById('question-difficulty').style.backgroundColor = getDifficultyColor(q.difficulty);
+
+  // Question text
+  document.getElementById('question-text').textContent = q.question;
+
+  // Flag button
+  const flagBtn = document.getElementById('flag-btn');
+  flagBtn.classList.toggle('active', state.flagged.has(q.id));
+
+  // Options
+  const container = document.getElementById('options-container');
+  container.innerHTML = '';
+
+  const inputType = q.multiSelect ? 'checkbox' : 'radio';
+  const legend = document.getElementById('options-legend');
+  legend.textContent = q.multiSelect ? `Select ${q.selectCount} answers` : 'Select your answer';
+
+  q.options.forEach((opt, i) => {
+    const label = document.createElement('label');
+    label.className = 'option-label';
+
+    const input = document.createElement('input');
+    input.type = inputType;
+    input.name = 'quiz-option';
+    input.value = opt;
+
+    // Restore previous selection
+    if (state.answers[q.id] && state.answers[q.id].includes(opt)) {
+      input.checked = true;
+    }
+
+    const span = document.createElement('span');
+    span.className = 'option-text';
+    span.textContent = opt;
+
+    const shortcut = document.createElement('kbd');
+    shortcut.className = 'option-shortcut';
+    shortcut.textContent = i + 1;
+
+    label.appendChild(input);
+    label.appendChild(shortcut);
+    label.appendChild(span);
+    container.appendChild(label);
+  });
+
+  // Buttons visibility
+  const submitBtn = document.getElementById('submit-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const finishBtn = document.getElementById('finish-btn');
+  const prevBtn = document.getElementById('prev-btn');
+
+  prevBtn.disabled = state.currentIndex === 0;
+
+  // In review mode, show answers immediately
+  if (state.mode === 'review') {
+    submitBtn.classList.add('hidden');
+    showReviewAnswers(q);
+    if (state.currentIndex < state.filteredQuestions.length - 1) {
+      nextBtn.classList.remove('hidden');
+      finishBtn.classList.add('hidden');
+    } else {
+      nextBtn.classList.add('hidden');
+      finishBtn.classList.remove('hidden');
+    }
+  } else if (state.answers[q.id]) {
+    // Already answered
+    submitBtn.classList.add('hidden');
+    if (state.mode === 'practice') {
+      showFeedback(q);
+    }
+    if (state.currentIndex < state.filteredQuestions.length - 1) {
+      nextBtn.classList.remove('hidden');
+      finishBtn.classList.add('hidden');
+    } else {
+      nextBtn.classList.add('hidden');
+      finishBtn.classList.remove('hidden');
+    }
+  } else {
+    submitBtn.classList.remove('hidden');
+    nextBtn.classList.add('hidden');
+    finishBtn.classList.add('hidden');
+  }
+
+  // Clear feedback if not already answered
+  if (!state.answers[q.id] && state.mode !== 'review') {
+    document.getElementById('result-feedback').classList.add('hidden');
+    document.getElementById('explanation-box').classList.add('hidden');
+  }
+
+  // Progress
+  updateProgress();
+  renderNavigator();
+
+  // Disable options if already answered (except review mode)
+  if (state.answers[q.id] && state.mode !== 'review') {
+    container.querySelectorAll('input').forEach(inp => inp.disabled = true);
+  }
+  if (state.mode === 'review') {
+    container.querySelectorAll('input').forEach(inp => inp.disabled = true);
+  }
+}
+
+function showReviewAnswers(q) {
+  const container = document.getElementById('options-container');
+  container.querySelectorAll('input').forEach(input => {
+    const label = input.closest('.option-label');
+    if (q.answer.includes(input.value)) {
+      label.classList.add('correct');
+    }
+  });
+
+  const explanation = document.getElementById('explanation-box');
+  if (q.explanation) {
+    explanation.textContent = q.explanation;
+    explanation.classList.remove('hidden');
+  }
+
+  document.getElementById('result-feedback').classList.add('hidden');
+}
+
+function showFeedback(q) {
+  const state = getState();
+  const correct = isCorrect(q.id);
+  const feedback = document.getElementById('result-feedback');
+  const explanation = document.getElementById('explanation-box');
+
+  feedback.textContent = correct ? '✅ Correct!' : `❌ Incorrect. Correct: ${q.answer.join(', ')}`;
+  feedback.className = `result-feedback ${correct ? 'correct' : 'incorrect'}`;
+  feedback.classList.remove('hidden');
+
+  if (q.explanation) {
+    explanation.textContent = q.explanation;
+    explanation.classList.remove('hidden');
+  }
+
+  // Highlight options
+  const container = document.getElementById('options-container');
+  container.querySelectorAll('input').forEach(input => {
+    const label = input.closest('.option-label');
+    input.disabled = true;
+    if (q.answer.includes(input.value)) {
+      label.classList.add('correct');
+    } else if (input.checked) {
+      label.classList.add('incorrect');
+    }
+  });
+}
+
+function updateProgress() {
+  const state = getState();
+  const total = state.filteredQuestions.length;
+  const answered = Object.keys(state.answers).length;
+  const pct = total > 0 ? Math.round((answered / total) * 100) : 0;
+
+  const fill = document.getElementById('progress-fill');
+  const text = document.getElementById('progress-text');
+  const bar = document.querySelector('.progress-bar');
+
+  if (fill) fill.style.width = `${pct}%`;
+  if (text) text.textContent = `${answered} / ${total}`;
+  if (bar) {
+    bar.setAttribute('aria-valuenow', pct);
+    bar.setAttribute('aria-valuemax', 100);
+  }
+}
+
+// ─── Submit Answer ─────────────────────────────────────────────
+export function handleSubmit() {
+  const state = getState();
+  const q = state.filteredQuestions[state.currentIndex];
+  if (!q || state.answers[q.id]) return;
+
+  const selected = [...document.querySelectorAll('#options-container input:checked')]
+    .map(el => el.value);
+
+  if (selected.length === 0) {
+    shakeButton(document.getElementById('submit-btn'));
+    return;
+  }
+
+  if (q.multiSelect && selected.length !== q.selectCount) {
+    shakeButton(document.getElementById('submit-btn'));
+    return;
+  }
+
+  recordAnswer(q.id, selected);
+
+  // Show feedback in practice mode
+  if (state.mode === 'practice') {
+    showFeedback(q);
+  }
+
+  // Update buttons
+  document.getElementById('submit-btn').classList.add('hidden');
+  if (state.currentIndex < state.filteredQuestions.length - 1) {
+    document.getElementById('next-btn').classList.remove('hidden');
+  } else {
+    document.getElementById('finish-btn').classList.remove('hidden');
+  }
+
+  // Disable option inputs
+  document.querySelectorAll('#options-container input').forEach(inp => inp.disabled = true);
+  renderNavigator();
+}
+
+function shakeButton(btn) {
+  btn.classList.add('shake');
+  setTimeout(() => btn.classList.remove('shake'), 500);
+}
+
+// ─── Navigation ────────────────────────────────────────────────
+export function handleNext() {
+  const state = getState();
+  if (state.currentIndex < state.filteredQuestions.length - 1) {
+    saveQuestionTime();
+    setState({ currentIndex: state.currentIndex + 1, questionStartTime: Date.now() });
+    renderQuestion();
+    saveToStorage();
+  }
+}
+
+export function handlePrev() {
+  const state = getState();
+  if (state.currentIndex > 0) {
+    saveQuestionTime();
+    setState({ currentIndex: state.currentIndex - 1, questionStartTime: Date.now() });
+    renderQuestion();
+    saveToStorage();
+  }
+}
+
+function saveQuestionTime() {
+  const state = getState();
+  const q = state.filteredQuestions[state.currentIndex];
+  if (!q || state.timePerQuestion[q.id]) return; // Don't overwrite
+
+  if (state.questionStartTime && !state.answers[q.id]) {
+    // Only save if not yet answered — time tracked at submit
+  }
+}
+
+export function handleFlag() {
+  const state = getState();
+  const q = state.filteredQuestions[state.currentIndex];
+  if (!q) return;
+  toggleFlag(q.id);
+  document.getElementById('flag-btn').classList.toggle('active', state.flagged.has(q.id));
+  renderNavigator();
+}
+
+// ─── Results Screen ────────────────────────────────────────────
+export function renderResults() {
+  const state = getState();
+  const score = calculateScore();
+  const total = state.filteredQuestions.length;
+  const pct = total > 0 ? Math.round((score / total) * 100) : 0;
+  const analytics = getAnalytics();
+
+  // Score circle animation
+  const ring = document.getElementById('score-ring');
+  const circumference = 2 * Math.PI * 54;
+  ring.style.strokeDasharray = circumference;
+  ring.style.strokeDashoffset = circumference;
+  setTimeout(() => {
+    ring.style.strokeDashoffset = circumference - (pct / 100) * circumference;
+  }, 100);
+
+  // Score color
+  ring.style.stroke = pct >= 72 ? '#4caf50' : pct >= 50 ? '#ff9800' : '#f44336';
+
+  document.getElementById('score-percent').textContent = `${pct}%`;
+  document.getElementById('score-text').textContent = `${score} out of ${total} correct`;
+
+  // Time taken
+  const elapsed = state.quizEndTime && state.quizStartTime
+    ? Math.round((state.quizEndTime - state.quizStartTime) / 1000)
+    : analytics.totalTime;
+  document.getElementById('time-taken').textContent = state.mode === 'exam'
+    ? `Time: ${formatTime(elapsed)} · Avg: ${formatTime(analytics.avgTime)}/question`
+    : `Avg: ${formatTime(analytics.avgTime)}/question`;
+
+  // Topic stats
+  const topicContainer = document.getElementById('topic-stats');
+  topicContainer.innerHTML = '';
+  for (const [topic, stats] of Object.entries(analytics.topicStats)) {
+    const div = document.createElement('div');
+    div.className = 'topic-stat-card';
+
+    const topicPct = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+
+    const title = document.createElement('strong');
+    title.textContent = topic;
+
+    const detail = document.createElement('span');
+    detail.textContent = `${stats.correct}/${stats.total} (${topicPct}%)`;
+    detail.className = topicPct >= 72 ? 'stat-good' : topicPct >= 50 ? 'stat-warn' : 'stat-bad';
+
+    const bar = document.createElement('div');
+    bar.className = 'stat-bar';
+    const barFill = document.createElement('div');
+    barFill.className = 'stat-bar-fill';
+    barFill.style.width = `${topicPct}%`;
+    barFill.style.backgroundColor = topicPct >= 72 ? '#4caf50' : topicPct >= 50 ? '#ff9800' : '#f44336';
+    bar.appendChild(barFill);
+
+    div.appendChild(title);
+    div.appendChild(detail);
+    div.appendChild(bar);
+    topicContainer.appendChild(div);
+  }
+
+  // Difficulty stats
+  const diffContainer = document.getElementById('difficulty-stats');
+  diffContainer.innerHTML = '';
+  for (const [diff, stats] of Object.entries(analytics.difficultyStats)) {
+    const span = document.createElement('span');
+    span.className = 'difficulty-badge';
+    span.style.borderColor = getDifficultyColor(diff);
+    const diffPct = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+    span.textContent = `${diff}: ${stats.correct}/${stats.total} (${diffPct}%)`;
+    diffContainer.appendChild(span);
+  }
+
+  // Review list
+  const reviewContainer = document.getElementById('review-list');
+  reviewContainer.innerHTML = '';
+
+  state.filteredQuestions.forEach((q, i) => {
+    const correct = isCorrect(q.id);
+    const userAnswer = state.answers[q.id] || [];
+
+    const item = document.createElement('details');
+    item.className = `review-item ${correct ? 'review-correct' : 'review-incorrect'}`;
+
+    const summary = document.createElement('summary');
+    summary.innerHTML = `<span class="review-icon">${correct ? '✅' : '❌'}</span> <span class="review-num">Q${i + 1}</span> `;
+    const summaryText = document.createElement('span');
+    summaryText.textContent = q.question.length > 80 ? q.question.substring(0, 80) + '…' : q.question;
+    summary.appendChild(summaryText);
+
+    const body = document.createElement('div');
+    body.className = 'review-body';
+
+    const questionP = document.createElement('p');
+    questionP.className = 'review-question';
+    questionP.textContent = q.question;
+    body.appendChild(questionP);
+
+    const yourAns = document.createElement('p');
+    yourAns.innerHTML = `<strong>Your answer:</strong> `;
+    const yourAnsText = document.createElement('span');
+    yourAnsText.textContent = userAnswer.length > 0 ? userAnswer.join(', ') : 'Not answered';
+    yourAnsText.className = correct ? 'text-correct' : 'text-incorrect';
+    yourAns.appendChild(yourAnsText);
+    body.appendChild(yourAns);
+
+    const correctAns = document.createElement('p');
+    correctAns.innerHTML = `<strong>Correct answer:</strong> `;
+    const correctText = document.createElement('span');
+    correctText.textContent = q.answer.join(', ');
+    correctText.className = 'text-correct';
+    correctAns.appendChild(correctText);
+    body.appendChild(correctAns);
+
+    if (q.explanation) {
+      const exp = document.createElement('p');
+      exp.className = 'review-explanation';
+      exp.textContent = q.explanation;
+      body.appendChild(exp);
+    }
+
+    item.appendChild(summary);
+    item.appendChild(body);
+    reviewContainer.appendChild(item);
+  });
+
+  showScreen('results');
+}
+
+// ─── Export ─────────────────────────────────────────────────────
+export function handleExport() {
+  const state = getState();
+  const csv = generateCSV(state.filteredQuestions, state.answers, state.timePerQuestion);
+  const date = new Date().toISOString().split('T')[0];
+  downloadFile(csv, `aws-quiz-results-${date}.csv`, 'text/csv');
+}
+
+// ─── Timer Display ─────────────────────────────────────────────
+export function setTimerVisibility(visible) {
+  const bar = document.getElementById('timer-bar');
+  if (bar) bar.classList.toggle('hidden', !visible);
+}
