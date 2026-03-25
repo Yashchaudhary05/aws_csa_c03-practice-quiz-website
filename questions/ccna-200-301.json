@@ -1,0 +1,1206 @@
+[
+  {
+    "id": 1,
+    "question": "Which layer of the OSI model is responsible for logical addressing and routing?",
+    "options": ["Data Link Layer", "Network Layer", "Transport Layer", "Session Layer"],
+    "answer": ["Network Layer"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "The Network Layer (Layer 3) handles logical addressing (IP addresses) and routing of packets between networks."
+  },
+  {
+    "id": 2,
+    "question": "What is the default subnet mask for a Class B IP address?",
+    "options": ["255.0.0.0", "255.255.0.0", "255.255.255.0", "255.255.255.128"],
+    "answer": ["255.255.0.0"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "easy",
+    "explanation": "Class B addresses (128.0.0.0–191.255.255.255) have a default subnet mask of 255.255.0.0 (/16), providing 65,534 usable host addresses."
+  },
+  {
+    "id": 3,
+    "question": "Which protocol operates at Layer 2 and is used to prevent switching loops?",
+    "options": ["OSPF", "STP", "ARP", "HSRP"],
+    "answer": ["STP"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "easy",
+    "explanation": "Spanning Tree Protocol (STP) operates at Layer 2 to prevent broadcast loops by placing redundant ports in a blocking state."
+  },
+  {
+    "id": 4,
+    "question": "How many usable host addresses are available in a /28 subnet?",
+    "options": ["14", "16", "30", "32"],
+    "answer": ["14"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "medium",
+    "explanation": "A /28 subnet has 2^4 = 16 addresses. Subtract 2 for network and broadcast addresses = 14 usable host addresses."
+  },
+  {
+    "id": 5,
+    "question": "Which command displays the MAC address table on a Cisco switch?",
+    "options": ["show ip route", "show mac address-table", "show arp", "show interfaces"],
+    "answer": ["show mac address-table"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "easy",
+    "explanation": "The 'show mac address-table' command displays the CAM table mapping MAC addresses to switch ports."
+  },
+  {
+    "id": 6,
+    "question": "What is the purpose of a VLAN?",
+    "options": ["To encrypt network traffic", "To logically segment a network at Layer 2", "To route traffic between networks", "To assign IP addresses dynamically"],
+    "answer": ["To logically segment a network at Layer 2"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "easy",
+    "explanation": "VLANs logically segment a network at Layer 2, creating separate broadcast domains without requiring separate physical switches."
+  },
+  {
+    "id": 7,
+    "question": "Which routing protocol uses the Diffusing Update Algorithm (DUAL)?",
+    "options": ["OSPF", "RIP", "EIGRP", "BGP"],
+    "answer": ["EIGRP"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "medium",
+    "explanation": "EIGRP uses the Diffusing Update Algorithm (DUAL) to calculate the best loop-free path. It maintains a topology table and uses feasible successors for fast convergence."
+  },
+  {
+    "id": 8,
+    "question": "What does ARP resolve?",
+    "options": ["IP addresses to MAC addresses", "MAC addresses to IP addresses", "Hostnames to IP addresses", "IP addresses to hostnames"],
+    "answer": ["IP addresses to MAC addresses"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "Address Resolution Protocol (ARP) maps a known IP address to a MAC address on the local network segment."
+  },
+  {
+    "id": 9,
+    "question": "Which port state in RSTP actively forwards data and learns MAC addresses?",
+    "options": ["Discarding", "Learning", "Forwarding", "Blocking"],
+    "answer": ["Forwarding"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "medium",
+    "explanation": "In RSTP, the Forwarding state both learns MAC addresses and forwards frames. RSTP simplified STP states to Discarding, Learning, and Forwarding."
+  },
+  {
+    "id": 10,
+    "question": "What is the administrative distance of OSPF?",
+    "options": ["90", "100", "110", "120"],
+    "answer": ["110"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "medium",
+    "explanation": "OSPF has an administrative distance of 110. Lower AD values are preferred: Connected=0, Static=1, EIGRP=90, OSPF=110, RIP=120."
+  },
+  {
+    "id": 11,
+    "question": "Which IPv6 address type is equivalent to a private IPv4 address?",
+    "options": ["Link-local", "Unique local", "Global unicast", "Multicast"],
+    "answer": ["Unique local"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "medium",
+    "explanation": "Unique local addresses (FC00::/7) are IPv6 equivalents of IPv4 private addresses. They are routable within an organization but not on the public internet."
+  },
+  {
+    "id": 12,
+    "question": "Which protocol provides first-hop redundancy for a default gateway?",
+    "options": ["STP", "LACP", "HSRP", "CDP"],
+    "answer": ["HSRP"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "medium",
+    "explanation": "Hot Standby Router Protocol (HSRP) provides first-hop redundancy by allowing two or more routers to share a virtual IP and MAC address as a default gateway."
+  },
+  {
+    "id": 13,
+    "question": "What does a switch do when it receives a frame destined for an unknown unicast MAC address?",
+    "options": ["Drops the frame", "Sends it to the default gateway", "Floods it out all ports except the source port", "Sends an ARP request"],
+    "answer": ["Floods it out all ports except the source port"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "easy",
+    "explanation": "When a switch receives a frame for an unknown unicast destination, it floods the frame out all ports in the VLAN except the source port to find the destination."
+  },
+  {
+    "id": 14,
+    "question": "Which type of NAT maps one private IP address to one public IP address?",
+    "options": ["Static NAT", "Dynamic NAT", "PAT", "NAT overload"],
+    "answer": ["Static NAT"],
+    "multiSelect": false,
+    "topic": "IP Services",
+    "difficulty": "easy",
+    "explanation": "Static NAT creates a permanent one-to-one mapping between a private IP address and a public IP address. It is used when a device needs a consistent public IP."
+  },
+  {
+    "id": 15,
+    "question": "Which wireless standard operates only on the 5 GHz frequency band and supports speeds up to 1.3 Gbps?",
+    "options": ["802.11n", "802.11ac", "802.11ax", "802.11g"],
+    "answer": ["802.11ac"],
+    "multiSelect": false,
+    "topic": "Wireless",
+    "difficulty": "medium",
+    "explanation": "802.11ac (Wi-Fi 5) operates exclusively on 5 GHz and supports speeds up to 1.3 Gbps (Wave 1) or 6.9 Gbps (Wave 2) using wider channels and MU-MIMO."
+  },
+  {
+    "id": 16,
+    "question": "What is the purpose of the 'ip helper-address' command on a router interface?",
+    "options": ["To configure a static route", "To relay DHCP broadcasts to a remote DHCP server", "To enable NAT", "To configure DNS forwarding"],
+    "answer": ["To relay DHCP broadcasts to a remote DHCP server"],
+    "multiSelect": false,
+    "topic": "IP Services",
+    "difficulty": "medium",
+    "explanation": "The 'ip helper-address' command configures a DHCP relay agent, forwarding DHCP broadcast requests from clients to a DHCP server on a different subnet."
+  },
+  {
+    "id": 17,
+    "question": "Which OSPF packet type is used to establish neighbor adjacencies?",
+    "options": ["LSU", "LSA", "Hello", "DBD"],
+    "answer": ["Hello"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "easy",
+    "explanation": "OSPF Hello packets are sent periodically to discover neighbors and maintain adjacencies. They contain the router ID, area ID, hello/dead timers, and authentication info."
+  },
+  {
+    "id": 18,
+    "question": "What is the purpose of 802.1Q trunking?",
+    "options": ["To encrypt VLAN traffic", "To carry multiple VLANs over a single link", "To assign IP addresses to VLANs", "To block unauthorized VLAN access"],
+    "answer": ["To carry multiple VLANs over a single link"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "easy",
+    "explanation": "802.1Q is the standard for VLAN tagging on trunk links. It inserts a 4-byte tag into Ethernet frames to identify which VLAN the frame belongs to."
+  },
+  {
+    "id": 19,
+    "question": "Which command configures a switch port as a trunk?",
+    "options": ["switchport mode access", "switchport mode trunk", "switchport trunk allowed vlan all", "switchport nonegotiate"],
+    "answer": ["switchport mode trunk"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "easy",
+    "explanation": "The 'switchport mode trunk' command configures a switch port to act as a trunk, carrying traffic for multiple VLANs using 802.1Q tagging."
+  },
+  {
+    "id": 20,
+    "question": "What is the maximum hop count for RIP?",
+    "options": ["10", "15", "16", "255"],
+    "answer": ["15"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "easy",
+    "explanation": "RIP has a maximum hop count of 15. A hop count of 16 is considered unreachable (infinity). This limits RIP to small networks."
+  },
+  {
+    "id": 21,
+    "question": "Which security feature limits the number of MAC addresses allowed on a switch port?",
+    "options": ["DHCP snooping", "Port security", "Dynamic ARP inspection", "802.1X"],
+    "answer": ["Port security"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "easy",
+    "explanation": "Port security limits the number of valid MAC addresses allowed on a port. When a violation occurs, actions include shutdown, restrict, or protect."
+  },
+  {
+    "id": 22,
+    "question": "What does CIDR notation /24 represent?",
+    "options": ["24 host bits", "24 network bits", "24 subnets", "24 usable addresses"],
+    "answer": ["24 network bits"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "easy",
+    "explanation": "CIDR /24 means 24 bits are used for the network portion, leaving 8 bits for host addresses. This equals a subnet mask of 255.255.255.0."
+  },
+  {
+    "id": 23,
+    "question": "Which protocol is used to automatically assign IP addresses to devices on a network?",
+    "options": ["DNS", "DHCP", "ARP", "ICMP"],
+    "answer": ["DHCP"],
+    "multiSelect": false,
+    "topic": "IP Services",
+    "difficulty": "easy",
+    "explanation": "Dynamic Host Configuration Protocol (DHCP) automatically assigns IP addresses, subnet masks, default gateways, and DNS servers to devices."
+  },
+  {
+    "id": 24,
+    "question": "Which two layers of the OSI model are combined in the TCP/IP model's Network Access layer? (Choose 2 answers)",
+    "options": ["Physical", "Data Link", "Network", "Transport", "Session"],
+    "answer": ["Physical", "Data Link"],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "Network Fundamentals",
+    "difficulty": "medium",
+    "explanation": "The TCP/IP Network Access layer combines the OSI Physical (Layer 1) and Data Link (Layer 2) layers."
+  },
+  {
+    "id": 25,
+    "question": "What is the purpose of a default route?",
+    "options": ["To route traffic to directly connected networks", "To route traffic when no specific match exists in the routing table", "To route traffic between VLANs", "To route multicast traffic"],
+    "answer": ["To route traffic when no specific match exists in the routing table"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "easy",
+    "explanation": "A default route (0.0.0.0/0) is the route of last resort. It matches all destinations when no more specific route exists in the routing table."
+  },
+  {
+    "id": 26,
+    "question": "Which Cisco IOS command displays the routing table?",
+    "options": ["show ip route", "show ip interface brief", "show running-config", "show ip protocols"],
+    "answer": ["show ip route"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "easy",
+    "explanation": "The 'show ip route' command displays all routes in the routing table, including connected, static, and dynamically learned routes."
+  },
+  {
+    "id": 27,
+    "question": "What type of cable is used to connect two similar devices directly (e.g., switch to switch)?",
+    "options": ["Straight-through", "Crossover", "Rollover", "Fiber optic"],
+    "answer": ["Crossover"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "A crossover cable swaps transmit and receive pairs, allowing direct communication between similar devices. Note: Most modern devices support Auto-MDIX."
+  },
+  {
+    "id": 28,
+    "question": "Which WLAN security protocol provides the strongest encryption and is recommended for enterprise networks?",
+    "options": ["WEP", "WPA", "WPA2", "WPA3"],
+    "answer": ["WPA3"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "medium",
+    "explanation": "WPA3 provides the strongest WLAN security with SAE (Simultaneous Authentication of Equals), 192-bit encryption for enterprise, and protection against offline dictionary attacks."
+  },
+  {
+    "id": 29,
+    "question": "What is the purpose of DNS?",
+    "options": ["To assign IP addresses dynamically", "To resolve domain names to IP addresses", "To encrypt web traffic", "To route packets between networks"],
+    "answer": ["To resolve domain names to IP addresses"],
+    "multiSelect": false,
+    "topic": "IP Services",
+    "difficulty": "easy",
+    "explanation": "Domain Name System (DNS) translates human-readable domain names into IP addresses that computers use to communicate."
+  },
+  {
+    "id": 30,
+    "question": "Which EtherChannel protocol is an IEEE standard?",
+    "options": ["PAgP", "LACP", "DTP", "VTP"],
+    "answer": ["LACP"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "medium",
+    "explanation": "Link Aggregation Control Protocol (LACP), defined in IEEE 802.3ad, is the standard for bundling physical links into a single logical link. PAgP is Cisco-proprietary."
+  },
+  {
+    "id": 31,
+    "question": "Which command enters global configuration mode on a Cisco router?",
+    "options": ["enable", "configure terminal", "interface g0/0", "line console 0"],
+    "answer": ["configure terminal"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "The 'configure terminal' command (or 'conf t') enters global configuration mode from privileged EXEC mode, allowing changes to the running configuration."
+  },
+  {
+    "id": 32,
+    "question": "What is the range of well-known TCP port numbers?",
+    "options": ["0–255", "0–1023", "1024–49151", "49152–65535"],
+    "answer": ["0–1023"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "Well-known ports range from 0–1023 and are assigned to common services (HTTP=80, HTTPS=443, SSH=22, DNS=53, FTP=21)."
+  },
+  {
+    "id": 33,
+    "question": "Which protocol uses TCP port 443?",
+    "options": ["HTTP", "HTTPS", "SSH", "Telnet"],
+    "answer": ["HTTPS"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "HTTPS uses TCP port 443 for encrypted web traffic using TLS/SSL. HTTP uses port 80 (unencrypted)."
+  },
+  {
+    "id": 34,
+    "question": "What is the primary difference between TCP and UDP?",
+    "options": ["TCP is faster than UDP", "TCP is connectionless while UDP is connection-oriented", "TCP provides reliable delivery while UDP does not guarantee delivery", "TCP uses fewer resources than UDP"],
+    "answer": ["TCP provides reliable delivery while UDP does not guarantee delivery"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "TCP provides reliable, ordered delivery using acknowledgments, sequencing, and retransmission. UDP is connectionless and provides best-effort delivery without guarantees."
+  },
+  {
+    "id": 35,
+    "question": "Which OSPF router type connects an OSPF area to the backbone area (Area 0)?",
+    "options": ["Internal router", "Backbone router", "Area Border Router (ABR)", "AS Boundary Router (ASBR)"],
+    "answer": ["Area Border Router (ABR)"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "medium",
+    "explanation": "An Area Border Router (ABR) connects two or more OSPF areas, with at least one interface in Area 0. It summarizes routes between areas."
+  },
+  {
+    "id": 36,
+    "question": "What does the 'no shutdown' command do on a Cisco router interface?",
+    "options": ["Disables the interface", "Enables the interface", "Resets the interface counters", "Removes the IP address"],
+    "answer": ["Enables the interface"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "The 'no shutdown' command administratively enables (brings up) an interface. By default, Cisco router interfaces are administratively shut down."
+  },
+  {
+    "id": 37,
+    "question": "Which switch feature prevents unauthorized DHCP servers from assigning IP addresses?",
+    "options": ["Port security", "DHCP snooping", "Dynamic ARP Inspection", "IP Source Guard"],
+    "answer": ["DHCP snooping"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "medium",
+    "explanation": "DHCP snooping validates DHCP messages by allowing responses only from trusted ports. It blocks rogue DHCP servers and builds a binding table."
+  },
+  {
+    "id": 38,
+    "question": "What is the subnet mask for a /26 network?",
+    "options": ["255.255.255.128", "255.255.255.192", "255.255.255.224", "255.255.255.240"],
+    "answer": ["255.255.255.192"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "medium",
+    "explanation": "A /26 means 26 network bits. The last octet has 2 network bits borrowed: 11000000 = 192. So the mask is 255.255.255.192, providing 62 usable hosts."
+  },
+  {
+    "id": 39,
+    "question": "Which Cisco Discovery Protocol is vendor-neutral and standardized by IEEE?",
+    "options": ["CDP", "LLDP", "SNMP", "NetFlow"],
+    "answer": ["LLDP"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "medium",
+    "explanation": "Link Layer Discovery Protocol (LLDP) is an IEEE 802.1AB standard, vendor-neutral alternative to Cisco's proprietary CDP. Both discover neighboring devices."
+  },
+  {
+    "id": 40,
+    "question": "Which type of ACL filters traffic based on source IP address only?",
+    "options": ["Standard ACL", "Extended ACL", "Named ACL", "Reflexive ACL"],
+    "answer": ["Standard ACL"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "easy",
+    "explanation": "Standard ACLs (numbered 1–99, 1300–1999) filter traffic based only on the source IP address. Extended ACLs can filter by source, destination, protocol, and port."
+  },
+  {
+    "id": 41,
+    "question": "An engineer needs to verify which interfaces are up on a router. Which command should be used?",
+    "options": ["show ip route", "show ip interface brief", "show interfaces", "show running-config"],
+    "answer": ["show ip interface brief"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "The 'show ip interface brief' command provides a concise summary of all interfaces with IP addresses and up/down status."
+  },
+  {
+    "id": 42,
+    "question": "Which Layer 4 protocol does TFTP use?",
+    "options": ["TCP", "UDP", "ICMP", "IP"],
+    "answer": ["UDP"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "TFTP uses UDP port 69. It is a simple file transfer protocol without authentication or reliability features of FTP."
+  },
+  {
+    "id": 43,
+    "question": "What is the purpose of SNMP?",
+    "options": ["To resolve domain names", "To transfer files", "To monitor and manage network devices", "To encrypt network traffic"],
+    "answer": ["To monitor and manage network devices"],
+    "multiSelect": false,
+    "topic": "IP Services",
+    "difficulty": "easy",
+    "explanation": "Simple Network Management Protocol (SNMP) is used to monitor and manage network devices. Agents collect device metrics and send them to an NMS."
+  },
+  {
+    "id": 44,
+    "question": "What does a router do when it receives a packet for a destination not in its routing table and no default route is configured?",
+    "options": ["Forwards it to the first interface", "Broadcasts it on all interfaces", "Drops the packet", "Sends it back to the source"],
+    "answer": ["Drops the packet"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "easy",
+    "explanation": "When a router has no matching route and no default route, it drops the packet and may send an ICMP Destination Unreachable message to the source."
+  },
+  {
+    "id": 45,
+    "question": "Which technology allows a single physical router interface to route traffic between multiple VLANs?",
+    "options": ["EtherChannel", "Router-on-a-stick", "VPN", "NAT"],
+    "answer": ["Router-on-a-stick"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "medium",
+    "explanation": "Router-on-a-stick uses subinterfaces on a single physical interface connected to a trunk port. Each subinterface is assigned to a VLAN for inter-VLAN routing."
+  },
+  {
+    "id": 46,
+    "question": "Which wireless mode allows a device to communicate directly with another device without an access point?",
+    "options": ["Infrastructure", "Ad-hoc", "Mesh", "Bridge"],
+    "answer": ["Ad-hoc"],
+    "multiSelect": false,
+    "topic": "Wireless",
+    "difficulty": "easy",
+    "explanation": "Ad-hoc (IBSS) mode allows wireless devices to communicate directly peer-to-peer without an access point."
+  },
+  {
+    "id": 47,
+    "question": "What is the IPv6 loopback address?",
+    "options": ["::1", "FE80::1", "FF02::1", "2001:db8::1"],
+    "answer": ["::1"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "easy",
+    "explanation": "The IPv6 loopback address is ::1 (0000:0000:0000:0000:0000:0000:0000:0001). It is equivalent to 127.0.0.1 in IPv4."
+  },
+  {
+    "id": 48,
+    "question": "Which component of a network automation architecture stores desired device configurations and applies them consistently?",
+    "options": ["Controller", "Configuration management tool", "Syslog server", "SNMP manager"],
+    "answer": ["Configuration management tool"],
+    "multiSelect": false,
+    "topic": "Automation",
+    "difficulty": "medium",
+    "explanation": "Configuration management tools like Ansible, Puppet, or Chef store desired state configurations and apply them consistently across network devices."
+  },
+  {
+    "id": 49,
+    "question": "Which data format uses key-value pairs with curly braces and is commonly used in REST APIs?",
+    "options": ["XML", "YAML", "JSON", "CSV"],
+    "answer": ["JSON"],
+    "multiSelect": false,
+    "topic": "Automation",
+    "difficulty": "easy",
+    "explanation": "JSON (JavaScript Object Notation) uses key-value pairs in curly braces. It is lightweight and the most common format for REST API data exchange."
+  },
+  {
+    "id": 50,
+    "question": "Which protocol does SSH use for secure remote access to network devices?",
+    "options": ["UDP port 22", "TCP port 22", "TCP port 23", "UDP port 161"],
+    "answer": ["TCP port 22"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "easy",
+    "explanation": "SSH uses TCP port 22 for encrypted remote access. It replaced Telnet (TCP port 23) which sends data in cleartext."
+  },
+  {
+    "id": 51,
+    "question": "What is the purpose of NTP in a network?",
+    "options": ["To transfer files between devices", "To synchronize clocks across network devices", "To resolve hostnames", "To monitor bandwidth usage"],
+    "answer": ["To synchronize clocks across network devices"],
+    "multiSelect": false,
+    "topic": "IP Services",
+    "difficulty": "easy",
+    "explanation": "Network Time Protocol (NTP) synchronizes clocks across devices to a common time source. Accurate time is critical for logging, troubleshooting, and security."
+  },
+  {
+    "id": 52,
+    "question": "Which type of IPv6 address starts with FE80?",
+    "options": ["Global unicast", "Unique local", "Link-local", "Multicast"],
+    "answer": ["Link-local"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "easy",
+    "explanation": "Link-local addresses (FE80::/10) are auto-configured on every IPv6-enabled interface. They are used for communication on the local link only and are not routable."
+  },
+  {
+    "id": 53,
+    "question": "What is the purpose of a Wireless LAN Controller (WLC)?",
+    "options": ["To provide wireless client connectivity", "To centrally manage multiple access points", "To route traffic between wireless VLANs", "To provide PoE to access points"],
+    "answer": ["To centrally manage multiple access points"],
+    "multiSelect": false,
+    "topic": "Wireless",
+    "difficulty": "medium",
+    "explanation": "A WLC centrally manages configuration, firmware, security policies, and radio resource management for multiple lightweight access points."
+  },
+  {
+    "id": 54,
+    "question": "Which FHRP is Cisco-proprietary?",
+    "options": ["VRRP", "HSRP", "GLBP", "Both HSRP and GLBP"],
+    "answer": ["Both HSRP and GLBP"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "medium",
+    "explanation": "Both HSRP and GLBP are Cisco-proprietary first-hop redundancy protocols. VRRP is the IEEE standard alternative."
+  },
+  {
+    "id": 55,
+    "question": "What command configures a static route on a Cisco router?",
+    "options": ["ip route 0.0.0.0 0.0.0.0 10.1.1.1", "ip static-route 10.0.0.0 255.0.0.0 10.1.1.1", "route add 10.0.0.0/8 via 10.1.1.1", "ip default-route 10.1.1.1"],
+    "answer": ["ip route 0.0.0.0 0.0.0.0 10.1.1.1"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "medium",
+    "explanation": "The 'ip route' command configures static routes. The example shows a default static route (0.0.0.0/0) pointing to next-hop 10.1.1.1."
+  },
+  {
+    "id": 56,
+    "question": "Which Cisco IOS command saves the running configuration to NVRAM?",
+    "options": ["write memory", "copy running-config startup-config", "save config", "Both 'write memory' and 'copy running-config startup-config'"],
+    "answer": ["Both 'write memory' and 'copy running-config startup-config'"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "Both commands save the running configuration to NVRAM. 'copy running-config startup-config' is the modern syntax; 'write memory' (or 'wr') is a legacy shortcut."
+  },
+  {
+    "id": 57,
+    "question": "Which feature is associated with Software-Defined Networking (SDN)?",
+    "options": ["Distributed control plane on each device", "Separation of the control plane and data plane", "Manual CLI-based configuration", "Vendor-specific protocols only"],
+    "answer": ["Separation of the control plane and data plane"],
+    "multiSelect": false,
+    "topic": "Automation",
+    "difficulty": "medium",
+    "explanation": "SDN separates the control plane (intelligence and routing decisions) from the data plane (packet forwarding), centralizing control in an SDN controller."
+  },
+  {
+    "id": 58,
+    "question": "What is the broadcast address for the network 192.168.10.0/24?",
+    "options": ["192.168.10.0", "192.168.10.1", "192.168.10.254", "192.168.10.255"],
+    "answer": ["192.168.10.255"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "easy",
+    "explanation": "For a /24 network, the broadcast address is the last address in the range. For 192.168.10.0/24, all host bits set to 1 = 192.168.10.255."
+  },
+  {
+    "id": 59,
+    "question": "Which AAA component verifies whether a user has permission to perform a specific action?",
+    "options": ["Authentication", "Authorization", "Accounting", "Auditing"],
+    "answer": ["Authorization"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "medium",
+    "explanation": "Authorization determines what resources and actions an authenticated user is permitted to access. Authentication verifies identity; accounting tracks usage."
+  },
+  {
+    "id": 60,
+    "question": "Which type of network topology provides redundancy by connecting each device to every other device?",
+    "options": ["Star", "Ring", "Full mesh", "Bus"],
+    "answer": ["Full mesh"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "In a full mesh topology, every device is connected to every other device. This provides maximum redundancy but requires n(n-1)/2 connections, making it expensive for large networks."
+  },
+  {
+    "id": 61,
+    "question": "What does the acronym PoE stand for in networking?",
+    "options": ["Power over Encoding", "Power over Ethernet", "Protocol over Ethernet", "Point of Entry"],
+    "answer": ["Power over Ethernet"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "Power over Ethernet (PoE) delivers electrical power along with data over standard Ethernet cabling, powering devices like IP phones, APs, and cameras."
+  },
+  {
+    "id": 62,
+    "question": "Which OSPF area must all other areas connect to?",
+    "options": ["Area 1", "Area 0", "Area 255", "Any area"],
+    "answer": ["Area 0"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "medium",
+    "explanation": "Area 0 (backbone area) is mandatory in OSPF. All other areas must have at least one ABR connected to Area 0 for inter-area routing."
+  },
+  {
+    "id": 63,
+    "question": "Which protocol provides gateway redundancy and also performs load balancing across multiple routers?",
+    "options": ["HSRP", "VRRP", "GLBP", "STP"],
+    "answer": ["GLBP"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "hard",
+    "explanation": "Gateway Load Balancing Protocol (GLBP) provides both gateway redundancy and load balancing by assigning different virtual MAC addresses to multiple routers sharing a virtual IP."
+  },
+  {
+    "id": 64,
+    "question": "Which command will display OSPF neighbor relationships on a Cisco router?",
+    "options": ["show ip ospf neighbor", "show ip ospf database", "show ip protocols", "show ip route ospf"],
+    "answer": ["show ip ospf neighbor"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "easy",
+    "explanation": "The 'show ip ospf neighbor' command displays OSPF adjacencies including neighbor ID, state (FULL, 2WAY), dead time, and interface."
+  },
+  {
+    "id": 65,
+    "question": "What is the native VLAN used for on a trunk port?",
+    "options": ["Carrying management traffic only", "Carrying untagged frames", "Encrypting trunk traffic", "Blocking unknown VLANs"],
+    "answer": ["Carrying untagged frames"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "medium",
+    "explanation": "The native VLAN carries untagged frames on a trunk link. By default it is VLAN 1. Frames on the native VLAN are not tagged with 802.1Q headers."
+  },
+  {
+    "id": 66,
+    "question": "Which two actions does a switch perform when it receives a frame? (Choose 2 answers)",
+    "options": ["Learns the source MAC address", "Decompresses the frame payload", "Forwards based on the destination MAC", "Adds an IP header", "Modifies the TTL field"],
+    "answer": ["Learns the source MAC address", "Forwards based on the destination MAC"],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "Network Access",
+    "difficulty": "easy",
+    "explanation": "A switch learns source MAC addresses from incoming frames (populating its MAC table) and uses the destination MAC to decide whether to forward, filter, or flood."
+  },
+  {
+    "id": 67,
+    "question": "In which OSPF state have two routers fully exchanged their link-state databases?",
+    "options": ["Init", "2-Way", "ExStart", "Full"],
+    "answer": ["Full"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "medium",
+    "explanation": "The Full state indicates routers have completely exchanged LSAs and have synchronized link-state databases. This is the final, operational state."
+  },
+  {
+    "id": 68,
+    "question": "Which Layer 2 attack involves an attacker impersonating a switch by sending spoofed DTP frames?",
+    "options": ["VLAN hopping", "MAC flooding", "ARP spoofing", "DHCP starvation"],
+    "answer": ["VLAN hopping"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "hard",
+    "explanation": "VLAN hopping via switch spoofing involves sending fake DTP frames to negotiate a trunk, gaining access to all VLANs. Mitigate by disabling DTP with 'switchport nonegotiate'."
+  },
+  {
+    "id": 69,
+    "question": "What is the maximum number of VLANs on a standard 802.1Q trunk?",
+    "options": ["256", "1005", "4094", "65535"],
+    "answer": ["4094"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "medium",
+    "explanation": "802.1Q uses a 12-bit VLAN ID field, allowing 4096 values (0–4095). VLANs 0 and 4095 are reserved, so the usable range is 1–4094."
+  },
+  {
+    "id": 70,
+    "question": "Which automation tool is agentless and uses SSH for network device management?",
+    "options": ["Puppet", "Chef", "Ansible", "SaltStack"],
+    "answer": ["Ansible"],
+    "multiSelect": false,
+    "topic": "Automation",
+    "difficulty": "medium",
+    "explanation": "Ansible is agentless—it connects via SSH (or NETCONF) to managed devices. It uses YAML playbooks for declarative configuration management."
+  },
+  {
+    "id": 71,
+    "question": "What is the APIPA address range used when a device fails to obtain an IP address via DHCP?",
+    "options": ["10.0.0.0/8", "172.16.0.0/12", "169.254.0.0/16", "192.168.0.0/16"],
+    "answer": ["169.254.0.0/16"],
+    "multiSelect": false,
+    "topic": "IP Services",
+    "difficulty": "medium",
+    "explanation": "Automatic Private IP Addressing (APIPA) assigns addresses in 169.254.0.0/16 when a DHCP server is unavailable. These are link-local only and not routable."
+  },
+  {
+    "id": 72,
+    "question": "Which command assigns VLAN 10 to a switch port?",
+    "options": ["vlan 10", "switchport access vlan 10", "switchport vlan 10", "interface vlan 10"],
+    "answer": ["switchport access vlan 10"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "easy",
+    "explanation": "The 'switchport access vlan 10' command assigns an access port to VLAN 10. The port must be in access mode ('switchport mode access')."
+  },
+  {
+    "id": 73,
+    "question": "What is a benefit of using VLANs?",
+    "options": ["Increased collision domains", "Reduced number of broadcast domains", "Improved security through traffic segmentation", "Elimination of the need for IP addressing"],
+    "answer": ["Improved security through traffic segmentation"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "easy",
+    "explanation": "VLANs improve security by segmenting traffic into separate broadcast domains. Devices on different VLANs cannot communicate without a Layer 3 device."
+  },
+  {
+    "id": 74,
+    "question": "Which REST API HTTP method is used to create a new resource?",
+    "options": ["GET", "POST", "PUT", "DELETE"],
+    "answer": ["POST"],
+    "multiSelect": false,
+    "topic": "Automation",
+    "difficulty": "easy",
+    "explanation": "POST is used to create a new resource on the server. GET retrieves, PUT updates/replaces, PATCH partially updates, and DELETE removes resources."
+  },
+  {
+    "id": 75,
+    "question": "Which protocol encapsulates lightweight AP traffic between an AP and WLC?",
+    "options": ["LWAPP", "CAPWAP", "DTP", "LACP"],
+    "answer": ["CAPWAP"],
+    "multiSelect": false,
+    "topic": "Wireless",
+    "difficulty": "medium",
+    "explanation": "Control and Provisioning of Wireless Access Points (CAPWAP) encapsulates control and data traffic between lightweight APs and a Wireless LAN Controller."
+  },
+  {
+    "id": 76,
+    "question": "What is the primary purpose of a Layer 3 switch?",
+    "options": ["To connect different media types", "To perform routing between VLANs", "To extend WAN connectivity", "To provide wireless access"],
+    "answer": ["To perform routing between VLANs"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "medium",
+    "explanation": "A Layer 3 switch combines switching and routing functions, performing inter-VLAN routing in hardware at wire speed using SVIs (Switch Virtual Interfaces)."
+  },
+  {
+    "id": 77,
+    "question": "Which syslog severity level represents an emergency condition?",
+    "options": ["0", "1", "4", "7"],
+    "answer": ["0"],
+    "multiSelect": false,
+    "topic": "IP Services",
+    "difficulty": "medium",
+    "explanation": "Syslog severity levels: 0=Emergency, 1=Alert, 2=Critical, 3=Error, 4=Warning, 5=Notice, 6=Informational, 7=Debug. Lower numbers indicate higher severity."
+  },
+  {
+    "id": 78,
+    "question": "What is the function of the data plane in a network device?",
+    "options": ["Making routing decisions", "Managing the device via CLI/GUI", "Forwarding packets based on the forwarding table", "Running routing protocols"],
+    "answer": ["Forwarding packets based on the forwarding table"],
+    "multiSelect": false,
+    "topic": "Automation",
+    "difficulty": "medium",
+    "explanation": "The data plane (forwarding plane) handles the actual forwarding of packets using the forwarding table built by the control plane. It operates at high speed in hardware."
+  },
+  {
+    "id": 79,
+    "question": "Which standard defines PoE+ and provides up to 30W per port?",
+    "options": ["802.3af", "802.3at", "802.3bt", "802.3ad"],
+    "answer": ["802.3at"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "hard",
+    "explanation": "802.3at (PoE+) provides up to 30W per port. 802.3af (original PoE) provides 15.4W. 802.3bt (PoE++) provides up to 60W or 90W."
+  },
+  {
+    "id": 80,
+    "question": "Which IPv4 address range is reserved for multicast?",
+    "options": ["169.254.0.0–169.254.255.255", "224.0.0.0–239.255.255.255", "240.0.0.0–255.255.255.255", "192.0.2.0–192.0.2.255"],
+    "answer": ["224.0.0.0–239.255.255.255"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "medium",
+    "explanation": "Class D addresses (224.0.0.0–239.255.255.255) are reserved for multicast. 224.0.0.0/24 is for link-local multicast (e.g., 224.0.0.5 for OSPF All Routers)."
+  },
+  {
+    "id": 81,
+    "question": "An engineer configures an extended ACL. Where should it be placed?",
+    "options": ["Close to the source", "Close to the destination", "On the core switch", "On the WAN router"],
+    "answer": ["Close to the source"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "medium",
+    "explanation": "Extended ACLs should be placed as close to the source as possible to prevent unwanted traffic from traversing the network. Standard ACLs go close to the destination."
+  },
+  {
+    "id": 82,
+    "question": "What is the two-tier (collapsed core) network design?",
+    "options": ["Combines core and access layers", "Combines distribution and core layers", "Eliminates the distribution layer", "Separates all three layers"],
+    "answer": ["Combines distribution and core layers"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "medium",
+    "explanation": "The collapsed-core (two-tier) design merges the core and distribution layers into one, suitable for smaller networks that don't need a separate core."
+  },
+  {
+    "id": 83,
+    "question": "Which protocol dynamically negotiates trunk links between Cisco switches?",
+    "options": ["VTP", "DTP", "STP", "LACP"],
+    "answer": ["DTP"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "medium",
+    "explanation": "Dynamic Trunking Protocol (DTP) negotiates trunk link formation between Cisco switches. It should be disabled on ports that shouldn't trunk using 'switchport nonegotiate'."
+  },
+  {
+    "id": 84,
+    "question": "What is the maximum data rate of 802.11ax (Wi-Fi 6)?",
+    "options": ["1.3 Gbps", "3.5 Gbps", "9.6 Gbps", "20 Gbps"],
+    "answer": ["9.6 Gbps"],
+    "multiSelect": false,
+    "topic": "Wireless",
+    "difficulty": "hard",
+    "explanation": "Wi-Fi 6 (802.11ax) has a theoretical maximum of 9.6 Gbps using 8x8 MU-MIMO, 1024-QAM, and 160 MHz channels. It operates on both 2.4 GHz and 5 GHz."
+  },
+  {
+    "id": 85,
+    "question": "Which DHCP message does a client send first when requesting an IP address?",
+    "options": ["DHCPOFFER", "DHCPDISCOVER", "DHCPREQUEST", "DHCPACK"],
+    "answer": ["DHCPDISCOVER"],
+    "multiSelect": false,
+    "topic": "IP Services",
+    "difficulty": "easy",
+    "explanation": "The DHCP process is DORA: Discover → Offer → Request → Acknowledge. The client broadcasts a DHCPDISCOVER to find available servers."
+  },
+  {
+    "id": 86,
+    "question": "What does the 'speed auto' command do on a switch interface?",
+    "options": ["Sets the speed to 1 Gbps", "Forces full duplex", "Enables auto-negotiation of speed", "Disables the interface"],
+    "answer": ["Enables auto-negotiation of speed"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "The 'speed auto' command enables auto-negotiation of the interface speed (10/100/1000 Mbps) with the connected device."
+  },
+  {
+    "id": 87,
+    "question": "Which feature allows multiple physical switch links to be treated as a single logical link?",
+    "options": ["VLAN trunking", "EtherChannel", "Spanning Tree", "Port mirroring"],
+    "answer": ["EtherChannel"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "easy",
+    "explanation": "EtherChannel bundles 2-8 physical links into one logical link, increasing bandwidth and providing redundancy. STP treats it as a single link."
+  },
+  {
+    "id": 88,
+    "question": "What is the purpose of Dynamic ARP Inspection (DAI)?",
+    "options": ["To prevent IP address spoofing", "To validate ARP packets against the DHCP snooping binding table", "To encrypt ARP traffic", "To rate-limit ARP requests"],
+    "answer": ["To validate ARP packets against the DHCP snooping binding table"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "hard",
+    "explanation": "DAI validates ARP packets by checking IP-to-MAC mappings against the DHCP snooping binding table. It prevents ARP spoofing/poisoning attacks on untrusted ports."
+  },
+  {
+    "id": 89,
+    "question": "Which YAML feature distinguishes it from JSON?",
+    "options": ["Uses curly braces for objects", "Uses indentation instead of brackets", "Requires quotation marks for strings", "Does not support lists"],
+    "answer": ["Uses indentation instead of brackets"],
+    "multiSelect": false,
+    "topic": "Automation",
+    "difficulty": "easy",
+    "explanation": "YAML uses indentation (whitespace) to represent structure, making it more human-readable than JSON, which uses braces and brackets."
+  },
+  {
+    "id": 90,
+    "question": "Which Cisco IOS command verifies the VLAN assignments on a switch?",
+    "options": ["show vlan brief", "show interfaces trunk", "show spanning-tree", "show mac address-table"],
+    "answer": ["show vlan brief"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "easy",
+    "explanation": "The 'show vlan brief' command displays all configured VLANs, their status, and assigned ports in a concise format."
+  },
+  {
+    "id": 91,
+    "question": "Which network device operates at all seven layers of the OSI model?",
+    "options": ["Hub", "Switch", "Router", "Firewall"],
+    "answer": ["Firewall"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "medium",
+    "explanation": "Next-generation firewalls inspect traffic from Layer 1 through Layer 7, performing deep packet inspection, application filtering, and content filtering."
+  },
+  {
+    "id": 92,
+    "question": "Which protocol provides loop-free topology and faster convergence than STP?",
+    "options": ["PVST+", "RSTP", "MST", "Both RSTP and MST"],
+    "answer": ["Both RSTP and MST"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "hard",
+    "explanation": "Both RSTP (802.1w) and MST (802.1s) provide faster convergence than original STP (802.1D). RSTP converges in seconds versus STP's 30-50 seconds."
+  },
+  {
+    "id": 93,
+    "question": "What is the size of an IPv6 address?",
+    "options": ["32 bits", "64 bits", "96 bits", "128 bits"],
+    "answer": ["128 bits"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "easy",
+    "explanation": "IPv6 addresses are 128 bits long, written as eight groups of four hexadecimal digits. This provides approximately 3.4 x 10^38 unique addresses."
+  },
+  {
+    "id": 94,
+    "question": "What is the purpose of the management plane in a network device?",
+    "options": ["Forward user data packets", "Run routing protocols", "Provide access to configure and monitor the device", "Handle QoS marking"],
+    "answer": ["Provide access to configure and monitor the device"],
+    "multiSelect": false,
+    "topic": "Automation",
+    "difficulty": "medium",
+    "explanation": "The management plane provides interfaces (CLI, GUI, APIs) to configure, monitor, and manage the device. It handles SSH, SNMP, syslog, and NTP traffic."
+  },
+  {
+    "id": 95,
+    "question": "Which address type sends a packet to the nearest device in a group?",
+    "options": ["Unicast", "Broadcast", "Multicast", "Anycast"],
+    "answer": ["Anycast"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "medium",
+    "explanation": "Anycast sends a packet to the nearest member of a group (by routing distance). It is commonly used in IPv6 and for services like DNS root servers."
+  },
+  {
+    "id": 96,
+    "question": "What does the 802.1X standard provide?",
+    "options": ["VLAN trunking", "Port-based network access control", "Link aggregation", "Spanning tree protocol"],
+    "answer": ["Port-based network access control"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "medium",
+    "explanation": "802.1X provides port-based NAC using EAP. A supplicant (client), authenticator (switch), and authentication server (RADIUS) work together to grant or deny access."
+  },
+  {
+    "id": 97,
+    "question": "Which interface type is used for inter-VLAN routing on a Layer 3 switch?",
+    "options": ["Physical interface", "Loopback interface", "Tunnel interface", "Switch Virtual Interface (SVI)"],
+    "answer": ["Switch Virtual Interface (SVI)"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "medium",
+    "explanation": "SVIs are virtual interfaces on Layer 3 switches associated with VLANs. They serve as the default gateway for that VLAN and enable routing between VLANs."
+  },
+  {
+    "id": 98,
+    "question": "Which QoS marking is applied at Layer 2?",
+    "options": ["DSCP", "IP Precedence", "CoS (Class of Service)", "ECN"],
+    "answer": ["CoS (Class of Service)"],
+    "multiSelect": false,
+    "topic": "IP Services",
+    "difficulty": "hard",
+    "explanation": "Class of Service (CoS) uses 3 bits in the 802.1Q VLAN tag for Layer 2 QoS marking (values 0–7). DSCP operates at Layer 3 in the IP header."
+  },
+  {
+    "id": 99,
+    "question": "What happens when a port security violation occurs in 'shutdown' mode?",
+    "options": ["The frame is dropped silently", "The frame is dropped and a log message is generated", "The port is placed in err-disabled state", "The port allows the frame but logs a warning"],
+    "answer": ["The port is placed in err-disabled state"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "medium",
+    "explanation": "In 'shutdown' mode (default), a violation causes the port to go into err-disabled state, effectively shutting it down. An administrator must re-enable it."
+  },
+  {
+    "id": 100,
+    "question": "Which DNS record type maps a hostname to an IPv6 address?",
+    "options": ["A", "AAAA", "CNAME", "MX"],
+    "answer": ["AAAA"],
+    "multiSelect": false,
+    "topic": "IP Services",
+    "difficulty": "easy",
+    "explanation": "AAAA (quad-A) records map hostnames to IPv6 addresses. A records map to IPv4 addresses. CNAME creates aliases; MX is for mail servers."
+  },
+  {
+    "id": 101,
+    "question": "Which two characteristics describe a trunk port? (Choose 2 answers)",
+    "options": ["Carries traffic for a single VLAN", "Uses 802.1Q encapsulation", "Is assigned to one access VLAN", "Carries traffic for multiple VLANs", "Strips all VLAN tags"],
+    "answer": ["Uses 802.1Q encapsulation", "Carries traffic for multiple VLANs"],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "Network Access",
+    "difficulty": "easy",
+    "explanation": "Trunk ports use 802.1Q encapsulation to tag frames and carry traffic for multiple VLANs over a single physical link."
+  },
+  {
+    "id": 102,
+    "question": "What is the purpose of a floating static route?",
+    "options": ["To provide a backup route with a higher administrative distance", "To load balance across multiple paths", "To filter specific source traffic", "To route multicast traffic"],
+    "answer": ["To provide a backup route with a higher administrative distance"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "hard",
+    "explanation": "A floating static route has a higher AD than the primary route. It remains inactive unless the primary route fails, providing a backup path."
+  },
+  {
+    "id": 103,
+    "question": "Which spanning tree mode supports one STP instance per VLAN?",
+    "options": ["CST", "PVST+", "MST", "RSTP"],
+    "answer": ["PVST+"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "medium",
+    "explanation": "Per-VLAN Spanning Tree Plus (PVST+) runs a separate STP instance for each VLAN, allowing per-VLAN root bridge election and load balancing."
+  },
+  {
+    "id": 104,
+    "question": "Which API architecture style uses resources and HTTP verbs (GET, POST, PUT, DELETE)?",
+    "options": ["SOAP", "REST", "NETCONF", "gRPC"],
+    "answer": ["REST"],
+    "multiSelect": false,
+    "topic": "Automation",
+    "difficulty": "easy",
+    "explanation": "REST (Representational State Transfer) uses HTTP methods to operate on resources identified by URIs. It is stateless, scalable, and widely used in network automation."
+  },
+  {
+    "id": 105,
+    "question": "What subnet does the host 172.16.45.200/21 belong to?",
+    "options": ["172.16.40.0/21", "172.16.44.0/21", "172.16.32.0/21", "172.16.48.0/21"],
+    "answer": ["172.16.40.0/21"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "hard",
+    "explanation": "/21 means the third octet uses 5 bits for the network (2^5 = 32 block size). 45 / 32 = 1 remainder 13, so the subnet starts at 32 × 1 = 32. But 32+8=40. The block boundaries are 32, 40, 48. Since 45 falls between 40 and 48, the subnet is 172.16.40.0/21."
+  },
+  {
+    "id": 106,
+    "question": "Which protocol does NETCONF use for transport?",
+    "options": ["HTTP", "SSH", "HTTPS", "Telnet"],
+    "answer": ["SSH"],
+    "multiSelect": false,
+    "topic": "Automation",
+    "difficulty": "medium",
+    "explanation": "NETCONF uses SSH (port 830) for secure transport. It uses XML for data encoding and the YANG data modeling language for configuration schemas."
+  },
+  {
+    "id": 107,
+    "question": "What is the effect of issuing 'switchport port-security violation restrict' on a switch port?",
+    "options": ["The port shuts down on violation", "Violating frames are dropped and a counter increments with SNMP notification", "Violating frames are silently dropped", "The port allows all traffic but logs violations"],
+    "answer": ["Violating frames are dropped and a counter increments with SNMP notification"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "hard",
+    "explanation": "In restrict mode, violating frames are dropped, the violation counter increments, and SNMP/syslog notifications are sent. The port stays up, unlike shutdown mode."
+  },
+  {
+    "id": 108,
+    "question": "Which wireless frequency band offers better range but lower throughput compared to 5 GHz?",
+    "options": ["2.4 GHz", "6 GHz", "60 GHz", "900 MHz"],
+    "answer": ["2.4 GHz"],
+    "multiSelect": false,
+    "topic": "Wireless",
+    "difficulty": "easy",
+    "explanation": "2.4 GHz has longer wavelengths that penetrate walls better, providing greater range. However, it has only 3 non-overlapping channels and more interference."
+  },
+  {
+    "id": 109,
+    "question": "Which device connects a LAN to a WAN?",
+    "options": ["Hub", "Switch", "Router", "Access Point"],
+    "answer": ["Router"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "easy",
+    "explanation": "Routers connect different networks (LANs to WANs) by making forwarding decisions based on IP addresses at Layer 3."
+  },
+  {
+    "id": 110,
+    "question": "What is a characteristic of cloud computing's 'Infrastructure as a Service' (IaaS)?",
+    "options": ["Provider manages everything including applications", "Customer manages VMs, storage, and networking", "Only a web browser is needed", "The provider manages the OS and middleware"],
+    "answer": ["Customer manages VMs, storage, and networking"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "medium",
+    "explanation": "In IaaS, the provider supplies compute, storage, and networking infrastructure. The customer manages VMs, OS, middleware, and applications."
+  },
+  {
+    "id": 111,
+    "question": "What is the OSPF default hello timer on a broadcast network?",
+    "options": ["5 seconds", "10 seconds", "30 seconds", "40 seconds"],
+    "answer": ["10 seconds"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "medium",
+    "explanation": "On broadcast and point-to-point networks, OSPF sends Hello packets every 10 seconds with a dead interval of 40 seconds (4x hello). On NBMA networks it's 30/120."
+  },
+  {
+    "id": 112,
+    "question": "Which command disables DTP negotiations on a Cisco switch port?",
+    "options": ["switchport mode access", "switchport nonegotiate", "no switchport", "switchport trunk encapsulation dot1q"],
+    "answer": ["switchport nonegotiate"],
+    "multiSelect": false,
+    "topic": "Network Access",
+    "difficulty": "medium",
+    "explanation": "The 'switchport nonegotiate' command prevents the interface from sending DTP frames, mitigating VLAN hopping attacks via switch spoofing."
+  },
+  {
+    "id": 113,
+    "question": "Which two protocols are used for WAN connectivity? (Choose 2 answers)",
+    "options": ["PPP", "STP", "MPLS", "RSTP", "VTP"],
+    "answer": ["PPP", "MPLS"],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "Network Fundamentals",
+    "difficulty": "medium",
+    "explanation": "PPP (Point-to-Point Protocol) and MPLS (Multiprotocol Label Switching) are WAN technologies. STP/RSTP are LAN switching protocols; VTP manages VLANs."
+  },
+  {
+    "id": 114,
+    "question": "What is a spine-leaf network architecture primarily used for?",
+    "options": ["Small branch offices", "Campus access layers", "Data center networks", "WAN edge connectivity"],
+    "answer": ["Data center networks"],
+    "multiSelect": false,
+    "topic": "Network Fundamentals",
+    "difficulty": "hard",
+    "explanation": "Spine-leaf architecture provides predictable latency in data centers. Every leaf switch connects to every spine switch, ensuring equal hop counts between any two servers."
+  },
+  {
+    "id": 115,
+    "question": "Which command encrypts all plaintext passwords in the Cisco IOS running configuration?",
+    "options": ["enable secret", "service password-encryption", "username admin secret", "crypto key generate rsa"],
+    "answer": ["service password-encryption"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "easy",
+    "explanation": "The 'service password-encryption' command applies Cisco Type 7 encryption to all plaintext passwords in the configuration. Note: Type 7 is easily reversible."
+  },
+  {
+    "id": 116,
+    "question": "Which Cisco platform provides centralized management of SD-WAN devices?",
+    "options": ["Cisco DNA Center", "Cisco vManage", "Cisco ISE", "Cisco Meraki Dashboard"],
+    "answer": ["Cisco vManage"],
+    "multiSelect": false,
+    "topic": "Automation",
+    "difficulty": "medium",
+    "explanation": "Cisco vManage is the centralized management dashboard for Cisco SD-WAN, providing configuration, monitoring, and troubleshooting for the SD-WAN overlay."
+  },
+  {
+    "id": 117,
+    "question": "What is the effect of the 'ip access-group 10 in' command applied on an interface?",
+    "options": ["Applies ACL 10 to outbound traffic", "Applies ACL 10 to inbound traffic", "Creates ACL 10", "Removes ACL 10 from the interface"],
+    "answer": ["Applies ACL 10 to inbound traffic"],
+    "multiSelect": false,
+    "topic": "Security Fundamentals",
+    "difficulty": "easy",
+    "explanation": "The 'ip access-group 10 in' command applies ACL 10 to inbound traffic on the interface. The 'in' keyword filters incoming packets."
+  },
+  {
+    "id": 118,
+    "question": "Which IPv6 address prefix identifies a global unicast address?",
+    "options": ["FE80::/10", "FC00::/7", "FF00::/8", "2000::/3"],
+    "answer": ["2000::/3"],
+    "multiSelect": false,
+    "topic": "IP Connectivity",
+    "difficulty": "hard",
+    "explanation": "Global unicast addresses use the 2000::/3 prefix (addresses beginning with 2 or 3). They are the IPv6 equivalent of public IPv4 addresses."
+  },
+  {
+    "id": 119,
+    "question": "Which technology allows a controller to programmatically configure network devices using northbound and southbound APIs?",
+    "options": ["Traditional networking", "Software-Defined Networking (SDN)", "SNMP management", "Syslog monitoring"],
+    "answer": ["Software-Defined Networking (SDN)"],
+    "multiSelect": false,
+    "topic": "Automation",
+    "difficulty": "medium",
+    "explanation": "SDN controllers use northbound APIs (for applications) and southbound APIs (for network devices like OpenFlow) to programmatically manage the network."
+  },
+  {
+    "id": 120,
+    "question": "What is the primary purpose of Cisco DNA Center?",
+    "options": ["WAN optimization", "Intent-based networking management for campus networks", "Firewall management", "Cloud workload security"],
+    "answer": ["Intent-based networking management for campus networks"],
+    "multiSelect": false,
+    "topic": "Automation",
+    "difficulty": "medium",
+    "explanation": "Cisco DNA Center is the management platform for Cisco's intent-based networking. It provides automation, assurance, and security for enterprise campus networks."
+  }
+]

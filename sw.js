@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cloudquiz-v2';
+const CACHE_NAME = 'cloudquiz-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -11,8 +11,8 @@ const ASSETS = [
   './js/utils.js',
   './exams.json',
   './questions.json',
-  './questions/aws-dva-c02.json',
-  './questions/azure-az900.json',
+  './questions/ccna-200-301.json',
+  './questions/salesforce-ai-specialist.json',
   './manifest.json',
 ];
 

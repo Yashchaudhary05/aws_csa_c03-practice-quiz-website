@@ -1,0 +1,1207 @@
+[
+  {
+    "id": 1,
+    "question": "What is the Einstein Trust Layer in Salesforce?",
+    "options": ["A data storage layer for AI models", "A secure architecture that protects customer data when using LLMs", "A network security firewall", "A user authentication system"],
+    "answer": ["A secure architecture that protects customer data when using LLMs"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "easy",
+    "explanation": "The Einstein Trust Layer ensures customer data is not stored or learned by third-party LLMs. It includes data masking, prompt defense, toxicity detection, and audit trails."
+  },
+  {
+    "id": 2,
+    "question": "Which Salesforce tool allows users to create custom prompt templates for generative AI?",
+    "options": ["Einstein Studio", "Prompt Builder", "Model Builder", "Flow Builder"],
+    "answer": ["Prompt Builder"],
+    "multiSelect": false,
+    "topic": "Prompt Builder",
+    "difficulty": "easy",
+    "explanation": "Prompt Builder lets admins and developers create, test, and manage prompt templates that use CRM data as grounding for generative AI responses."
+  },
+  {
+    "id": 3,
+    "question": "What is the primary purpose of grounding in generative AI within Salesforce?",
+    "options": ["To train the AI model from scratch", "To provide relevant CRM data context to improve response accuracy", "To filter out toxic content", "To compress model size"],
+    "answer": ["To provide relevant CRM data context to improve response accuracy"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "easy",
+    "explanation": "Grounding enriches AI prompts with relevant CRM data (records, knowledge articles) so the model generates contextually accurate and relevant responses."
+  },
+  {
+    "id": 4,
+    "question": "Which Einstein feature predicts outcomes by analyzing historical CRM data patterns?",
+    "options": ["Einstein Prediction Builder", "Einstein Bots", "Einstein Search", "Einstein Activity Capture"],
+    "answer": ["Einstein Prediction Builder"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "easy",
+    "explanation": "Einstein Prediction Builder uses machine learning on historical data to create custom predictions (e.g., likelihood of a deal closing) without code."
+  },
+  {
+    "id": 5,
+    "question": "What is Data Cloud in Salesforce?",
+    "options": ["A file storage service", "A real-time customer data platform that unifies data from multiple sources", "A backup and recovery tool", "A code repository"],
+    "answer": ["A real-time customer data platform that unifies data from multiple sources"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "easy",
+    "explanation": "Data Cloud ingests and unifies data from multiple sources into a single customer profile, enabling real-time segmentation, activation, and AI-powered insights."
+  },
+  {
+    "id": 6,
+    "question": "Which type of prompt template in Prompt Builder generates content for a specific record?",
+    "options": ["Field Generation", "Flex", "Sales Email", "Record Summary"],
+    "answer": ["Field Generation"],
+    "multiSelect": false,
+    "topic": "Prompt Builder",
+    "difficulty": "medium",
+    "explanation": "Field Generation templates generate content to populate a specific field on a record, such as auto-generating a case summary or product description."
+  },
+  {
+    "id": 7,
+    "question": "What is the role of dynamic grounding in Prompt Builder?",
+    "options": ["It retrains the model with each prompt", "It retrieves relevant data at runtime to include in the prompt", "It caches previous responses", "It encrypts the prompt before sending"],
+    "answer": ["It retrieves relevant data at runtime to include in the prompt"],
+    "multiSelect": false,
+    "topic": "Prompt Builder",
+    "difficulty": "medium",
+    "explanation": "Dynamic grounding fetches relevant CRM data (records, knowledge articles) at runtime and injects it into the prompt template to provide contextual information."
+  },
+  {
+    "id": 8,
+    "question": "Which Salesforce AI feature helps sales reps by generating personalized email drafts?",
+    "options": ["Einstein Lead Scoring", "Einstein GPT for Sales", "Einstein Activity Capture", "Einstein Forecasting"],
+    "answer": ["Einstein GPT for Sales"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "easy",
+    "explanation": "Einstein GPT for Sales generates personalized sales emails, call summaries, and next-step recommendations using CRM data and generative AI."
+  },
+  {
+    "id": 9,
+    "question": "What differentiates predictive AI from generative AI?",
+    "options": ["Predictive AI creates new content while generative AI classifies data", "Predictive AI forecasts outcomes from data while generative AI creates new content", "There is no difference", "Generative AI is faster than predictive AI"],
+    "answer": ["Predictive AI forecasts outcomes from data while generative AI creates new content"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "easy",
+    "explanation": "Predictive AI uses historical data to forecast outcomes (classification, regression). Generative AI creates new content (text, images, code) based on learned patterns."
+  },
+  {
+    "id": 10,
+    "question": "Which feature of the Einstein Trust Layer prevents sensitive data from being sent to external LLMs?",
+    "options": ["Prompt defense", "Data masking", "Toxicity detection", "Audit trail"],
+    "answer": ["Data masking"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "medium",
+    "explanation": "Data masking replaces sensitive data (PII, financial data) with placeholder tokens before the prompt is sent to the LLM, then re-inserts the original data in the response."
+  },
+  {
+    "id": 11,
+    "question": "What is Einstein Copilot?",
+    "options": ["A code editor within Salesforce", "A conversational AI assistant embedded in Salesforce applications", "A data migration tool", "A testing framework"],
+    "answer": ["A conversational AI assistant embedded in Salesforce applications"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "easy",
+    "explanation": "Einstein Copilot is a generative AI assistant built into Salesforce CRM that can answer questions, summarize records, create content, and take actions using natural language."
+  },
+  {
+    "id": 12,
+    "question": "Which component in Einstein Copilot defines a specific task the assistant can perform?",
+    "options": ["Prompt template", "Copilot action", "Data stream", "Apex trigger"],
+    "answer": ["Copilot action"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Copilot actions are predefined tasks (like creating records, sending emails, or querying data) that Einstein Copilot can execute when triggered by user requests."
+  },
+  {
+    "id": 13,
+    "question": "What does 'zero data retention' mean in the context of the Einstein Trust Layer?",
+    "options": ["Data is stored for 30 days then deleted", "The LLM provider does not store Salesforce data after processing", "All CRM data is deleted after each session", "Logs are kept indefinitely"],
+    "answer": ["The LLM provider does not store Salesforce data after processing"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "medium",
+    "explanation": "Zero data retention ensures the external LLM provider does not retain any Salesforce data sent in prompts. Data is used only for the immediate response and then discarded."
+  },
+  {
+    "id": 14,
+    "question": "Which Einstein feature scores leads based on their likelihood to convert?",
+    "options": ["Einstein Lead Scoring", "Einstein Opportunity Scoring", "Einstein Case Classification", "Einstein Next Best Action"],
+    "answer": ["Einstein Lead Scoring"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "easy",
+    "explanation": "Einstein Lead Scoring uses machine learning to analyze past lead conversion data and assigns a score to each lead indicating its conversion probability."
+  },
+  {
+    "id": 15,
+    "question": "What type of AI model does Einstein Discovery primarily build?",
+    "options": ["Deep learning neural networks", "Supervised learning models for predictions and insights", "Unsupervised clustering models", "Reinforcement learning agents"],
+    "answer": ["Supervised learning models for predictions and insights"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Einstein Discovery builds supervised ML models that analyze data to surface insights, deliver predictions, and suggest improvements without requiring data science expertise."
+  },
+  {
+    "id": 16,
+    "question": "Which Salesforce tool manages the lifecycle of bringing custom or third-party AI models into the platform?",
+    "options": ["Prompt Builder", "Model Builder", "Data Cloud", "Flow Builder"],
+    "answer": ["Model Builder"],
+    "multiSelect": false,
+    "topic": "Model Builder",
+    "difficulty": "medium",
+    "explanation": "Model Builder (within Einstein Studio) allows users to create, train, and manage custom AI models or bring in third-party models (BYOM) from platforms like Amazon SageMaker."
+  },
+  {
+    "id": 17,
+    "question": "What is Retrieval Augmented Generation (RAG) in the context of Salesforce AI?",
+    "options": ["A technique to retrain models in real time", "A method that retrieves relevant data to augment LLM prompts for better responses", "A database indexing strategy", "A batch processing pipeline"],
+    "answer": ["A method that retrieves relevant data to augment LLM prompts for better responses"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "medium",
+    "explanation": "RAG combines information retrieval (searching knowledge bases, CRM data) with generation (LLM response) to produce accurate, contextually relevant answers."
+  },
+  {
+    "id": 18,
+    "question": "Which type of bias in AI occurs when training data does not represent the real-world population?",
+    "options": ["Confirmation bias", "Selection bias", "Automation bias", "Anchoring bias"],
+    "answer": ["Selection bias"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "medium",
+    "explanation": "Selection bias occurs when training data is not representative of the target population, leading to models that perform poorly or unfairly for underrepresented groups."
+  },
+  {
+    "id": 19,
+    "question": "Einstein Bots are primarily used for which purpose?",
+    "options": ["Data analytics", "Automated customer service conversations", "Code deployment", "Database backups"],
+    "answer": ["Automated customer service conversations"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "easy",
+    "explanation": "Einstein Bots handle routine customer service inquiries through automated chat conversations, freeing agents for complex cases. They integrate with knowledge articles and CRM data."
+  },
+  {
+    "id": 20,
+    "question": "What is a hallucination in the context of generative AI?",
+    "options": ["When the AI model crashes", "When the AI generates plausible but factually incorrect information", "When the model refuses to respond", "When the response is too short"],
+    "answer": ["When the AI generates plausible but factually incorrect information"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "easy",
+    "explanation": "AI hallucination occurs when a model generates confident-sounding but factually incorrect or fabricated information. Grounding with CRM data helps reduce hallucinations."
+  },
+  {
+    "id": 21,
+    "question": "Which Data Cloud feature resolves multiple records from different sources into a single unified profile?",
+    "options": ["Data streams", "Identity resolution", "Calculated insights", "Segmentation"],
+    "answer": ["Identity resolution"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "medium",
+    "explanation": "Identity resolution matches and merges records from different data sources into a single unified customer profile using matching rules and reconciliation."
+  },
+  {
+    "id": 22,
+    "question": "What is a 'temperature' setting in LLM configuration?",
+    "options": ["CPU processing temperature", "A parameter controlling randomness/creativity of outputs", "Data encryption strength", "Network latency measurement"],
+    "answer": ["A parameter controlling randomness/creativity of outputs"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "medium",
+    "explanation": "Temperature controls output randomness. Lower temperature (e.g., 0.1) produces more deterministic responses; higher temperature (e.g., 0.9) produces more creative/varied outputs."
+  },
+  {
+    "id": 23,
+    "question": "Which Salesforce feature provides AI-generated summaries of customer service cases?",
+    "options": ["Einstein Case Classification", "Einstein Case Wrap-Up", "Einstein Case Routing", "Einstein Work Summaries"],
+    "answer": ["Einstein Work Summaries"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Einstein Work Summaries uses generative AI to automatically create summaries of service interactions, saving agents time on after-call documentation."
+  },
+  {
+    "id": 24,
+    "question": "What is the main benefit of using Prompt Builder's 'Flex' template type?",
+    "options": ["It only works with Apex", "It can be invoked in Flows, Apex, and APIs for flexible use", "It generates images", "It's limited to Sales Cloud"],
+    "answer": ["It can be invoked in Flows, Apex, and APIs for flexible use"],
+    "multiSelect": false,
+    "topic": "Prompt Builder",
+    "difficulty": "medium",
+    "explanation": "Flex templates are versatile and can be invoked from Flows, Apex code, and REST APIs, making them suitable for complex automation scenarios."
+  },
+  {
+    "id": 25,
+    "question": "Which principle of responsible AI ensures that AI decisions can be explained and understood?",
+    "options": ["Fairness", "Transparency", "Robustness", "Privacy"],
+    "answer": ["Transparency"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "easy",
+    "explanation": "Transparency means AI systems should be explainable—users should understand how and why AI made a particular decision or recommendation."
+  },
+  {
+    "id": 26,
+    "question": "What is Einstein Next Best Action?",
+    "options": ["A routing engine for cases", "A recommendation engine that suggests optimal actions based on business rules and AI", "A workflow automation tool", "A data cleansing utility"],
+    "answer": ["A recommendation engine that suggests optimal actions based on business rules and AI"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Einstein Next Best Action combines business rules with AI predictions to recommend the best actions (offers, steps, content) to users in context."
+  },
+  {
+    "id": 27,
+    "question": "Which Data Cloud capability enables marketers to create targeted audiences from unified data?",
+    "options": ["Data streams", "Activation targets", "Segmentation", "Calculated insights"],
+    "answer": ["Segmentation"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "easy",
+    "explanation": "Data Cloud segmentation allows marketers to create dynamic audience segments based on unified customer profiles, behaviors, and attributes for targeted campaigns."
+  },
+  {
+    "id": 28,
+    "question": "What is a 'token' in the context of Large Language Models?",
+    "options": ["An authentication credential", "A unit of text (word or subword) that the model processes", "A billing unit for API calls", "A type of encryption key"],
+    "answer": ["A unit of text (word or subword) that the model processes"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "easy",
+    "explanation": "Tokens are the basic units LLMs process—typically words or parts of words. Token limits affect how much text can be sent in a prompt and received in a response."
+  },
+  {
+    "id": 29,
+    "question": "Which two capabilities does Einstein Activity Capture provide? (Choose 2 answers)",
+    "options": ["Automatically logs emails and calendar events", "Generates sales forecasts", "Provides contact and event recommendations", "Creates Apex test classes", "Manages user permissions"],
+    "answer": ["Automatically logs emails and calendar events", "Provides contact and event recommendations"],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Einstein Activity Capture automatically syncs emails and calendar events from connected mailboxes and provides AI-powered recommendations for contacts and events."
+  },
+  {
+    "id": 30,
+    "question": "What is the purpose of prompt defense in the Einstein Trust Layer?",
+    "options": ["To optimize prompt performance", "To protect against prompt injection attacks", "To reduce token usage", "To cache prompt responses"],
+    "answer": ["To protect against prompt injection attacks"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "medium",
+    "explanation": "Prompt defense detects and blocks prompt injection attacks where malicious instructions are embedded in user input to manipulate the AI's behavior."
+  },
+  {
+    "id": 31,
+    "question": "Which Salesforce AI capability allows building chatbots that can hand off to live agents?",
+    "options": ["Einstein Prediction Builder", "Einstein Bots", "Einstein Search", "Einstein Copilot"],
+    "answer": ["Einstein Bots"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "easy",
+    "explanation": "Einstein Bots can handle routine conversations and seamlessly transfer complex issues to live agents with full conversation context."
+  },
+  {
+    "id": 32,
+    "question": "What does BYOM stand for in Salesforce Einstein Studio?",
+    "options": ["Build Your Own Metrics", "Bring Your Own Model", "Build Your Own Module", "Bring Your Own Metadata"],
+    "answer": ["Bring Your Own Model"],
+    "multiSelect": false,
+    "topic": "Model Builder",
+    "difficulty": "easy",
+    "explanation": "BYOM (Bring Your Own Model) allows organizations to connect externally-trained ML models (from SageMaker, Vertex AI, etc.) to Salesforce for predictions within CRM."
+  },
+  {
+    "id": 33,
+    "question": "Which type of Data Cloud connector ingests data in real time?",
+    "options": ["Batch connector", "Streaming connector", "Static connector", "Archive connector"],
+    "answer": ["Streaming connector"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "medium",
+    "explanation": "Streaming connectors ingest data in real time or near-real time from event-driven sources, enabling immediate availability of data for segmentation and activation."
+  },
+  {
+    "id": 34,
+    "question": "What is 'fine-tuning' in the context of AI models?",
+    "options": ["Retraining a model from scratch on new data", "Adjusting a pre-trained model with domain-specific data to improve its performance for specific tasks", "Removing features from a model", "Encrypting model weights"],
+    "answer": ["Adjusting a pre-trained model with domain-specific data to improve its performance for specific tasks"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "medium",
+    "explanation": "Fine-tuning takes a pre-trained foundation model and further trains it on domain-specific data, improving performance for particular tasks without full retraining."
+  },
+  {
+    "id": 35,
+    "question": "Which Einstein Discovery feature provides prescriptive recommendations to improve outcomes?",
+    "options": ["Stories", "Predictions", "Improvements", "Dashboards"],
+    "answer": ["Improvements"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "hard",
+    "explanation": "Einstein Discovery Improvements provide actionable, prescriptive suggestions on what can be changed to improve a predicted outcome (e.g., increase deal close probability)."
+  },
+  {
+    "id": 36,
+    "question": "What is the role of merge rules in Prompt Builder?",
+    "options": ["To combine multiple AI models", "To embed dynamic CRM data into prompt templates", "To merge duplicate records", "To join database tables"],
+    "answer": ["To embed dynamic CRM data into prompt templates"],
+    "multiSelect": false,
+    "topic": "Prompt Builder",
+    "difficulty": "medium",
+    "explanation": "Merge fields in Prompt Builder dynamically insert CRM record data (like account names, case details) into prompt templates at runtime."
+  },
+  {
+    "id": 37,
+    "question": "Which Salesforce AI feature automatically classifies incoming cases to the right queue or agent?",
+    "options": ["Einstein Lead Scoring", "Einstein Case Classification", "Einstein Opportunity Insights", "Einstein Search"],
+    "answer": ["Einstein Case Classification"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "easy",
+    "explanation": "Einstein Case Classification uses ML to predict and recommend field values (type, reason, priority) for incoming cases, speeding up agent workflows."
+  },
+  {
+    "id": 38,
+    "question": "What is a foundation model?",
+    "options": ["A model that only works with structured data", "A large pre-trained AI model that can be adapted for many different tasks", "A basic statistical model", "A database schema model"],
+    "answer": ["A large pre-trained AI model that can be adapted for many different tasks"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "easy",
+    "explanation": "Foundation models (like GPT, Claude) are large models pre-trained on vast data that can be fine-tuned or prompt-engineered for specific tasks across many domains."
+  },
+  {
+    "id": 39,
+    "question": "Which metric measures the percentage of actual positives correctly identified by a prediction model?",
+    "options": ["Precision", "Recall", "F1 Score", "Accuracy"],
+    "answer": ["Recall"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "hard",
+    "explanation": "Recall (sensitivity) = True Positives / (True Positives + False Negatives). It measures how well the model finds all actual positive cases."
+  },
+  {
+    "id": 40,
+    "question": "What is the purpose of toxicity detection in the Einstein Trust Layer?",
+    "options": ["To detect malware in attachments", "To identify and flag harmful, offensive, or inappropriate content in AI outputs", "To measure model performance", "To validate data formats"],
+    "answer": ["To identify and flag harmful, offensive, or inappropriate content in AI outputs"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "easy",
+    "explanation": "Toxicity detection scans AI-generated outputs for harmful, offensive, biased, or inappropriate content and flags or blocks it before it reaches the user."
+  },
+  {
+    "id": 41,
+    "question": "Which Data Cloud object type stores the unified customer profile?",
+    "options": ["Data Stream", "Data Model Object", "Unified Individual", "Calculated Insight"],
+    "answer": ["Unified Individual"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "medium",
+    "explanation": "The Unified Individual is the resolved, merged customer profile in Data Cloud after identity resolution combines matching records from multiple data sources."
+  },
+  {
+    "id": 42,
+    "question": "What is 'prompt chaining' in AI workflows?",
+    "options": ["Sending the same prompt multiple times", "Using the output of one prompt as input for the next prompt", "Encrypting prompts in sequence", "Caching prompts for faster access"],
+    "answer": ["Using the output of one prompt as input for the next prompt"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "medium",
+    "explanation": "Prompt chaining sequences multiple AI calls where each step's output feeds into the next, enabling complex multi-step reasoning and task completion."
+  },
+  {
+    "id": 43,
+    "question": "Einstein Opportunity Scoring helps sales teams by providing what?",
+    "options": ["Automated email sending", "A score predicting the likelihood of an opportunity closing", "Discount recommendations", "Territory management"],
+    "answer": ["A score predicting the likelihood of an opportunity closing"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "easy",
+    "explanation": "Einstein Opportunity Scoring analyzes opportunity data to predict close probability, helping sales teams prioritize deals most likely to close."
+  },
+  {
+    "id": 44,
+    "question": "Which Salesforce component allows you to display Einstein predictions on a record page?",
+    "options": ["Visualforce page", "Einstein Prediction component", "Apex trigger", "Report chart"],
+    "answer": ["Einstein Prediction component"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "The Einstein Prediction Lightning component can be added to record pages to display prediction scores and the factors driving them."
+  },
+  {
+    "id": 45,
+    "question": "What is the primary concern with AI bias in business decision-making?",
+    "options": ["Slower processing speed", "Unfair treatment of certain groups based on skewed training data", "Higher infrastructure costs", "More complex code"],
+    "answer": ["Unfair treatment of certain groups based on skewed training data"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "easy",
+    "explanation": "AI bias can lead to discriminatory outcomes—e.g., unfairly scoring leads from certain demographics lower. It stems from biased training data or flawed model design."
+  },
+  {
+    "id": 46,
+    "question": "What is an 'activation target' in Data Cloud?",
+    "options": ["A machine learning model endpoint", "A destination where segments are published for marketing actions", "A data validation rule", "A user permission set"],
+    "answer": ["A destination where segments are published for marketing actions"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "medium",
+    "explanation": "Activation targets are external platforms (marketing channels, ad networks, analytics tools) where Data Cloud segments are published for use in campaigns and personalization."
+  },
+  {
+    "id": 47,
+    "question": "Which approach does Salesforce recommend for building trust in AI systems?",
+    "options": ["Maximize automation and minimize human oversight", "Implement human-in-the-loop oversight for high-impact decisions", "Use only proprietary models to avoid open-source risks", "Disable all AI features in regulated industries"],
+    "answer": ["Implement human-in-the-loop oversight for high-impact decisions"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "medium",
+    "explanation": "Salesforce advocates human-in-the-loop oversight, especially for consequential decisions. Humans should review, validate, and approve AI outputs before acting on them."
+  },
+  {
+    "id": 48,
+    "question": "What does the Einstein Trust Layer's audit trail provide?",
+    "options": ["Source code version history", "A log of all AI interactions including prompts, responses, and trust signals", "Financial audit reports", "User login history"],
+    "answer": ["A log of all AI interactions including prompts, responses, and trust signals"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "medium",
+    "explanation": "The audit trail logs all generative AI interactions including prompts sent, responses received, data masking applied, and toxicity scores for compliance and monitoring."
+  },
+  {
+    "id": 49,
+    "question": "Which type of Einstein Bot dialog can use generative AI to answer questions from knowledge articles?",
+    "options": ["Menu dialog", "Question dialog", "Einstein Answers dialog", "Transfer dialog"],
+    "answer": ["Einstein Answers dialog"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "hard",
+    "explanation": "Einstein Answers dialogs use AI to search knowledge articles and generate natural language answers to customer questions within bot conversations."
+  },
+  {
+    "id": 50,
+    "question": "What is 'few-shot prompting'?",
+    "options": ["Training the model with very little data", "Providing a few examples in the prompt to guide the model's response format", "Running the model for a few iterations", "Using the smallest model available"],
+    "answer": ["Providing a few examples in the prompt to guide the model's response format"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "medium",
+    "explanation": "Few-shot prompting includes a few input-output examples in the prompt to demonstrate the desired response format and style, improving response quality."
+  },
+  {
+    "id": 51,
+    "question": "Which Salesforce feature uses AI to recommend relevant knowledge articles to service agents?",
+    "options": ["Einstein Article Recommendations", "Knowledge Base Search", "Case Routing", "Omni-Channel"],
+    "answer": ["Einstein Article Recommendations"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "easy",
+    "explanation": "Einstein Article Recommendations analyzes case content and suggests the most relevant knowledge articles to help agents resolve cases faster."
+  },
+  {
+    "id": 52,
+    "question": "What is the purpose of 'calculated insights' in Data Cloud?",
+    "options": ["To create real-time dashboards", "To compute metrics and aggregations from unified data for use in segmentation and personalization", "To calculate infrastructure costs", "To generate financial reports"],
+    "answer": ["To compute metrics and aggregations from unified data for use in segmentation and personalization"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "hard",
+    "explanation": "Calculated insights define reusable metrics (like lifetime value, engagement score) computed from unified data, which can be used in segments, activations, and AI models."
+  },
+  {
+    "id": 53,
+    "question": "Which prompt engineering technique asks the model to explain its reasoning step by step?",
+    "options": ["Zero-shot prompting", "Few-shot prompting", "Chain-of-thought prompting", "Instruction tuning"],
+    "answer": ["Chain-of-thought prompting"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "medium",
+    "explanation": "Chain-of-thought (CoT) prompting asks the model to reason through a problem step by step, improving accuracy for complex reasoning tasks."
+  },
+  {
+    "id": 54,
+    "question": "What minimum data requirement does Einstein Prediction Builder need to create a prediction?",
+    "options": ["100 records", "400 records with the outcome field populated", "1000 records", "10,000 records"],
+    "answer": ["400 records with the outcome field populated"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "hard",
+    "explanation": "Einstein Prediction Builder requires at least 400 records with the outcome field populated to build a prediction, with a recommended minimum of 2,000 for better accuracy."
+  },
+  {
+    "id": 55,
+    "question": "Which Salesforce tool allows creating AI-powered search experiences using natural language?",
+    "options": ["Einstein Search", "SOQL", "Reports", "Global Search"],
+    "answer": ["Einstein Search"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "easy",
+    "explanation": "Einstein Search uses NLP and AI to personalize search results, understand natural language queries, and surface the most relevant records and content."
+  },
+  {
+    "id": 56,
+    "question": "What is a 'data stream' in Data Cloud?",
+    "options": ["A real-time video feed", "A connection that brings data from an external source into Data Cloud", "A file download", "A network protocol"],
+    "answer": ["A connection that brings data from an external source into Data Cloud"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "easy",
+    "explanation": "Data streams are configured connections that ingest data from external sources (CRM, web, mobile, data warehouses) into Data Cloud for unification."
+  },
+  {
+    "id": 57,
+    "question": "Which two factors are important when evaluating the quality of an AI-generated response? (Choose 2 answers)",
+    "options": ["Response generation speed", "Factual accuracy of the content", "Color of the UI elements", "Relevance to the user's question", "Number of tokens used"],
+    "answer": ["Factual accuracy of the content", "Relevance to the user's question"],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "Generative AI",
+    "difficulty": "easy",
+    "explanation": "Quality AI responses must be factually accurate (not hallucinated) and relevant to the user's specific question or context."
+  },
+  {
+    "id": 58,
+    "question": "What does 'grounding with Knowledge' mean in Salesforce Prompt Builder?",
+    "options": ["Connecting the prompt to a third-party knowledge base", "Using Salesforce Knowledge articles as context data in prompts", "Training the model on documentation", "Creating new knowledge articles from AI outputs"],
+    "answer": ["Using Salesforce Knowledge articles as context data in prompts"],
+    "multiSelect": false,
+    "topic": "Prompt Builder",
+    "difficulty": "medium",
+    "explanation": "Grounding with Knowledge searches Salesforce Knowledge articles relevant to the prompt context and includes them as additional information for more accurate AI responses."
+  },
+  {
+    "id": 59,
+    "question": "Which Salesforce AI governance practice involves regularly evaluating model performance over time?",
+    "options": ["Model deployment", "Model monitoring", "Data ingestion", "Feature engineering"],
+    "answer": ["Model monitoring"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "medium",
+    "explanation": "Model monitoring tracks prediction accuracy, data drift, and fairness metrics over time to ensure the model continues to perform well and doesn't develop bias."
+  },
+  {
+    "id": 60,
+    "question": "What is the benefit of using Einstein GPT for Service?",
+    "options": ["Automated invoice generation", "Auto-generated reply suggestions and case summaries for service agents", "Hardware monitoring", "Network traffic analysis"],
+    "answer": ["Auto-generated reply suggestions and case summaries for service agents"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "easy",
+    "explanation": "Einstein GPT for Service generates personalized reply drafts, case summaries, and knowledge article drafts to help service agents respond faster and more consistently."
+  },
+  {
+    "id": 61,
+    "question": "What is the role of a 'system prompt' in generative AI?",
+    "options": ["It stores the model weights", "It provides instructions and context that guide the model's behavior", "It handles user authentication", "It logs errors and exceptions"],
+    "answer": ["It provides instructions and context that guide the model's behavior"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "easy",
+    "explanation": "A system prompt sets the AI's persona, constraints, and behavior guidelines. It is not visible to end users but shapes how the model responds."
+  },
+  {
+    "id": 62,
+    "question": "Which Einstein feature automatically captures and associates emails and meetings with relevant Salesforce records?",
+    "options": ["Einstein Activity Capture", "Einstein Case Classification", "Einstein Lead Scoring", "Einstein Copilot"],
+    "answer": ["Einstein Activity Capture"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "easy",
+    "explanation": "Einstein Activity Capture automatically syncs emails, events, and contacts from connected email and calendar accounts to related Salesforce records."
+  },
+  {
+    "id": 63,
+    "question": "What is 'data harmonization' in Data Cloud?",
+    "options": ["Encrypting data at rest", "Mapping and transforming data from different sources into a common data model", "Backing up data to a secondary region", "Defining user access levels"],
+    "answer": ["Mapping and transforming data from different sources into a common data model"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "medium",
+    "explanation": "Data harmonization maps fields from disparate source schemas into a unified data model, enabling consistent data representation across sources."
+  },
+  {
+    "id": 64,
+    "question": "Which Salesforce AI capability suggests the next best content piece for a marketing journey?",
+    "options": ["Einstein Content Selection", "Einstein Send Time Optimization", "Einstein Engagement Scoring", "Einstein Copy Insights"],
+    "answer": ["Einstein Content Selection"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "hard",
+    "explanation": "Einstein Content Selection uses AI to automatically select the most relevant content asset for each individual in a marketing journey based on their profile and behavior."
+  },
+  {
+    "id": 65,
+    "question": "What is the difference between a standard Copilot action and a custom Copilot action?",
+    "options": ["Standard actions are faster than custom ones", "Standard actions are pre-built by Salesforce; custom actions are created using Flows, Apex, or Prompt Templates", "Custom actions require no code", "There is no difference"],
+    "answer": ["Standard actions are pre-built by Salesforce; custom actions are created using Flows, Apex, or Prompt Templates"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Standard Copilot actions come pre-built (like record queries). Custom actions are built by admins/devs using Flows, Apex, or Prompt Templates for org-specific needs."
+  },
+  {
+    "id": 66,
+    "question": "Which Salesforce AI feature optimizes the time emails are sent to maximize engagement?",
+    "options": ["Einstein Send Time Optimization", "Einstein Content Selection", "Einstein Engagement Scoring", "Einstein Copy Insights"],
+    "answer": ["Einstein Send Time Optimization"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Einstein Send Time Optimization analyzes subscriber engagement history to determine the optimal time to send each email for maximum open and click rates."
+  },
+  {
+    "id": 67,
+    "question": "What is a 'vector database' and how does it relate to AI in Salesforce?",
+    "options": ["A database that stores only numbers", "A database that stores data as mathematical vectors enabling semantic similarity searches", "A traditional relational database", "A file system for ML models"],
+    "answer": ["A database that stores data as mathematical vectors enabling semantic similarity searches"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "hard",
+    "explanation": "Vector databases store data as high-dimensional vectors (embeddings) and enable semantic search—finding conceptually similar items. Data Cloud uses vector search for RAG."
+  },
+  {
+    "id": 68,
+    "question": "Which two security features does the Einstein Trust Layer provide? (Choose 2 answers)",
+    "options": ["Data masking of PII before sending to LLM", "Code compilation checks", "Toxicity detection in AI responses", "Database replication", "CSS validation"],
+    "answer": ["Data masking of PII before sending to LLM", "Toxicity detection in AI responses"],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "easy",
+    "explanation": "The Einstein Trust Layer includes data masking (replacing PII with placeholders) and toxicity detection (scanning outputs for harmful content) among other safety features."
+  },
+  {
+    "id": 69,
+    "question": "What is the primary use case for Einstein Recommendation Builder?",
+    "options": ["Building custom dashboards", "Creating personalized product or content recommendations", "Managing user roles", "Automating data backup"],
+    "answer": ["Creating personalized product or content recommendations"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Einstein Recommendation Builder creates personalized recommendations for products, content, or offers based on customer behavior and preferences."
+  },
+  {
+    "id": 70,
+    "question": "Which data encoding format does NETCONF-like data modeling use in Salesforce for data representation?",
+    "options": ["CSV", "JSON", "XML", "YAML"],
+    "answer": ["JSON"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "easy",
+    "explanation": "Salesforce APIs and Data Cloud primarily use JSON for data representation, making it easy to integrate with modern applications and services."
+  },
+  {
+    "id": 71,
+    "question": "What is the purpose of the 'Record Summary' prompt template type?",
+    "options": ["To create new records", "To generate a natural language summary of a record's key information", "To delete duplicate records", "To export records to CSV"],
+    "answer": ["To generate a natural language summary of a record's key information"],
+    "multiSelect": false,
+    "topic": "Prompt Builder",
+    "difficulty": "easy",
+    "explanation": "Record Summary templates generate AI-powered natural language summaries of records, condensing key details from multiple fields into readable text."
+  },
+  {
+    "id": 72,
+    "question": "Which concept describes the problem of an AI model performing well on training data but poorly on new data?",
+    "options": ["Underfitting", "Overfitting", "Transfer learning", "Data augmentation"],
+    "answer": ["Overfitting"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "medium",
+    "explanation": "Overfitting occurs when a model learns training data too specifically, including noise, and fails to generalize. Einstein Discovery warns about this and uses validation sets."
+  },
+  {
+    "id": 73,
+    "question": "What is 'intent recognition' in the context of Einstein Bots?",
+    "options": ["Identifying the user's purpose or goal from their message", "Recognizing the user's language preference", "Detecting whether the user is a new or returning customer", "Measuring user satisfaction"],
+    "answer": ["Identifying the user's purpose or goal from their message"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "easy",
+    "explanation": "Intent recognition uses NLP to determine what the user wants (their intent) from their message, routing the conversation to the appropriate dialog or action."
+  },
+  {
+    "id": 74,
+    "question": "Which Salesforce license type is needed to use Einstein Prediction Builder?",
+    "options": ["Platform Starter", "Einstein Predictions or Einstein for Sales/Service", "Salesforce Essentials", "Developer Edition only"],
+    "answer": ["Einstein Predictions or Einstein for Sales/Service"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "hard",
+    "explanation": "Einstein Prediction Builder requires Einstein Predictions add-on license or is included in Einstein for Sales/Service Cloud bundles depending on the edition."
+  },
+  {
+    "id": 75,
+    "question": "What is Natural Language Processing (NLP)?",
+    "options": ["A networking protocol", "A branch of AI that enables computers to understand, interpret, and generate human language", "A data storage technique", "A user interface design pattern"],
+    "answer": ["A branch of AI that enables computers to understand, interpret, and generate human language"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "easy",
+    "explanation": "NLP enables machines to process human language for tasks like sentiment analysis, text classification, translation, and conversational AI."
+  },
+  {
+    "id": 76,
+    "question": "Which Data Cloud feature allows you to send unified segments to external advertising platforms?",
+    "options": ["Data streams", "Activation", "Identity resolution", "Calculated insights"],
+    "answer": ["Activation"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "medium",
+    "explanation": "Activation publishes Data Cloud segments to external platforms (Google Ads, Meta, marketing clouds) for targeted advertising and personalization."
+  },
+  {
+    "id": 77,
+    "question": "What does the Sales Email prompt template type do in Prompt Builder?",
+    "options": ["Sends emails automatically", "Generates personalized sales email drafts using opportunity and contact data", "Creates email distribution lists", "Manages email templates in Lightning"],
+    "answer": ["Generates personalized sales email drafts using opportunity and contact data"],
+    "multiSelect": false,
+    "topic": "Prompt Builder",
+    "difficulty": "easy",
+    "explanation": "Sales Email templates use CRM data from opportunities, contacts, and accounts to generate personalized, contextually relevant sales email drafts."
+  },
+  {
+    "id": 78,
+    "question": "Which Einstein Discovery capability provides natural language explanations of what factors influence an outcome?",
+    "options": ["Predictions", "Stories", "Improvements", "Clusters"],
+    "answer": ["Stories"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Einstein Discovery Stories explain in natural language which factors positively or negatively influence an outcome, making data science insights accessible."
+  },
+  {
+    "id": 79,
+    "question": "What is a 'large language model' (LLM)?",
+    "options": ["A database with many tables", "A neural network trained on massive text data capable of understanding and generating language", "A data compression algorithm", "A type of encryption standard"],
+    "answer": ["A neural network trained on massive text data capable of understanding and generating language"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "easy",
+    "explanation": "LLMs are deep learning models trained on billions of text tokens. They learn language patterns and can generate, summarize, translate, and reason about text."
+  },
+  {
+    "id": 80,
+    "question": "Which approach helps reduce AI hallucinations in Salesforce?",
+    "options": ["Increasing temperature settings", "Grounding prompts with verified CRM data", "Removing all system instructions", "Using smaller models"],
+    "answer": ["Grounding prompts with verified CRM data"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "medium",
+    "explanation": "Grounding with verified CRM data provides factual context the model can reference, significantly reducing hallucinations compared to purely parametric generation."
+  },
+  {
+    "id": 81,
+    "question": "What is 'entity extraction' in AI?",
+    "options": ["Removing entities from a database", "Identifying and classifying named entities (people, places, dates) from text", "Exporting entity data to CSV", "Creating new CRM records"],
+    "answer": ["Identifying and classifying named entities (people, places, dates) from text"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "medium",
+    "explanation": "Entity extraction (Named Entity Recognition) identifies structured information like names, dates, numbers, and locations from unstructured text."
+  },
+  {
+    "id": 82,
+    "question": "Which two things should an admin consider when setting up Einstein Bots? (Choose 2 answers)",
+    "options": ["Defining clear conversation intents and dialogs", "Choosing a programming language", "Configuring fallback to live agents for complex queries", "Setting up a VPN", "Installing a local database"],
+    "answer": ["Defining clear conversation intents and dialogs", "Configuring fallback to live agents for complex queries"],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Key bot setup considerations include well-defined intents/dialogs for common queries and configuring seamless handoff to live agents when the bot can't resolve an issue."
+  },
+  {
+    "id": 83,
+    "question": "What is the purpose of 'data model objects' (DMOs) in Data Cloud?",
+    "options": ["To create API endpoints", "To define the schema that organizes and structures ingested data", "To generate reports", "To manage user access"],
+    "answer": ["To define the schema that organizes and structures ingested data"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "medium",
+    "explanation": "DMOs define the data structure in Data Cloud, organizing ingested data into standard or custom objects with defined fields and relationships."
+  },
+  {
+    "id": 84,
+    "question": "Which Salesforce AI feature scores marketing email subscribers based on engagement likelihood?",
+    "options": ["Einstein Lead Scoring", "Einstein Engagement Scoring", "Einstein Opportunity Scoring", "Einstein Prediction Builder"],
+    "answer": ["Einstein Engagement Scoring"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Einstein Engagement Scoring predicts subscriber likelihood to open emails, click links, or unsubscribe, enabling smarter audience targeting."
+  },
+  {
+    "id": 85,
+    "question": "What is 'sentiment analysis' and how is it used in Salesforce?",
+    "options": ["Analyzing database performance", "Determining the emotional tone (positive, negative, neutral) of text using AI", "Calculating financial sentiment", "Measuring website load time"],
+    "answer": ["Determining the emotional tone (positive, negative, neutral) of text using AI"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "easy",
+    "explanation": "Sentiment analysis determines the emotional tone of customer communications, helping prioritize unhappy customers and gauge overall satisfaction."
+  },
+  {
+    "id": 86,
+    "question": "Which Prompt Builder resource allows embedding Flow results into a prompt template?",
+    "options": ["Merge fields", "Flow resource", "Apex invocable", "Related list"],
+    "answer": ["Flow resource"],
+    "multiSelect": false,
+    "topic": "Prompt Builder",
+    "difficulty": "hard",
+    "explanation": "Flow resources in Prompt Builder execute a Flow at runtime and embed the output into the prompt, enabling complex data retrieval and logic."
+  },
+  {
+    "id": 87,
+    "question": "What does 'model drift' refer to in machine learning?",
+    "options": ["A model being moved to a different server", "A degradation in model performance over time as data patterns change", "A model generating different outputs each run", "A model using too much memory"],
+    "answer": ["A degradation in model performance over time as data patterns change"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "hard",
+    "explanation": "Model drift occurs when the statistical properties of input data change over time, causing the model's predictions to become less accurate. Regular retraining mitigates drift."
+  },
+  {
+    "id": 88,
+    "question": "Which Salesforce feature provides AI-powered suggestions for email subject lines?",
+    "options": ["Einstein Copy Insights", "Einstein Send Time Optimization", "Einstein Content Selection", "Prompt Builder"],
+    "answer": ["Einstein Copy Insights"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Einstein Copy Insights analyzes email subject lines and provides AI-driven recommendations to improve engagement based on language patterns and sentiment."
+  },
+  {
+    "id": 89,
+    "question": "What is the primary purpose of the Salesforce Trusted AI Principles?",
+    "options": ["To maximize AI adoption speed", "To guide the responsible development and deployment of AI", "To reduce infrastructure costs", "To replace human decision-making"],
+    "answer": ["To guide the responsible development and deployment of AI"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "easy",
+    "explanation": "Salesforce's Trusted AI Principles (Responsible, Accountable, Transparent, Empowering, Inclusive) guide ethical AI development that serves all stakeholders."
+  },
+  {
+    "id": 90,
+    "question": "Which technology pattern allows Data Cloud to provide real-time data to AI models for inference?",
+    "options": ["Batch ETL", "Real-time data graphs", "Offline processing", "Manual data entry"],
+    "answer": ["Real-time data graphs"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "hard",
+    "explanation": "Real-time data graphs in Data Cloud connect unified customer profiles with real-time signals, enabling AI models to make inferences based on the latest data."
+  },
+  {
+    "id": 91,
+    "question": "What is the role of 'instruction tuning' in AI models?",
+    "options": ["Installing the model on a server", "Training the model to follow specific instructions and formats", "Adjusting hardware settings", "Debugging model code"],
+    "answer": ["Training the model to follow specific instructions and formats"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "medium",
+    "explanation": "Instruction tuning fine-tunes a model to better follow human instructions, improving its ability to complete requested tasks in the desired format."
+  },
+  {
+    "id": 92,
+    "question": "Which Salesforce tool should be used to monitor Einstein prediction model performance?",
+    "options": ["Reports and Dashboards", "Einstein Model Metrics", "Apex Debug Logs", "Setup Audit Trail"],
+    "answer": ["Einstein Model Metrics"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Einstein Model Metrics (in Einstein Analytics/Discovery) displays model accuracy, AUC, precision, recall, and other performance metrics over time."
+  },
+  {
+    "id": 93,
+    "question": "What is 'zero-shot prompting'?",
+    "options": ["Providing no examples—relying on the model's training to perform the task", "Providing zero tokens to the model", "Disabling the model", "Running inference without hardware"],
+    "answer": ["Providing no examples—relying on the model's training to perform the task"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "easy",
+    "explanation": "Zero-shot prompting gives the model a task description without examples. The model relies solely on its pre-training to understand and complete the request."
+  },
+  {
+    "id": 94,
+    "question": "Which Data Cloud mapping step connects source data fields to the unified data model?",
+    "options": ["Identity resolution", "Field mapping", "Segmentation", "Activation"],
+    "answer": ["Field mapping"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "easy",
+    "explanation": "Field mapping defines how source data fields correspond to Data Model Object (DMO) fields, transforming and standardizing data during ingestion."
+  },
+  {
+    "id": 95,
+    "question": "What is the benefit of using Einstein Forecasting?",
+    "options": ["It automates contract signing", "It uses AI to predict revenue outcomes and provides data-driven forecast adjustments", "It generates marketing content", "It manages inventory"],
+    "answer": ["It uses AI to predict revenue outcomes and provides data-driven forecast adjustments"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Einstein Forecasting applies AI to historical pipeline data to predict revenue outcomes and suggests adjustments to manager forecasts based on deal signals."
+  },
+  {
+    "id": 96,
+    "question": "Which type of machine learning algorithm groups similar data points without labeled training data?",
+    "options": ["Supervised learning", "Unsupervised learning", "Reinforcement learning", "Transfer learning"],
+    "answer": ["Unsupervised learning"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "easy",
+    "explanation": "Unsupervised learning algorithms (like clustering) find patterns in unlabeled data. They group similar data points without predefined categories."
+  },
+  {
+    "id": 97,
+    "question": "Which Salesforce AI governance practice ensures AI models do not discriminate against protected groups?",
+    "options": ["Performance testing", "Fairness assessment", "Load testing", "A/B testing"],
+    "answer": ["Fairness assessment"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "medium",
+    "explanation": "Fairness assessment evaluates whether AI models produce equitable outcomes across demographic groups, identifying and mitigating disparate impacts."
+  },
+  {
+    "id": 98,
+    "question": "What is the maximum number of predictions Einstein Prediction Builder can make per object?",
+    "options": ["1", "5", "10", "20"],
+    "answer": ["10"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "hard",
+    "explanation": "Einstein Prediction Builder supports up to 10 active predictions per object, allowing multiple business outcomes to be predicted simultaneously."
+  },
+  {
+    "id": 99,
+    "question": "Which generative AI safety concern involves an LLM being manipulated through carefully crafted inputs?",
+    "options": ["Data poisoning", "Prompt injection", "Model compression", "Transfer learning"],
+    "answer": ["Prompt injection"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "medium",
+    "explanation": "Prompt injection attacks embed malicious instructions in user input to override the model's system instructions, potentially causing unintended behavior."
+  },
+  {
+    "id": 100,
+    "question": "What is the relationship between Data Cloud and Einstein AI features?",
+    "options": ["They are completely separate products", "Data Cloud provides unified data that powers Einstein AI models with richer context", "Einstein AI replaces Data Cloud", "Data Cloud only works with predictive AI"],
+    "answer": ["Data Cloud provides unified data that powers Einstein AI models with richer context"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "medium",
+    "explanation": "Data Cloud unifies customer data from all sources into comprehensive profiles. This rich, harmonized data improves Einstein AI models with better context and accuracy."
+  },
+  {
+    "id": 101,
+    "question": "Which Prompt Builder component tests prompt variations before deployment?",
+    "options": ["Prompt Workspace", "Apex Test Runner", "Flow Debugger", "Schema Builder"],
+    "answer": ["Prompt Workspace"],
+    "multiSelect": false,
+    "topic": "Prompt Builder",
+    "difficulty": "medium",
+    "explanation": "The Prompt Workspace in Prompt Builder provides an interactive environment to test prompt templates with real record data and iterate on responses before activation."
+  },
+  {
+    "id": 102,
+    "question": "What does AUC measure in Einstein model evaluation?",
+    "options": ["Average User Clicks", "Area Under the ROC Curve measuring model discrimination ability", "Automated Usage Count", "Active User Connections"],
+    "answer": ["Area Under the ROC Curve measuring model discrimination ability"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "hard",
+    "explanation": "AUC (Area Under the Curve) measures how well a classification model distinguishes between positive and negative classes. AUC of 1.0 = perfect; 0.5 = random guessing."
+  },
+  {
+    "id": 103,
+    "question": "Which Salesforce concept allows Einstein Copilot to execute a multi-step business process?",
+    "options": ["Single action", "Action plan", "Copilot plan", "Agent workflow"],
+    "answer": ["Copilot plan"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "hard",
+    "explanation": "When Einstein Copilot receives a complex request, it creates a plan—an ordered sequence of multiple actions—to complete the multi-step task."
+  },
+  {
+    "id": 104,
+    "question": "What is 'embeddings' in AI?",
+    "options": ["Placing models on edge devices", "Numerical vector representations of text that capture semantic meaning", "Embedding code in HTML pages", "Database table joins"],
+    "answer": ["Numerical vector representations of text that capture semantic meaning"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "hard",
+    "explanation": "Embeddings convert text into dense numerical vectors where semantically similar text has similar vectors. They enable semantic search and similarity comparisons."
+  },
+  {
+    "id": 105,
+    "question": "Which Salesforce feature allows admins to define custom AI actions without code using declarative tools?",
+    "options": ["Apex classes", "Flow Builder with AI elements", "Visualforce pages", "Lightning Web Components"],
+    "answer": ["Flow Builder with AI elements"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Flow Builder includes AI elements (like prompt invocations) that allow admins to build AI-powered automation declaratively without writing code."
+  },
+  {
+    "id": 106,
+    "question": "What happens to customer data after the Einstein Trust Layer processes it through an external LLM?",
+    "options": ["It is stored by the LLM for future training", "It is discarded by the LLM and not retained for model improvement", "It is shared with other Salesforce customers", "It is archived for 90 days"],
+    "answer": ["It is discarded by the LLM and not retained for model improvement"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "easy",
+    "explanation": "Under the zero-retention policy, the external LLM processes the request and discards the data. It is never used to train or improve the LLM."
+  },
+  {
+    "id": 107,
+    "question": "Which feature helps Einstein Discovery explain why a specific prediction was made?",
+    "options": ["Global explanations", "Local explanations (feature importance per prediction)", "Model summary", "Training log"],
+    "answer": ["Local explanations (feature importance per prediction)"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "hard",
+    "explanation": "Local explanations show which factors contributed most to a specific prediction for a specific record, providing transparency and trust in individual predictions."
+  },
+  {
+    "id": 108,
+    "question": "What is 'semantic search' in the context of Salesforce AI?",
+    "options": ["Exact keyword matching", "Understanding the meaning behind a query to find conceptually relevant results", "Searching by record ID only", "Full-text index scan"],
+    "answer": ["Understanding the meaning behind a query to find conceptually relevant results"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "medium",
+    "explanation": "Semantic search understands intent and meaning rather than just keywords, using embeddings and vector similarity to find conceptually relevant results."
+  },
+  {
+    "id": 109,
+    "question": "Which two elements are required to create a working Einstein Bot? (Choose 2 answers)",
+    "options": ["A snap-in deployment channel", "An Apex REST endpoint", "A bot dialog with conversation logic", "A custom Lightning component", "A third-party CRM integration"],
+    "answer": ["A snap-in deployment channel", "A bot dialog with conversation logic"],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "Einstein AI",
+    "difficulty": "hard",
+    "explanation": "An Einstein Bot needs at least one dialog defining conversation logic and a deployment channel (like a snap-in for web) to interact with users."
+  },
+  {
+    "id": 110,
+    "question": "What is the purpose of a Data Cloud 'data space'?",
+    "options": ["Physical storage allocation", "A logical partition that controls data access and visibility for different teams", "A backup storage area", "A testing sandbox"],
+    "answer": ["A logical partition that controls data access and visibility for different teams"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "hard",
+    "explanation": "Data spaces are logical partitions in Data Cloud that segment data visibility and access. Different business units can have their own data space with controlled access."
+  },
+  {
+    "id": 111,
+    "question": "Which AI concept describes the ability to explain how a model reached its conclusion?",
+    "options": ["Scalability", "Explainability", "Latency", "Throughput"],
+    "answer": ["Explainability"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "easy",
+    "explanation": "Explainability (or interpretability) is the ability to understand and communicate how an AI model arrived at its output, essential for trust and compliance."
+  },
+  {
+    "id": 112,
+    "question": "Which Salesforce tool allows bringing in predictive models trained on Amazon SageMaker?",
+    "options": ["Prompt Builder", "Einstein Studio (BYOM)", "Data Loader", "MuleSoft"],
+    "answer": ["Einstein Studio (BYOM)"],
+    "multiSelect": false,
+    "topic": "Model Builder",
+    "difficulty": "medium",
+    "explanation": "Einstein Studio's BYOM feature integrates external ML models from platforms like Amazon SageMaker, connecting them to Salesforce for real-time predictions."
+  },
+  {
+    "id": 113,
+    "question": "What is 'reinforcement learning from human feedback' (RLHF)?",
+    "options": ["A data labeling technique", "A training method where human preferences guide model behavior improvements", "A supervised learning algorithm", "A data augmentation strategy"],
+    "answer": ["A training method where human preferences guide model behavior improvements"],
+    "multiSelect": false,
+    "topic": "Generative AI",
+    "difficulty": "hard",
+    "explanation": "RLHF trains AI models using human feedback on output quality. Humans rank model responses, and these rankings fine-tune the model to produce preferred outputs."
+  },
+  {
+    "id": 114,
+    "question": "Which Data Cloud feature tracks customer engagement across all touchpoints in real time?",
+    "options": ["Engagement history", "Data streams", "Identity resolution", "Data graphs"],
+    "answer": ["Engagement history"],
+    "multiSelect": false,
+    "topic": "Data Cloud",
+    "difficulty": "medium",
+    "explanation": "Engagement history captures and unifies customer interactions across all channels and touchpoints, providing a complete real-time view of customer engagement."
+  },
+  {
+    "id": 115,
+    "question": "What is the Salesforce approach to selecting which LLM to use for different AI tasks?",
+    "options": ["Always use the largest model available", "Use an open model gateway that allows selecting the best model for each use case", "Only use Salesforce-built models", "Use the cheapest model available"],
+    "answer": ["Use an open model gateway that allows selecting the best model for each use case"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Salesforce's model gateway supports multiple LLMs (OpenAI, Anthropic, Cohere, etc.), allowing selection of the best model for each specific use case and requirement."
+  },
+  {
+    "id": 116,
+    "question": "Which metric indicates the proportion of positive predictions that were actually correct?",
+    "options": ["Recall", "Precision", "F1 Score", "Accuracy"],
+    "answer": ["Precision"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "hard",
+    "explanation": "Precision = True Positives / (True Positives + False Positives). It measures how many of the predicted positive cases were actually positive."
+  },
+  {
+    "id": 117,
+    "question": "What is the role of Salesforce Shield in relation to Einstein AI?",
+    "options": ["It provides AI model training", "It provides platform encryption, event monitoring, and audit trails for AI data security", "It generates AI prompts", "It manages AI model versions"],
+    "answer": ["It provides platform encryption, event monitoring, and audit trails for AI data security"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "medium",
+    "explanation": "Salesforce Shield complements the Einstein Trust Layer with platform encryption for data at rest, event monitoring for tracking data access, and comprehensive audit trails."
+  },
+  {
+    "id": 118,
+    "question": "Which Prompt Builder feature allows testing prompts with different record contexts?",
+    "options": ["Record picker in the workspace", "Apex test methods", "Flow debug mode", "Report filters"],
+    "answer": ["Record picker in the workspace"],
+    "multiSelect": false,
+    "topic": "Prompt Builder",
+    "difficulty": "medium",
+    "explanation": "The record picker in the Prompt Workspace allows selecting different records to test how a prompt template performs with various data contexts."
+  },
+  {
+    "id": 119,
+    "question": "What is 'responsible AI' in the Salesforce context?",
+    "options": ["AI that runs automatically without oversight", "AI that is developed and deployed with consideration for fairness, transparency, accountability, and safety", "AI that maximizes profit at all costs", "AI that replaces all human workers"],
+    "answer": ["AI that is developed and deployed with consideration for fairness, transparency, accountability, and safety"],
+    "multiSelect": false,
+    "topic": "AI Ethics & Trust",
+    "difficulty": "easy",
+    "explanation": "Responsible AI at Salesforce means building and deploying AI that is fair, transparent, accountable, safe, and respects privacy—with human oversight at high-stakes decision points."
+  },
+  {
+    "id": 120,
+    "question": "Which capability differentiates Einstein Copilot from traditional Einstein AI features?",
+    "options": ["It only works with reports", "It provides conversational, multi-turn AI interactions within Salesforce apps", "It requires Apex coding for all interactions", "It only runs in batch mode"],
+    "answer": ["It provides conversational, multi-turn AI interactions within Salesforce apps"],
+    "multiSelect": false,
+    "topic": "Einstein AI",
+    "difficulty": "medium",
+    "explanation": "Einstein Copilot differentiates itself through conversational AI—users can have natural, multi-turn dialogues to query data, take actions, and get insights within Salesforce."
+  }
+]

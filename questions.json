@@ -1002,6 +1002,559 @@
     "topic": "Architecture",
     "difficulty": "medium",
     "explanation": "AWS Step Functions is a serverless orchestration service that lets you build complex workflows by combining Lambda functions and other AWS services. It provides visual workflow design, built-in error handling, retry logic, and state management."
+  },
+  {
+    "id": 66,
+    "question": "Which AWS service provides a fully managed message queuing service that enables you to decouple and scale microservices?",
+    "options": ["Amazon SNS", "Amazon SQS", "Amazon Kinesis", "Amazon MQ"],
+    "answer": ["Amazon SQS"],
+    "multiSelect": false,
+    "topic": "SQS",
+    "difficulty": "easy",
+    "explanation": "Amazon SQS is a fully managed message queuing service for decoupling microservices. SNS is pub/sub, Kinesis is for streaming data, and MQ is a managed message broker for Apache ActiveMQ and RabbitMQ."
+  },
+  {
+    "id": 67,
+    "question": "A company wants to migrate an on-premises Oracle database to AWS with minimal code changes. Which AWS service should they use?",
+    "options": ["Amazon DynamoDB", "Amazon Aurora", "Amazon RDS for Oracle", "Amazon Redshift"],
+    "answer": ["Amazon RDS for Oracle"],
+    "multiSelect": false,
+    "topic": "RDS",
+    "difficulty": "easy",
+    "explanation": "Amazon RDS for Oracle provides a managed Oracle database engine, allowing migration with minimal code changes since the same Oracle engine runs in the cloud."
+  },
+  {
+    "id": 68,
+    "question": "Which feature of Amazon S3 allows you to automatically move objects between different storage classes based on access patterns?",
+    "options": ["S3 Versioning", "S3 Intelligent-Tiering", "S3 Object Lock", "S3 Transfer Acceleration"],
+    "answer": ["S3 Intelligent-Tiering"],
+    "multiSelect": false,
+    "topic": "S3",
+    "difficulty": "medium",
+    "explanation": "S3 Intelligent-Tiering automatically moves objects between access tiers based on changing access patterns, optimizing costs without performance impact or operational overhead."
+  },
+  {
+    "id": 69,
+    "question": "A solutions architect needs to design a solution that provides a dedicated connection from an on-premises data center to AWS. Which service is most appropriate?",
+    "options": ["AWS VPN", "AWS Direct Connect", "AWS Transit Gateway", "Amazon VPC Peering"],
+    "answer": ["AWS Direct Connect"],
+    "multiSelect": false,
+    "topic": "VPC",
+    "difficulty": "medium",
+    "explanation": "AWS Direct Connect provides a dedicated private network connection from on-premises to AWS, offering more consistent network performance than internet-based connections."
+  },
+  {
+    "id": 70,
+    "question": "Which AWS service should be used to run containers without managing servers or clusters?",
+    "options": ["Amazon ECS on EC2", "Amazon EKS on EC2", "AWS Fargate", "AWS Elastic Beanstalk"],
+    "answer": ["AWS Fargate"],
+    "multiSelect": false,
+    "topic": "ECS",
+    "difficulty": "easy",
+    "explanation": "AWS Fargate is a serverless compute engine for containers that removes the need to manage servers. You just define your container and Fargate handles the infrastructure."
+  },
+  {
+    "id": 71,
+    "question": "Which of the following are benefits of using Amazon CloudFront? (Choose 2 answers)",
+    "options": ["Reduced latency for end users", "Automatic database replication", "DDoS protection at the edge", "Managed container orchestration", "Real-time log analytics"],
+    "answer": ["Reduced latency for end users", "DDoS protection at the edge"],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "CloudFront",
+    "difficulty": "medium",
+    "explanation": "CloudFront is a CDN that caches content at edge locations, reducing latency. It also integrates with AWS Shield for DDoS protection at the edge."
+  },
+  {
+    "id": 72,
+    "question": "A company stores sensitive customer data and needs to ensure objects in S3 cannot be deleted or overwritten for a fixed retention period. Which feature should they use?",
+    "options": ["S3 Versioning", "S3 Object Lock", "S3 Lifecycle Policy", "S3 Server-Side Encryption"],
+    "answer": ["S3 Object Lock"],
+    "multiSelect": false,
+    "topic": "S3",
+    "difficulty": "medium",
+    "explanation": "S3 Object Lock enables WORM (Write Once Read Many) protection, preventing objects from being deleted or overwritten for a fixed retention period. It supports compliance mode and governance mode."
+  },
+  {
+    "id": 73,
+    "question": "Which AWS service provides a managed Apache Kafka-compatible streaming platform?",
+    "options": ["Amazon Kinesis Data Streams", "Amazon MSK", "Amazon SQS", "AWS Glue Streaming"],
+    "answer": ["Amazon MSK"],
+    "multiSelect": false,
+    "topic": "Analytics",
+    "difficulty": "medium",
+    "explanation": "Amazon Managed Streaming for Apache Kafka (MSK) is a fully managed service that makes it easy to build and run applications that use Apache Kafka to process streaming data."
+  },
+  {
+    "id": 74,
+    "question": "An application requires a NoSQL database that can handle millions of requests per second with single-digit millisecond latency. Which service should be used?",
+    "options": ["Amazon RDS", "Amazon DynamoDB", "Amazon ElastiCache", "Amazon Neptune"],
+    "answer": ["Amazon DynamoDB"],
+    "multiSelect": false,
+    "topic": "DynamoDB",
+    "difficulty": "easy",
+    "explanation": "DynamoDB is a fully managed NoSQL database designed for applications requiring consistent single-digit millisecond latency at any scale, supporting millions of requests per second."
+  },
+  {
+    "id": 75,
+    "question": "Which IAM feature allows you to grant temporary security credentials to users or applications?",
+    "options": ["IAM Policies", "IAM Roles", "IAM Groups", "IAM Access Keys"],
+    "answer": ["IAM Roles"],
+    "multiSelect": false,
+    "topic": "IAM",
+    "difficulty": "easy",
+    "explanation": "IAM Roles provide temporary security credentials via AWS STS. They are ideal for cross-account access, EC2 instances, and federated users without needing long-term credentials."
+  },
+  {
+    "id": 76,
+    "question": "A company wants to use a managed service for ETL (Extract, Transform, Load) operations on their data lake. Which AWS service is most appropriate?",
+    "options": ["AWS Lambda", "AWS Glue", "Amazon EMR", "AWS Data Pipeline"],
+    "answer": ["AWS Glue"],
+    "multiSelect": false,
+    "topic": "Analytics",
+    "difficulty": "medium",
+    "explanation": "AWS Glue is a fully managed ETL service that discovers, prepares, and combines data. It provides a serverless data integration service with built-in data cataloging."
+  },
+  {
+    "id": 77,
+    "question": "Which type of Elastic Load Balancer operates at the connection level (Layer 4) and is capable of handling millions of requests per second with ultra-low latency?",
+    "options": ["Application Load Balancer", "Network Load Balancer", "Classic Load Balancer", "Gateway Load Balancer"],
+    "answer": ["Network Load Balancer"],
+    "multiSelect": false,
+    "topic": "ELB",
+    "difficulty": "medium",
+    "explanation": "Network Load Balancer operates at Layer 4 (TCP/UDP), handles millions of requests per second with ultra-low latency, and supports static IP addresses and TLS termination."
+  },
+  {
+    "id": 78,
+    "question": "A solutions architect needs to store session state for a web application with sub-millisecond read latency. Which service is best suited?",
+    "options": ["Amazon RDS", "Amazon DynamoDB", "Amazon ElastiCache", "Amazon S3"],
+    "answer": ["Amazon ElastiCache"],
+    "multiSelect": false,
+    "topic": "ElastiCache",
+    "difficulty": "medium",
+    "explanation": "Amazon ElastiCache provides in-memory caching with sub-millisecond read latency, ideal for session state storage. It supports Redis and Memcached engines."
+  },
+  {
+    "id": 79,
+    "question": "Which AWS service enables you to set up a private connection between your VPC and supported AWS services without using an internet gateway?",
+    "options": ["AWS Direct Connect", "VPC Peering", "VPC Endpoint", "NAT Gateway"],
+    "answer": ["VPC Endpoint"],
+    "multiSelect": false,
+    "topic": "VPC",
+    "difficulty": "medium",
+    "explanation": "VPC Endpoints enable private connections between your VPC and AWS services without traversing the internet. There are interface endpoints (PrivateLink) and gateway endpoints (S3, DynamoDB)."
+  },
+  {
+    "id": 80,
+    "question": "Which AWS service provides real-time threat detection by analyzing VPC Flow Logs, CloudTrail events, and DNS logs?",
+    "options": ["AWS WAF", "Amazon Inspector", "Amazon GuardDuty", "AWS Security Hub"],
+    "answer": ["Amazon GuardDuty"],
+    "multiSelect": false,
+    "topic": "Security",
+    "difficulty": "medium",
+    "explanation": "Amazon GuardDuty is a managed threat detection service that continuously monitors for malicious activity by analyzing VPC Flow Logs, CloudTrail events, and DNS logs using ML."
+  },
+  {
+    "id": 81,
+    "question": "A company needs to replicate an Amazon RDS database across AWS Regions for disaster recovery. Which feature should they use?",
+    "options": ["Multi-AZ deployment", "Read Replicas", "Cross-Region Read Replica", "Amazon Aurora Global Database"],
+    "answer": ["Cross-Region Read Replica"],
+    "multiSelect": false,
+    "topic": "RDS",
+    "difficulty": "hard",
+    "explanation": "Cross-Region Read Replicas replicate RDS databases to another Region. For RDS (non-Aurora), this provides cross-region DR. Aurora Global Database is specifically for Aurora."
+  },
+  {
+    "id": 82,
+    "question": "Which service allows you to create and manage encryption keys used to encrypt your data across AWS services?",
+    "options": ["AWS Secrets Manager", "AWS KMS", "AWS CloudHSM", "AWS Certificate Manager"],
+    "answer": ["AWS KMS"],
+    "multiSelect": false,
+    "topic": "Security",
+    "difficulty": "easy",
+    "explanation": "AWS Key Management Service (KMS) lets you create and manage cryptographic keys. It integrates with most AWS services that encrypt data, like S3, EBS, and RDS."
+  },
+  {
+    "id": 83,
+    "question": "An application requires a graph database to manage highly connected datasets such as social networks. Which AWS service is appropriate?",
+    "options": ["Amazon DynamoDB", "Amazon Neptune", "Amazon DocumentDB", "Amazon Timestream"],
+    "answer": ["Amazon Neptune"],
+    "multiSelect": false,
+    "topic": "Database",
+    "difficulty": "medium",
+    "explanation": "Amazon Neptune is a fully managed graph database service supporting Apache TinkerPop Gremlin and SPARQL, ideal for social networks, recommendation engines, and knowledge graphs."
+  },
+  {
+    "id": 84,
+    "question": "Which AWS service provides a fully managed data warehouse that can analyze petabytes of data using SQL?",
+    "options": ["Amazon RDS", "Amazon Redshift", "Amazon Athena", "Amazon EMR"],
+    "answer": ["Amazon Redshift"],
+    "multiSelect": false,
+    "topic": "Analytics",
+    "difficulty": "easy",
+    "explanation": "Amazon Redshift is a fully managed cloud data warehouse designed for large-scale data analytics. It uses SQL for queries and can analyze petabytes of structured data."
+  },
+  {
+    "id": 85,
+    "question": "A company wants to automatically scale EC2 instances based on CPU utilization. Which combination of services should they use? (Choose 2 answers)",
+    "options": ["Amazon CloudWatch Alarms", "Auto Scaling Group", "AWS Lambda", "Elastic Load Balancer", "AWS CloudFormation"],
+    "answer": ["Amazon CloudWatch Alarms", "Auto Scaling Group"],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "EC2",
+    "difficulty": "medium",
+    "explanation": "Auto Scaling Groups scale EC2 instances in and out. CloudWatch Alarms trigger scaling actions based on metrics like CPU utilization. Together they enable metric-based auto scaling."
+  },
+  {
+    "id": 86,
+    "question": "Which storage class is the most cost-effective for data that is rarely accessed and can tolerate retrieval times of 12 hours?",
+    "options": ["S3 Standard-IA", "S3 One Zone-IA", "S3 Glacier Deep Archive", "S3 Glacier Flexible Retrieval"],
+    "answer": ["S3 Glacier Deep Archive"],
+    "multiSelect": false,
+    "topic": "S3",
+    "difficulty": "medium",
+    "explanation": "S3 Glacier Deep Archive is the lowest-cost S3 storage class, designed for data that is accessed once or twice a year with retrieval times of 12-48 hours."
+  },
+  {
+    "id": 87,
+    "question": "Which AWS service can automatically discover, classify, and protect sensitive data such as PII stored in Amazon S3?",
+    "options": ["Amazon GuardDuty", "Amazon Macie", "AWS Config", "Amazon Inspector"],
+    "answer": ["Amazon Macie"],
+    "multiSelect": false,
+    "topic": "Security",
+    "difficulty": "medium",
+    "explanation": "Amazon Macie uses machine learning to automatically discover, classify, and protect sensitive data in S3, including PII, financial data, and credentials."
+  },
+  {
+    "id": 88,
+    "question": "A company needs a managed service to process and analyze real-time streaming data. Which service should they use?",
+    "options": ["Amazon SQS", "Amazon Kinesis Data Streams", "Amazon SNS", "AWS Batch"],
+    "answer": ["Amazon Kinesis Data Streams"],
+    "multiSelect": false,
+    "topic": "Kinesis",
+    "difficulty": "easy",
+    "explanation": "Amazon Kinesis Data Streams captures and processes real-time streaming data at scale. SQS is for message queuing, SNS is for notifications, and Batch is for batch processing."
+  },
+  {
+    "id": 89,
+    "question": "Which AWS service should be used to set up a scalable DNS service?",
+    "options": ["Amazon CloudFront", "Amazon Route 53", "Elastic Load Balancing", "AWS Global Accelerator"],
+    "answer": ["Amazon Route 53"],
+    "multiSelect": false,
+    "topic": "Route53",
+    "difficulty": "easy",
+    "explanation": "Amazon Route 53 is a highly available and scalable DNS web service that provides domain name registration, DNS routing, and health checking."
+  },
+  {
+    "id": 90,
+    "question": "An architect wants to enforce that all new S3 buckets created in the organization have encryption enabled. Which service should be used?",
+    "options": ["AWS IAM", "AWS Config", "AWS CloudTrail", "AWS Organizations SCPs"],
+    "answer": ["AWS Config"],
+    "multiSelect": false,
+    "topic": "Security",
+    "difficulty": "hard",
+    "explanation": "AWS Config evaluates resource configurations against desired settings. You can create rules that automatically check if S3 buckets have encryption enabled and trigger remediation."
+  },
+  {
+    "id": 91,
+    "question": "Which feature of Amazon Aurora provides automatic failover across multiple Availability Zones with no data loss?",
+    "options": ["Aurora Read Replicas", "Aurora Multi-Master", "Aurora Global Database", "Aurora Multi-AZ with 6-way replication"],
+    "answer": ["Aurora Multi-AZ with 6-way replication"],
+    "multiSelect": false,
+    "topic": "RDS",
+    "difficulty": "hard",
+    "explanation": "Aurora automatically replicates data 6 ways across 3 AZs. If the primary instance fails, Aurora automatically promotes a read replica with no data loss, typically in less than 30 seconds."
+  },
+  {
+    "id": 92,
+    "question": "A company wants to centrally manage billing and apply service control policies across multiple AWS accounts. Which service should they use?",
+    "options": ["AWS IAM", "AWS Organizations", "AWS Control Tower", "AWS Resource Access Manager"],
+    "answer": ["AWS Organizations"],
+    "multiSelect": false,
+    "topic": "IAM",
+    "difficulty": "medium",
+    "explanation": "AWS Organizations enables central management of multiple AWS accounts with consolidated billing and Service Control Policies (SCPs) for governance."
+  },
+  {
+    "id": 93,
+    "question": "Which AWS service provides serverless interactive query to analyze data directly in Amazon S3 using standard SQL?",
+    "options": ["Amazon Redshift", "Amazon Athena", "Amazon EMR", "AWS Glue"],
+    "answer": ["Amazon Athena"],
+    "multiSelect": false,
+    "topic": "Analytics",
+    "difficulty": "easy",
+    "explanation": "Amazon Athena is serverless — you point it at S3 data, define the schema, and start querying with standard SQL. No infrastructure to manage, and you pay per query."
+  },
+  {
+    "id": 94,
+    "question": "A web application needs to send email notifications to users. Which AWS service is best suited for this?",
+    "options": ["Amazon SNS", "Amazon SES", "Amazon SQS", "AWS Lambda"],
+    "answer": ["Amazon SES"],
+    "multiSelect": false,
+    "topic": "SES",
+    "difficulty": "easy",
+    "explanation": "Amazon Simple Email Service (SES) is designed for sending transactional, marketing, and notification emails. SNS sends SMS/push notifications, not formatted emails."
+  },
+  {
+    "id": 95,
+    "question": "Which AWS service enables you to track changes to AWS resources and maintain a configuration history?",
+    "options": ["AWS CloudTrail", "AWS Config", "AWS Trusted Advisor", "Amazon CloudWatch"],
+    "answer": ["AWS Config"],
+    "multiSelect": false,
+    "topic": "Security",
+    "difficulty": "medium",
+    "explanation": "AWS Config records and evaluates resource configurations over time, providing a configuration history. CloudTrail records API calls, not resource configurations."
+  },
+  {
+    "id": 96,
+    "question": "An application requires a fully managed document database compatible with MongoDB workloads. Which service should be used?",
+    "options": ["Amazon DynamoDB", "Amazon DocumentDB", "Amazon Neptune", "Amazon Keyspaces"],
+    "answer": ["Amazon DocumentDB"],
+    "multiSelect": false,
+    "topic": "Database",
+    "difficulty": "medium",
+    "explanation": "Amazon DocumentDB is a fully managed document database service compatible with MongoDB. It supports MongoDB drivers and tools, making migration from MongoDB straightforward."
+  },
+  {
+    "id": 97,
+    "question": "Which pillar of the AWS Well-Architected Framework focuses on the ability to run workloads effectively and gain insights into operations?",
+    "options": ["Security", "Reliability", "Operational Excellence", "Performance Efficiency"],
+    "answer": ["Operational Excellence"],
+    "multiSelect": false,
+    "topic": "Architecture",
+    "difficulty": "easy",
+    "explanation": "Operational Excellence focuses on running and monitoring systems, continually improving processes and procedures. It includes automation, response to events, and defining standards."
+  },
+  {
+    "id": 98,
+    "question": "A company needs to transfer 50 TB of data to AWS. Internet bandwidth is limited. Which service provides the most efficient physical data transfer?",
+    "options": ["AWS DataSync", "AWS Snowball Edge", "AWS Direct Connect", "S3 Transfer Acceleration"],
+    "answer": ["AWS Snowball Edge"],
+    "multiSelect": false,
+    "topic": "Migration",
+    "difficulty": "medium",
+    "explanation": "AWS Snowball Edge is a physical device that allows large-scale data transfers when internet bandwidth is limited. For 50TB, Snowball Edge is much faster than internet transfer."
+  },
+  {
+    "id": 99,
+    "question": "Which routing policy in Amazon Route 53 distributes traffic based on the geographic location of the user?",
+    "options": ["Simple routing", "Weighted routing", "Geolocation routing", "Latency-based routing"],
+    "answer": ["Geolocation routing"],
+    "multiSelect": false,
+    "topic": "Route53",
+    "difficulty": "medium",
+    "explanation": "Geolocation routing directs traffic based on where DNS queries originate. You can route European users to EU servers and US users to US servers."
+  },
+  {
+    "id": 100,
+    "question": "Which AWS service provides hardware-dedicated instances that are physically isolated from other AWS accounts?",
+    "options": ["Dedicated Instances", "Dedicated Hosts", "Reserved Instances", "Spot Instances"],
+    "answer": ["Dedicated Hosts"],
+    "multiSelect": false,
+    "topic": "EC2",
+    "difficulty": "hard",
+    "explanation": "Dedicated Hosts provide a physical server fully dedicated to your use. Unlike Dedicated Instances, Dedicated Hosts give visibility into sockets and physical cores, useful for BYOL licensing."
+  },
+  {
+    "id": 101,
+    "question": "A company wants to accelerate global content delivery and ensure users are served from the nearest location. Which service should be used?",
+    "options": ["Amazon Route 53", "Amazon CloudFront", "AWS Global Accelerator", "Elastic Load Balancing"],
+    "answer": ["Amazon CloudFront"],
+    "multiSelect": false,
+    "topic": "CloudFront",
+    "difficulty": "easy",
+    "explanation": "Amazon CloudFront is a CDN that caches content at edge locations around the world, ensuring users are served from the nearest location for faster content delivery."
+  },
+  {
+    "id": 102,
+    "question": "Which DynamoDB feature provides the ability to automatically expire items from a table after a specified time?",
+    "options": ["DynamoDB Streams", "DynamoDB TTL", "DynamoDB DAX", "DynamoDB Global Tables"],
+    "answer": ["DynamoDB TTL"],
+    "multiSelect": false,
+    "topic": "DynamoDB",
+    "difficulty": "medium",
+    "explanation": "DynamoDB Time to Live (TTL) automatically deletes expired items from tables without using write throughput. Useful for session data, logs, and temporary records."
+  },
+  {
+    "id": 103,
+    "question": "A company needs to ensure that an EC2 instance can access S3 without using access keys. What should the solutions architect configure?",
+    "options": ["Store credentials in user data", "Attach an IAM role to the instance", "Use S3 bucket policies only", "Configure a VPC endpoint"],
+    "answer": ["Attach an IAM role to the instance"],
+    "multiSelect": false,
+    "topic": "IAM",
+    "difficulty": "easy",
+    "explanation": "IAM roles attached to EC2 instances provide temporary credentials automatically via the instance metadata service. This avoids storing long-term access keys."
+  },
+  {
+    "id": 104,
+    "question": "Which AWS service allows running SQL queries against data stored in S3, Redshift, and other sources from a single interface?",
+    "options": ["Amazon Athena Federated Query", "Amazon Redshift Spectrum", "AWS Lake Formation", "Amazon QuickSight"],
+    "answer": ["Amazon Athena Federated Query"],
+    "multiSelect": false,
+    "topic": "Analytics",
+    "difficulty": "hard",
+    "explanation": "Athena Federated Query lets you run SQL queries across data stored in S3, relational databases, non-relational databases, and custom data sources using data source connectors."
+  },
+  {
+    "id": 105,
+    "question": "Which AWS service provides a managed environment for running Apache Spark and Apache Hadoop for big data processing?",
+    "options": ["AWS Glue", "Amazon EMR", "Amazon Kinesis", "AWS Batch"],
+    "answer": ["Amazon EMR"],
+    "multiSelect": false,
+    "topic": "Analytics",
+    "difficulty": "medium",
+    "explanation": "Amazon EMR (Elastic MapReduce) is a managed big data platform for running Apache Spark, Hadoop, Hive, Presto, and other frameworks for large-scale data processing."
+  },
+  {
+    "id": 106,
+    "question": "Which VPC component allows instances in a private subnet to access the internet for software updates while preventing inbound connections from the internet?",
+    "options": ["Internet Gateway", "NAT Gateway", "VPC Endpoint", "VPN Gateway"],
+    "answer": ["NAT Gateway"],
+    "multiSelect": false,
+    "topic": "VPC",
+    "difficulty": "easy",
+    "explanation": "A NAT Gateway allows instances in private subnets to initiate outbound connections to the internet while preventing unsolicited inbound connections."
+  },
+  {
+    "id": 107,
+    "question": "A company wants to ensure their Lambda functions can access resources inside a VPC. What must be configured? (Choose 2 answers)",
+    "options": ["Attach an Elastic IP", "Specify VPC subnets", "Specify security groups", "Create a NAT Gateway", "Enable Lambda Proxy Integration"],
+    "answer": ["Specify VPC subnets", "Specify security groups"],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "Lambda",
+    "difficulty": "medium",
+    "explanation": "To enable Lambda VPC access, you must configure the function with VPC subnet IDs and security group IDs. Lambda creates ENIs in the specified subnets."
+  },
+  {
+    "id": 108,
+    "question": "Which AWS service provides automated security assessments to help improve the security and compliance of applications deployed on AWS?",
+    "options": ["Amazon GuardDuty", "Amazon Inspector", "AWS Security Hub", "AWS Config"],
+    "answer": ["Amazon Inspector"],
+    "multiSelect": false,
+    "topic": "Security",
+    "difficulty": "medium",
+    "explanation": "Amazon Inspector automatically discovers workloads and scans them for software vulnerabilities and unintended network exposure. It provides detailed findings with remediation steps."
+  },
+  {
+    "id": 109,
+    "question": "A company wants their application to handle traffic spikes during promotional events. The application uses an Application Load Balancer and Auto Scaling. What scaling policy provides the fastest response to sudden load increases?",
+    "options": ["Simple scaling", "Step scaling", "Target tracking scaling", "Scheduled scaling"],
+    "answer": ["Step scaling"],
+    "multiSelect": false,
+    "topic": "EC2",
+    "difficulty": "hard",
+    "explanation": "Step scaling adjusts capacity in steps based on CloudWatch alarm thresholds, allowing aggressive scaling for large spikes. It continues to evaluate and scale while alarms are active."
+  },
+  {
+    "id": 110,
+    "question": "Which Amazon S3 feature should be used to host a static website?",
+    "options": ["S3 Transfer Acceleration", "S3 Static Website Hosting", "S3 Lifecycle Policies", "S3 Replication"],
+    "answer": ["S3 Static Website Hosting"],
+    "multiSelect": false,
+    "topic": "S3",
+    "difficulty": "easy",
+    "explanation": "S3 Static Website Hosting serves static web content (HTML, CSS, JS) directly from an S3 bucket. Combined with CloudFront, it provides a scalable static site solution."
+  },
+  {
+    "id": 111,
+    "question": "Which AWS service should be used to manage secrets such as database credentials, API keys, and tokens?",
+    "options": ["AWS KMS", "AWS Secrets Manager", "AWS Systems Manager Parameter Store", "AWS CloudHSM"],
+    "answer": ["AWS Secrets Manager"],
+    "multiSelect": false,
+    "topic": "Security",
+    "difficulty": "easy",
+    "explanation": "AWS Secrets Manager helps you manage, retrieve, and rotate database credentials, API keys, and other secrets. It integrates with RDS for automatic credential rotation."
+  },
+  {
+    "id": 112,
+    "question": "A company processes large image files uploaded to S3. They want to automatically trigger processing when new files are uploaded. Which approach is most appropriate?",
+    "options": ["S3 lifecycle policy", "S3 event notification to Lambda", "CloudWatch scheduled event", "S3 intelligent tiering"],
+    "answer": ["S3 event notification to Lambda"],
+    "multiSelect": false,
+    "topic": "Lambda",
+    "difficulty": "easy",
+    "explanation": "S3 event notifications can trigger Lambda functions automatically when objects are created, enabling event-driven image processing without polling."
+  },
+  {
+    "id": 113,
+    "question": "Which AWS service provides a fully managed Kubernetes control plane?",
+    "options": ["Amazon ECS", "Amazon EKS", "AWS Fargate", "AWS App Runner"],
+    "answer": ["Amazon EKS"],
+    "multiSelect": false,
+    "topic": "ECS",
+    "difficulty": "easy",
+    "explanation": "Amazon Elastic Kubernetes Service (EKS) provides a managed Kubernetes control plane. You don't need to install or maintain Kubernetes master nodes."
+  },
+  {
+    "id": 114,
+    "question": "An application needs to deliver push notifications to mobile devices across iOS and Android. Which service should be used?",
+    "options": ["Amazon SES", "Amazon SQS", "Amazon SNS", "Amazon Pinpoint"],
+    "answer": ["Amazon SNS"],
+    "multiSelect": false,
+    "topic": "SNS",
+    "difficulty": "easy",
+    "explanation": "Amazon SNS supports mobile push notifications to iOS (APNs) and Android (FCM/GCM) devices. It provides a pub/sub messaging model for distributing notifications."
+  },
+  {
+    "id": 115,
+    "question": "Which service provides centralized logging of API calls made across your AWS infrastructure?",
+    "options": ["Amazon CloudWatch Logs", "AWS CloudTrail", "AWS Config", "VPC Flow Logs"],
+    "answer": ["AWS CloudTrail"],
+    "multiSelect": false,
+    "topic": "CloudWatch",
+    "difficulty": "easy",
+    "explanation": "AWS CloudTrail records API calls made on your account, providing event history for governance, compliance, and operational auditing."
+  },
+  {
+    "id": 116,
+    "question": "A company needs a managed NoSQL database that supports key-value and wide-column data models with Apache Cassandra compatibility. Which service should they use?",
+    "options": ["Amazon DynamoDB", "Amazon Keyspaces", "Amazon DocumentDB", "Amazon Neptune"],
+    "answer": ["Amazon Keyspaces"],
+    "multiSelect": false,
+    "topic": "Database",
+    "difficulty": "hard",
+    "explanation": "Amazon Keyspaces (for Apache Cassandra) is a scalable, highly available, managed Cassandra-compatible database service. It uses the same CQL code and drivers."
+  },
+  {
+    "id": 117,
+    "question": "Which feature of Auto Scaling ensures that you maintain a minimum number of healthy instances at all times?",
+    "options": ["Desired capacity", "Minimum capacity", "Maximum capacity", "Health check grace period"],
+    "answer": ["Minimum capacity"],
+    "multiSelect": false,
+    "topic": "EC2",
+    "difficulty": "easy",
+    "explanation": "The minimum capacity setting in an Auto Scaling group ensures that the number of running instances never drops below this value, providing baseline availability."
+  },
+  {
+    "id": 118,
+    "question": "Which AWS service would you use to create a data lake and manage fine-grained access controls?",
+    "options": ["Amazon S3", "AWS Lake Formation", "AWS Glue", "Amazon Redshift Spectrum"],
+    "answer": ["AWS Lake Formation"],
+    "multiSelect": false,
+    "topic": "Analytics",
+    "difficulty": "hard",
+    "explanation": "AWS Lake Formation simplifies building, securing, and managing data lakes. It provides centralized governance with fine-grained access controls at the column and row level."
+  },
+  {
+    "id": 119,
+    "question": "A solutions architect needs to design a multi-region active-active database solution. Which service provides this capability natively?",
+    "options": ["Amazon RDS Multi-AZ", "Amazon RDS Cross-Region Read Replica", "Amazon DynamoDB Global Tables", "Amazon Aurora Serverless"],
+    "answer": ["Amazon DynamoDB Global Tables"],
+    "multiSelect": false,
+    "topic": "DynamoDB",
+    "difficulty": "hard",
+    "explanation": "DynamoDB Global Tables provide multi-region, multi-active database tables with automatic replication across AWS Regions, supporting active-active workloads."
+  },
+  {
+    "id": 120,
+    "question": "Which AWS service provides a managed environment for deploying and scaling web applications and services without worrying about the underlying infrastructure?",
+    "options": ["AWS CloudFormation", "AWS Elastic Beanstalk", "AWS OpsWorks", "Amazon Lightsail"],
+    "answer": ["AWS Elastic Beanstalk"],
+    "multiSelect": false,
+    "topic": "Architecture",
+    "difficulty": "easy",
+    "explanation": "AWS Elastic Beanstalk handles deployment, capacity provisioning, load balancing, and auto-scaling. You upload your code and Beanstalk manages the infrastructure."
   }
 ]
   
