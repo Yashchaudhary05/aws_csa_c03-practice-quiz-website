@@ -7,6 +7,7 @@
     "color": "#ff9900",
     "questionFile": "questions.json",
     "questionCount": 120,
+    "quizLength": 65,
     "timeLimit": 3900,
     "passingScore": 72,
     "description": "Covers S3, EC2, VPC, IAM, RDS, Lambda, DynamoDB, CloudFront, and 22 AWS service areas."
@@ -19,6 +20,7 @@
     "color": "#049fd9",
     "questionFile": "questions/ccna-200-301.json",
     "questionCount": 120,
+    "quizLength": 65,
     "timeLimit": 7200,
     "passingScore": 80,
     "description": "Covers network fundamentals, IP connectivity, security, automation, switching, routing, and wireless."
@@ -31,6 +33,7 @@
     "color": "#00a1e0",
     "questionFile": "questions/salesforce-ai-specialist.json",
     "questionCount": 120,
+    "quizLength": 65,
     "timeLimit": 5400,
     "passingScore": 73,
     "description": "Covers Einstein AI, Prompt Builder, Model Builder, Data Cloud, AI ethics, and Salesforce AI tools."

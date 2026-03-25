@@ -28,12 +28,13 @@ export function renderExamCards(exams, onSelect) {
     card.setAttribute('tabindex', '0');
     card.setAttribute('aria-label', `Select ${exam.title}`);
 
+    const quizLen = exam.quizLength || exam.questionCount;
     card.innerHTML = `
       <span class="exam-card-icon" style="background: ${escapeHtml(exam.color)}15">${escapeHtml(exam.icon)}</span>
       <div class="exam-card-title">${escapeHtml(exam.shortTitle || exam.title)}</div>
       <div class="exam-card-desc">${escapeHtml(exam.description)}</div>
       <div class="exam-card-meta">
-        <span>📝 ${exam.questionCount} questions</span>
+        <span>📝 ${quizLen} of ${exam.questionCount} Qs</span>
         <span>⏱️ ${Math.round(exam.timeLimit / 60)} min</span>
         <span>✅ ${exam.passingScore}% pass</span>
       </div>

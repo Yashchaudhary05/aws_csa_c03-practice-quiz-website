@@ -156,11 +156,16 @@ function startQuiz() {
     filtered = [...allQuestions];
   }
 
-  // Shuffle questions and options
+  // Shuffle questions and options, then take quizLength
   filtered = shuffle(filtered).map(q => ({
     ...q,
     options: shuffle(q.options),
   }));
+
+  const quizLength = exam.quizLength || filtered.length;
+  if (filtered.length > quizLength) {
+    filtered = filtered.slice(0, quizLength);
+  }
 
   resetState();
   setState({
