@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AWS Certified Solutions Architect C03 Practice Quiz — Test your knowledge with 65 questions covering S3, EC2, VPC, IAM, Lambda, DynamoDB, and more.">
-    <meta name="theme-color" content="#6200ea">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';">
-    <title>AWS SAA-C03 Practice Quiz</title>
+    <meta name="description" content="Practice quizzes for AWS SAA-C03, AWS DVA-C02, Azure AZ-900 and more cloud certification exams.">
+    <meta name="theme-color" content="#6c63ff">
+    <title>Cloud Certification Practice Quizzes</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☁️</text></svg>">
@@ -15,42 +14,66 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <header class="app-header">
-        <h1>☁️ AWS SAA-C03 Practice Quiz</h1>
+        <div class="header-left">
+            <button id="home-btn" class="btn btn-ghost" aria-label="Back to home" title="Home">☁️ CloudQuiz</button>
+        </div>
         <div class="header-controls">
-            <button id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme (T)">🌙</button>
+            <button id="theme-toggle" class="btn btn-ghost" aria-label="Toggle dark/light mode" title="Toggle theme (T)">🌙</button>
         </div>
     </header>
 
     <main id="main-content">
         <!-- Start Screen -->
         <section id="start-screen" aria-label="Quiz setup">
-            <div class="card start-card">
-                <h2>Welcome to the AWS SAA-C03 Practice Quiz</h2>
-                <p class="start-description">Test your knowledge with 65 questions covering core AWS services. Choose your quiz mode below.</p>
+            <div class="start-hero">
+                <h1 class="hero-title">Cloud Certification Practice</h1>
+                <p class="hero-subtitle">Master your cloud exams with interactive practice quizzes</p>
+            </div>
+
+            <!-- Exam Selector -->
+            <div class="exam-selector-section">
+                <h2 class="section-title">Choose Your Exam</h2>
+                <div id="exam-cards" class="exam-cards-grid"></div>
+            </div>
+
+            <!-- Quiz Config (shown after exam selection) -->
+            <div id="quiz-config" class="card quiz-config-card hidden">
+                <div class="config-header">
+                    <span id="selected-exam-icon" class="config-exam-icon"></span>
+                    <div>
+                        <h2 id="selected-exam-title" class="config-title"></h2>
+                        <p id="selected-exam-desc" class="config-desc"></p>
+                    </div>
+                </div>
 
                 <fieldset class="mode-selector">
                     <legend>Quiz Mode</legend>
-                    <label class="mode-option">
-                        <input type="radio" name="quiz-mode" value="exam" checked>
-                        <span class="mode-card">
-                            <strong>📝 Exam Mode</strong>
-                            <small>Timed, results shown at the end</small>
-                        </span>
-                    </label>
-                    <label class="mode-option">
-                        <input type="radio" name="quiz-mode" value="practice">
-                        <span class="mode-card">
-                            <strong>📖 Practice Mode</strong>
-                            <small>Untimed, instant feedback with explanations</small>
-                        </span>
-                    </label>
-                    <label class="mode-option">
-                        <input type="radio" name="quiz-mode" value="review">
-                        <span class="mode-card">
-                            <strong>🔍 Review Mode</strong>
-                            <small>Browse all questions and answers</small>
-                        </span>
-                    </label>
+                    <div class="mode-options-grid">
+                        <label class="mode-option">
+                            <input type="radio" name="quiz-mode" value="exam" checked>
+                            <span class="mode-card">
+                                <span class="mode-icon">📝</span>
+                                <strong>Exam Mode</strong>
+                                <small>Timed · Results at end</small>
+                            </span>
+                        </label>
+                        <label class="mode-option">
+                            <input type="radio" name="quiz-mode" value="practice">
+                            <span class="mode-card">
+                                <span class="mode-icon">📖</span>
+                                <strong>Practice Mode</strong>
+                                <small>Untimed · Instant feedback</small>
+                            </span>
+                        </label>
+                        <label class="mode-option">
+                            <input type="radio" name="quiz-mode" value="review">
+                            <span class="mode-card">
+                                <span class="mode-icon">🔍</span>
+                                <strong>Review Mode</strong>
+                                <small>Browse answers</small>
+                            </span>
+                        </label>
+                    </div>
                 </fieldset>
 
                 <fieldset class="topic-filter">
@@ -58,16 +81,30 @@
                     <div id="topic-checkboxes" class="topic-grid"></div>
                 </fieldset>
 
-                <button id="start-quiz" class="btn btn-primary btn-large">Start Quiz</button>
+                <div class="config-actions">
+                    <button id="back-to-exams" class="btn btn-secondary">← Back</button>
+                    <button id="start-quiz" class="btn btn-primary btn-large">Start Quiz →</button>
+                </div>
             </div>
         </section>
 
         <!-- Quiz Screen -->
         <section id="quiz-screen" class="hidden" aria-label="Quiz questions">
-            <!-- Timer Bar -->
-            <div id="timer-bar" role="timer" aria-live="polite" aria-label="Time remaining">
-                <div id="timer-fill"></div>
-                <span id="timer-text">60:00</span>
+            <!-- Quiz Toolbar -->
+            <div class="quiz-toolbar">
+                <div class="toolbar-left">
+                    <button id="exit-quiz" class="btn btn-danger-outline btn-sm" aria-label="Exit quiz">✕ Exit</button>
+                    <span id="exam-badge" class="exam-badge"></span>
+                </div>
+                <div class="toolbar-right">
+                    <div id="timer-bar" role="timer" aria-live="polite" aria-label="Time remaining">
+                        <span id="timer-icon" class="timer-icon">⏱️</span>
+                        <span id="timer-text">65:00</span>
+                        <div id="timer-fill-track">
+                            <div id="timer-fill"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Progress Bar -->
@@ -75,7 +112,7 @@
                 <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                     <div id="progress-fill"></div>
                 </div>
-                <span id="progress-text" class="progress-text">0 / 20</span>
+                <span id="progress-text" class="progress-text">0 / 0</span>
             </div>
 
             <!-- Question Navigator -->
@@ -84,7 +121,7 @@
             </nav>
 
             <!-- Question Card -->
-            <article id="question-card" class="card" aria-live="polite">
+            <article id="question-card" class="card question-card" aria-live="polite">
                 <header class="question-header">
                     <span id="question-number" class="question-number"></span>
                     <div class="question-meta">
@@ -95,8 +132,9 @@
                 </header>
 
                 <div id="question-text" class="question-text"></div>
+                <div id="multi-select-hint" class="multi-select-hint hidden"></div>
 
-                <form id="options-form" aria-label="Answer options">
+                <form id="options-form" aria-label="Answer options" onsubmit="return false;">
                     <fieldset id="options-fieldset">
                         <legend id="options-legend" class="sr-only">Select your answer</legend>
                         <div id="options-container"></div>
@@ -108,21 +146,26 @@
 
                 <footer class="question-actions">
                     <button id="prev-btn" class="btn btn-secondary" disabled aria-label="Previous question">← Prev</button>
-                    <button id="submit-btn" class="btn btn-primary" aria-label="Submit answer">Submit</button>
-                    <button id="next-btn" class="btn btn-primary hidden" aria-label="Next question">Next →</button>
-                    <button id="finish-btn" class="btn btn-accent hidden" aria-label="Finish quiz">Finish Quiz</button>
+                    <div class="actions-right">
+                        <button id="submit-btn" class="btn btn-primary" aria-label="Submit answer">Submit Answer</button>
+                        <button id="next-btn" class="btn btn-primary hidden" aria-label="Next question">Next →</button>
+                        <button id="finish-btn" class="btn btn-accent hidden" aria-label="Finish quiz">Finish Quiz ✓</button>
+                    </div>
                 </footer>
             </article>
 
             <div class="keyboard-hints">
-                <small>Keyboard: <kbd>Enter</kbd> Submit · <kbd>→</kbd> Next · <kbd>←</kbd> Prev · <kbd>F</kbd> Flag · <kbd>1-5</kbd> Select option</small>
+                <small><kbd>Enter</kbd> Submit · <kbd>→</kbd> Next · <kbd>←</kbd> Prev · <kbd>F</kbd> Flag · <kbd>1</kbd>–<kbd>5</kbd> Select · <kbd>Esc</kbd> Exit</small>
             </div>
         </section>
 
         <!-- Results Screen -->
         <section id="results-screen" class="hidden" aria-label="Quiz results">
             <div class="card results-card">
-                <h2>Quiz Complete!</h2>
+                <div id="result-banner" class="result-banner">
+                    <h2 id="result-headline"></h2>
+                    <p id="result-subline" class="result-subline"></p>
+                </div>
 
                 <div class="score-display">
                     <div id="score-circle" class="score-circle" role="img" aria-label="Score">
@@ -148,8 +191,9 @@
                 <div id="review-list" class="review-list"></div>
 
                 <footer class="results-actions">
-                    <button id="retake-btn" class="btn btn-primary btn-large">Retake Quiz</button>
-                    <button id="export-btn" class="btn btn-secondary">Export Results (CSV)</button>
+                    <button id="home-results-btn" class="btn btn-secondary btn-large">🏠 Back to Home</button>
+                    <button id="retake-btn" class="btn btn-primary btn-large">🔄 Retake Quiz</button>
+                    <button id="export-btn" class="btn btn-secondary">📥 Export CSV</button>
                 </footer>
             </div>
         </section>
@@ -159,14 +203,29 @@
             <div class="card error-card">
                 <h2>⚠️ Something went wrong</h2>
                 <p id="error-message">Failed to load questions. Please check your connection and try again.</p>
-                <button id="retry-btn" class="btn btn-primary">Retry</button>
+                <div class="error-actions">
+                    <button id="retry-btn" class="btn btn-primary">Retry</button>
+                    <button id="home-error-btn" class="btn btn-secondary">Back to Home</button>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="app-footer">
-        <p>Built for AWS SAA-C03 exam preparation · <a href="https://github.com/Yashchaudhary05/aws_csa_c03-practice-quiz-website" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        <p>Cloud Certification Practice · <a href="https://github.com/Yashchaudhary05/aws_csa_c03-practice-quiz-website" target="_blank" rel="noopener noreferrer">GitHub</a></p>
     </footer>
+
+    <!-- Exit Confirmation Modal -->
+    <dialog id="exit-modal" class="modal">
+        <div class="modal-content">
+            <h3>Exit Quiz?</h3>
+            <p>Your progress will be lost. Are you sure you want to exit?</p>
+            <div class="modal-actions">
+                <button id="exit-cancel" class="btn btn-secondary">Continue Quiz</button>
+                <button id="exit-confirm" class="btn btn-danger">Exit Quiz</button>
+            </div>
+        </div>
+    </dialog>
 
     <script type="module" src="js/app.js"></script>
 </body>

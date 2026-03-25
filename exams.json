@@ -1,0 +1,38 @@
+[
+  {
+    "id": "aws-saa-c03",
+    "title": "AWS Solutions Architect Associate (SAA-C03)",
+    "shortTitle": "AWS SAA-C03",
+    "icon": "☁️",
+    "color": "#ff9900",
+    "questionFile": "questions.json",
+    "questionCount": 65,
+    "timeLimit": 3900,
+    "passingScore": 72,
+    "description": "Covers S3, EC2, VPC, IAM, RDS, Lambda, DynamoDB, CloudFront, and 22 AWS service areas."
+  },
+  {
+    "id": "aws-dev-associate",
+    "title": "AWS Developer Associate (DVA-C02)",
+    "shortTitle": "AWS DVA-C02",
+    "icon": "⚡",
+    "color": "#ff9900",
+    "questionFile": "questions/aws-dva-c02.json",
+    "questionCount": 15,
+    "timeLimit": 2400,
+    "passingScore": 72,
+    "description": "Covers Lambda, API Gateway, DynamoDB, CI/CD, CloudFormation, and developer tools."
+  },
+  {
+    "id": "azure-az900",
+    "title": "Microsoft Azure Fundamentals (AZ-900)",
+    "shortTitle": "Azure AZ-900",
+    "icon": "🔷",
+    "color": "#0078d4",
+    "questionFile": "questions/azure-az900.json",
+    "questionCount": 15,
+    "timeLimit": 2700,
+    "passingScore": 70,
+    "description": "Covers Azure core services, security, pricing, SLA, and cloud concepts."
+  }
+]

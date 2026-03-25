@@ -22,6 +22,7 @@ const defaultState = {
   theme: 'dark',
   quizStartTime: null,
   quizEndTime: null,
+  currentExam: null,      // selected exam object from exams.json
 };
 
 let state = { ...defaultState };
@@ -68,6 +69,7 @@ export function saveToStorage() {
     theme: state.theme,
     quizStartTime: state.quizStartTime,
     filteredQuestionIds: state.filteredQuestions.map(q => q.id),
+    examId: state.currentExam ? state.currentExam.id : null,
   };
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(serializable));

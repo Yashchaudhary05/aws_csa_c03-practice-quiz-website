@@ -16,20 +16,68 @@ export function showScreen(screen) {
   setState({ screen });
 }
 
-// ─── Start Screen ──────────────────────────────────────────────
-export function renderStartScreen(questions) {
+// ─── Exam Card Rendering ──────────────────────────────────────
+export function renderExamCards(exams, onSelect) {
+  const container = document.getElementById('exam-cards');
+  container.innerHTML = '';
+  exams.forEach(exam => {
+    const card = document.createElement('div');
+    card.className = 'exam-card';
+    card.style.setProperty('--exam-color', exam.color);
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', `Select ${exam.title}`);
+
+    card.innerHTML = `
+      <span class="exam-card-icon">${escapeHtml(exam.icon)}</span>
+      <div class="exam-card-title">${escapeHtml(exam.shortTitle || exam.title)}</div>
+      <div class="exam-card-desc">${escapeHtml(exam.description)}</div>
+      <div class="exam-card-meta">
+        <span>📝 ${exam.questionCount} questions</span>
+        <span>⏱️ ${Math.round(exam.timeLimit / 60)} min</span>
+        <span>✅ ${exam.passingScore}% pass</span>
+      </div>
+    `;
+
+    card.addEventListener('click', () => onSelect(exam));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(exam); }
+    });
+    container.appendChild(card);
+  });
+}
+
+// ─── Start Screen Config ──────────────────────────────────────
+export function renderStartConfig(exam, questions) {
+  const configEl = document.getElementById('quiz-config');
+  const selectorEl = document.querySelector('.exam-selector-section');
+
+  // Show config, hide exam selector
+  configEl.classList.remove('hidden');
+  selectorEl.classList.add('hidden');
+
+  // Populate exam info
+  document.getElementById('selected-exam-icon').textContent = exam.icon;
+  document.getElementById('selected-exam-title').textContent = exam.shortTitle || exam.title;
+  document.getElementById('selected-exam-desc').textContent = exam.description;
+
+  // Populate topics
   const topics = getTopics(questions);
   const container = document.getElementById('topic-checkboxes');
   container.innerHTML = '';
 
   topics.forEach(topic => {
     const label = document.createElement('label');
-    label.className = 'topic-checkbox';
+    label.className = 'topic-checkbox checked';
 
     const input = document.createElement('input');
     input.type = 'checkbox';
     input.value = topic;
     input.checked = true;
+
+    input.addEventListener('change', () => {
+      label.classList.toggle('checked', input.checked);
+    });
 
     const span = document.createElement('span');
     span.textContent = topic;
@@ -38,6 +86,13 @@ export function renderStartScreen(questions) {
     label.appendChild(span);
     container.appendChild(label);
   });
+}
+
+export function showExamSelector() {
+  const configEl = document.getElementById('quiz-config');
+  const selectorEl = document.querySelector('.exam-selector-section');
+  configEl.classList.add('hidden');
+  selectorEl.classList.remove('hidden');
 }
 
 // ─── Question Navigator ────────────────────────────────────────
@@ -52,7 +107,6 @@ export function renderNavigator() {
     btn.textContent = i + 1;
     btn.setAttribute('aria-label', `Go to question ${i + 1}`);
 
-    // Status classes
     if (i === state.currentIndex) btn.classList.add('current');
     if (state.answers[q.id]) btn.classList.add('answered');
     if (state.flagged.has(q.id)) btn.classList.add('flagged');
@@ -84,6 +138,15 @@ export function renderQuestion() {
   // Question text
   document.getElementById('question-text').textContent = q.question;
 
+  // Multi-select hint
+  const hint = document.getElementById('multi-select-hint');
+  if (q.multiSelect) {
+    hint.textContent = `Select ${q.selectCount || 2} answers`;
+    hint.classList.remove('hidden');
+  } else {
+    hint.classList.add('hidden');
+  }
+
   // Flag button
   const flagBtn = document.getElementById('flag-btn');
   flagBtn.classList.toggle('active', state.flagged.has(q.id));
@@ -96,6 +159,8 @@ export function renderQuestion() {
   const legend = document.getElementById('options-legend');
   legend.textContent = q.multiSelect ? `Select ${q.selectCount} answers` : 'Select your answer';
 
+  const isAnswered = !!state.answers[q.id];
+
   q.options.forEach((opt, i) => {
     const label = document.createElement('label');
     label.className = 'option-label';
@@ -106,8 +171,9 @@ export function renderQuestion() {
     input.value = opt;
 
     // Restore previous selection
-    if (state.answers[q.id] && state.answers[q.id].includes(opt)) {
+    if (isAnswered && state.answers[q.id].includes(opt)) {
       input.checked = true;
+      label.classList.add('selected');
     }
 
     const span = document.createElement('span');
@@ -121,6 +187,18 @@ export function renderQuestion() {
     label.appendChild(input);
     label.appendChild(shortcut);
     label.appendChild(span);
+
+    // ★ Click handler to toggle visual selected state
+    if (!isAnswered && state.mode !== 'review') {
+      input.addEventListener('change', () => {
+        if (inputType === 'radio') {
+          // Deselect all others
+          container.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+        }
+        label.classList.toggle('selected', input.checked);
+      });
+    }
+
     container.appendChild(label);
   });
 
@@ -132,7 +210,10 @@ export function renderQuestion() {
 
   prevBtn.disabled = state.currentIndex === 0;
 
-  // In review mode, show answers immediately
+  // Clear feedback area
+  document.getElementById('result-feedback').classList.add('hidden');
+  document.getElementById('explanation-box').classList.add('hidden');
+
   if (state.mode === 'review') {
     submitBtn.classList.add('hidden');
     showReviewAnswers(q);
@@ -143,12 +224,15 @@ export function renderQuestion() {
       nextBtn.classList.add('hidden');
       finishBtn.classList.remove('hidden');
     }
-  } else if (state.answers[q.id]) {
-    // Already answered
+  } else if (isAnswered) {
     submitBtn.classList.add('hidden');
     if (state.mode === 'practice') {
       showFeedback(q);
     }
+    // Disable inputs
+    container.querySelectorAll('input').forEach(inp => inp.disabled = true);
+    container.querySelectorAll('.option-label').forEach(l => l.classList.add('disabled'));
+
     if (state.currentIndex < state.filteredQuestions.length - 1) {
       nextBtn.classList.remove('hidden');
       finishBtn.classList.add('hidden');
@@ -162,31 +246,19 @@ export function renderQuestion() {
     finishBtn.classList.add('hidden');
   }
 
-  // Clear feedback if not already answered
-  if (!state.answers[q.id] && state.mode !== 'review') {
-    document.getElementById('result-feedback').classList.add('hidden');
-    document.getElementById('explanation-box').classList.add('hidden');
-  }
-
   // Progress
   updateProgress();
   renderNavigator();
-
-  // Disable options if already answered (except review mode)
-  if (state.answers[q.id] && state.mode !== 'review') {
-    container.querySelectorAll('input').forEach(inp => inp.disabled = true);
-  }
-  if (state.mode === 'review') {
-    container.querySelectorAll('input').forEach(inp => inp.disabled = true);
-  }
 }
 
 function showReviewAnswers(q) {
   const container = document.getElementById('options-container');
   container.querySelectorAll('input').forEach(input => {
     const label = input.closest('.option-label');
+    input.disabled = true;
+    label.classList.add('disabled');
     if (q.answer.includes(input.value)) {
-      label.classList.add('correct');
+      label.classList.add('show-correct');
     }
   });
 
@@ -195,12 +267,9 @@ function showReviewAnswers(q) {
     explanation.textContent = q.explanation;
     explanation.classList.remove('hidden');
   }
-
-  document.getElementById('result-feedback').classList.add('hidden');
 }
 
 function showFeedback(q) {
-  const state = getState();
   const correct = isCorrect(q.id);
   const feedback = document.getElementById('result-feedback');
   const explanation = document.getElementById('explanation-box');
@@ -214,15 +283,16 @@ function showFeedback(q) {
     explanation.classList.remove('hidden');
   }
 
-  // Highlight options
+  // Highlight options with show-correct / show-incorrect
   const container = document.getElementById('options-container');
   container.querySelectorAll('input').forEach(input => {
     const label = input.closest('.option-label');
     input.disabled = true;
+    label.classList.add('disabled');
     if (q.answer.includes(input.value)) {
-      label.classList.add('correct');
+      label.classList.add('show-correct');
     } else if (input.checked) {
-      label.classList.add('incorrect');
+      label.classList.add('show-incorrect');
     }
   });
 }
@@ -281,6 +351,7 @@ export function handleSubmit() {
 
   // Disable option inputs
   document.querySelectorAll('#options-container input').forEach(inp => inp.disabled = true);
+  document.querySelectorAll('#options-container .option-label').forEach(l => l.classList.add('disabled'));
   renderNavigator();
 }
 
@@ -313,11 +384,7 @@ export function handlePrev() {
 function saveQuestionTime() {
   const state = getState();
   const q = state.filteredQuestions[state.currentIndex];
-  if (!q || state.timePerQuestion[q.id]) return; // Don't overwrite
-
-  if (state.questionStartTime && !state.answers[q.id]) {
-    // Only save if not yet answered — time tracked at submit
-  }
+  if (!q || state.timePerQuestion[q.id]) return;
 }
 
 export function handleFlag() {
@@ -336,6 +403,17 @@ export function renderResults() {
   const total = state.filteredQuestions.length;
   const pct = total > 0 ? Math.round((score / total) * 100) : 0;
   const analytics = getAnalytics();
+  const exam = state.currentExam;
+  const passing = exam ? exam.passingScore : 72;
+  const passed = pct >= passing;
+
+  // Result banner
+  const headline = document.getElementById('result-headline');
+  const subline = document.getElementById('result-subline');
+  headline.textContent = passed ? '🎉 Congratulations!' : '📚 Keep Studying!';
+  subline.textContent = passed
+    ? `You passed with ${pct}% (passing: ${passing}%)`
+    : `You scored ${pct}% (passing: ${passing}%)`;
 
   // Score circle animation
   const ring = document.getElementById('score-ring');
@@ -346,8 +424,7 @@ export function renderResults() {
     ring.style.strokeDashoffset = circumference - (pct / 100) * circumference;
   }, 100);
 
-  // Score color
-  ring.style.stroke = pct >= 72 ? '#4caf50' : pct >= 50 ? '#ff9800' : '#f44336';
+  ring.style.stroke = pct >= passing ? '#22c55e' : pct >= 50 ? '#f59e0b' : '#ef4444';
 
   document.getElementById('score-percent').textContent = `${pct}%`;
   document.getElementById('score-text').textContent = `${score} out of ${total} correct`;
@@ -381,7 +458,7 @@ export function renderResults() {
     const barFill = document.createElement('div');
     barFill.className = 'stat-bar-fill';
     barFill.style.width = `${topicPct}%`;
-    barFill.style.backgroundColor = topicPct >= 72 ? '#4caf50' : topicPct >= 50 ? '#ff9800' : '#f44336';
+    barFill.style.backgroundColor = topicPct >= 72 ? '#22c55e' : topicPct >= 50 ? '#f59e0b' : '#ef4444';
     bar.appendChild(barFill);
 
     div.appendChild(title);
@@ -462,8 +539,10 @@ export function renderResults() {
 export function handleExport() {
   const state = getState();
   const csv = generateCSV(state.filteredQuestions, state.answers, state.timePerQuestion);
+  const exam = state.currentExam;
+  const prefix = exam ? exam.id : 'quiz';
   const date = new Date().toISOString().split('T')[0];
-  downloadFile(csv, `aws-quiz-results-${date}.csv`, 'text/csv');
+  downloadFile(csv, `${prefix}-results-${date}.csv`, 'text/csv');
 }
 
 // ─── Timer Display ─────────────────────────────────────────────
