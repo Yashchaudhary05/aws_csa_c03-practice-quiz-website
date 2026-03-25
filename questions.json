@@ -297,6 +297,711 @@
     "topic": "EC2",
     "difficulty": "easy",
     "explanation": "/dev/sda1 is the conventional device name reserved for the root device (boot volume) in Linux EC2 instances. Additional EBS volumes use /dev/sd[f-p] and instance store volumes use /dev/sd[b-e]."
+  },
+  {
+    "id": 21,
+    "question": "A company needs to store sensitive customer data in Amazon S3 and must ensure that the data is encrypted at rest using keys managed by the company. Which encryption option should they use?",
+    "options": [
+      "SSE-S3",
+      "SSE-KMS with AWS managed key",
+      "SSE-KMS with customer managed key (CMK)",
+      "Client-side encryption with Amazon S3 managed keys"
+    ],
+    "answer": ["SSE-KMS with customer managed key (CMK)"],
+    "multiSelect": false,
+    "topic": "S3",
+    "difficulty": "medium",
+    "explanation": "SSE-KMS with a customer managed key (CMK) allows the company to manage, rotate, and audit the encryption keys themselves through AWS KMS, providing full control over who can use the key."
+  },
+  {
+    "id": 22,
+    "question": "Which AWS service provides a fully managed NoSQL database that supports both document and key-value data models?",
+    "options": [
+      "Amazon RDS",
+      "Amazon Redshift",
+      "Amazon DynamoDB",
+      "Amazon ElastiCache"
+    ],
+    "answer": ["Amazon DynamoDB"],
+    "multiSelect": false,
+    "topic": "DynamoDB",
+    "difficulty": "easy",
+    "explanation": "DynamoDB is AWS's fully managed NoSQL database service that supports both key-value and document data models. It provides single-digit millisecond latency at any scale."
+  },
+  {
+    "id": 23,
+    "question": "A solutions architect needs to design a highly available architecture for a web application. The application runs on EC2 instances behind an Application Load Balancer. Which configuration provides the HIGHEST availability?",
+    "options": [
+      "Deploy instances in a single Availability Zone with Auto Scaling.",
+      "Deploy instances across multiple Availability Zones with Auto Scaling.",
+      "Deploy instances in a single Region across multiple VPCs.",
+      "Deploy instances on dedicated hosts in a single Availability Zone."
+    ],
+    "answer": ["Deploy instances across multiple Availability Zones with Auto Scaling."],
+    "multiSelect": false,
+    "topic": "Architecture",
+    "difficulty": "easy",
+    "explanation": "Deploying across multiple AZs ensures that if one AZ fails, the application continues running in the other AZ(s). Auto Scaling ensures the desired capacity is maintained automatically."
+  },
+  {
+    "id": 24,
+    "question": "What is the maximum size of a single object that can be uploaded to Amazon S3?",
+    "options": [
+      "5 GB",
+      "5 TB",
+      "10 TB",
+      "Unlimited"
+    ],
+    "answer": ["5 TB"],
+    "multiSelect": false,
+    "topic": "S3",
+    "difficulty": "easy",
+    "explanation": "The maximum size of a single S3 object is 5 TB. For objects larger than 5 GB, you must use multipart upload. A single PUT can upload up to 5 GB."
+  },
+  {
+    "id": 25,
+    "question": "Which AWS service should be used to decouple application components and handle asynchronous communication between microservices?",
+    "options": [
+      "Amazon SNS",
+      "Amazon SQS",
+      "Amazon Kinesis",
+      "AWS Step Functions"
+    ],
+    "answer": ["Amazon SQS"],
+    "multiSelect": false,
+    "topic": "SQS",
+    "difficulty": "easy",
+    "explanation": "Amazon SQS (Simple Queue Service) is a fully managed message queuing service designed to decouple and scale microservices. It enables asynchronous communication by allowing components to send and receive messages through a queue."
+  },
+  {
+    "id": 26,
+    "question": "A company wants to host a static website with low latency for global users. Which combination of AWS services should be used? (Choose 2 answers)",
+    "options": [
+      "Amazon EC2 with Auto Scaling",
+      "Amazon S3 static website hosting",
+      "Amazon CloudFront",
+      "Amazon RDS",
+      "AWS Lambda"
+    ],
+    "answer": [
+      "Amazon S3 static website hosting",
+      "Amazon CloudFront"
+    ],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "CloudFront",
+    "difficulty": "easy",
+    "explanation": "S3 can host static websites natively. CloudFront as a CDN caches the content at edge locations worldwide, reducing latency for global users. This is the most cost-effective and scalable solution for static content."
+  },
+  {
+    "id": 27,
+    "question": "Which type of Elastic Load Balancer operates at the connection level (Layer 4) and is capable of handling millions of requests per second with ultra-low latency?",
+    "options": [
+      "Application Load Balancer",
+      "Network Load Balancer",
+      "Classic Load Balancer",
+      "Gateway Load Balancer"
+    ],
+    "answer": ["Network Load Balancer"],
+    "multiSelect": false,
+    "topic": "ELB",
+    "difficulty": "medium",
+    "explanation": "NLB operates at Layer 4 (TCP/UDP), handles millions of requests per second, and provides ultra-low latency. ALB operates at Layer 7 (HTTP/HTTPS). Gateway LB is for deploying third-party virtual appliances."
+  },
+  {
+    "id": 28,
+    "question": "An application requires a relational database with automatic failover to a standby in a different Availability Zone. Which Amazon RDS feature provides this?",
+    "options": [
+      "Read Replicas",
+      "Multi-AZ deployment",
+      "RDS Proxy",
+      "Aurora Global Database"
+    ],
+    "answer": ["Multi-AZ deployment"],
+    "multiSelect": false,
+    "topic": "RDS",
+    "difficulty": "easy",
+    "explanation": "Multi-AZ deployment creates a synchronous standby replica in a different AZ. RDS automatically fails over to the standby in case of planned or unplanned outages. Read Replicas are for read scaling, not automatic failover."
+  },
+  {
+    "id": 29,
+    "question": "Which AWS service enables you to run code without provisioning or managing servers, paying only for the compute time consumed?",
+    "options": [
+      "Amazon EC2",
+      "AWS Elastic Beanstalk",
+      "AWS Lambda",
+      "Amazon ECS"
+    ],
+    "answer": ["AWS Lambda"],
+    "multiSelect": false,
+    "topic": "Lambda",
+    "difficulty": "easy",
+    "explanation": "AWS Lambda is a serverless compute service that runs your code in response to events. You pay only for the compute time consumed — there is no charge when your code is not running."
+  },
+  {
+    "id": 30,
+    "question": "A company has an on-premises data center and wants to extend their network to AWS while maintaining a private, dedicated connection. Which service should they use?",
+    "options": [
+      "AWS VPN",
+      "AWS Direct Connect",
+      "Amazon VPC Peering",
+      "AWS Transit Gateway"
+    ],
+    "answer": ["AWS Direct Connect"],
+    "multiSelect": false,
+    "topic": "Networking",
+    "difficulty": "medium",
+    "explanation": "AWS Direct Connect provides a dedicated, private network connection from your premises to AWS. It offers more consistent network performance and can reduce bandwidth costs compared to VPN over the internet."
+  },
+  {
+    "id": 31,
+    "question": "Which S3 storage class is the most cost-effective for data that is accessed less than once a year and can tolerate retrieval times of 12 hours?",
+    "options": [
+      "S3 Standard-IA",
+      "S3 One Zone-IA",
+      "S3 Glacier",
+      "S3 Glacier Deep Archive"
+    ],
+    "answer": ["S3 Glacier Deep Archive"],
+    "multiSelect": false,
+    "topic": "S3",
+    "difficulty": "medium",
+    "explanation": "S3 Glacier Deep Archive is the lowest-cost storage class designed for data archival. It supports retrieval times of 12-48 hours and is ideal for data accessed once or twice a year."
+  },
+  {
+    "id": 32,
+    "question": "Which AWS service is a managed Apache Kafka service for building real-time streaming data pipelines?",
+    "options": [
+      "Amazon Kinesis Data Streams",
+      "Amazon MSK (Managed Streaming for Apache Kafka)",
+      "Amazon SQS",
+      "Amazon EventBridge"
+    ],
+    "answer": ["Amazon MSK (Managed Streaming for Apache Kafka)"],
+    "multiSelect": false,
+    "topic": "Analytics",
+    "difficulty": "medium",
+    "explanation": "Amazon MSK is a fully managed service for running Apache Kafka. It handles provisioning, configuration, and maintenance of Kafka clusters. Kinesis is AWS-native but not Kafka-compatible."
+  },
+  {
+    "id": 33,
+    "question": "A solutions architect needs to design a solution where an application running on EC2 can securely access S3 without storing credentials on the instance. What should they use?",
+    "options": [
+      "Store access keys in environment variables",
+      "Use an IAM role attached to the EC2 instance",
+      "Store credentials in an S3 bucket",
+      "Use AWS STS to generate temporary credentials manually"
+    ],
+    "answer": ["Use an IAM role attached to the EC2 instance"],
+    "multiSelect": false,
+    "topic": "IAM",
+    "difficulty": "easy",
+    "explanation": "IAM roles for EC2 provide temporary credentials that are automatically rotated. The EC2 instance metadata service delivers these credentials to applications. This eliminates the need to store long-term access keys."
+  },
+  {
+    "id": 34,
+    "question": "Which VPC component allows instances in a private subnet to access the internet for software updates while preventing inbound connections from the internet?",
+    "options": [
+      "Internet Gateway",
+      "NAT Gateway",
+      "VPC Endpoint",
+      "Virtual Private Gateway"
+    ],
+    "answer": ["NAT Gateway"],
+    "multiSelect": false,
+    "topic": "VPC",
+    "difficulty": "easy",
+    "explanation": "A NAT Gateway enables instances in private subnets to initiate outbound connections to the internet while blocking unsolicited inbound connections. An Internet Gateway allows both inbound and outbound, which is used for public subnets."
+  },
+  {
+    "id": 35,
+    "question": "A company needs to migrate 50 TB of data from on-premises to AWS S3. The internet connection is 100 Mbps. Which service would be the fastest migration method?",
+    "options": [
+      "AWS DataSync over the internet",
+      "AWS Snowball Edge",
+      "S3 Transfer Acceleration",
+      "AWS Direct Connect"
+    ],
+    "answer": ["AWS Snowball Edge"],
+    "multiSelect": false,
+    "topic": "Migration",
+    "difficulty": "medium",
+    "explanation": "At 100 Mbps, transferring 50 TB would take over 46 days over the internet. AWS Snowball Edge is a physical device that can store up to 80 TB and be shipped to/from AWS, completing the transfer in about a week including shipping."
+  },
+  {
+    "id": 36,
+    "question": "Which of the following are characteristics of Amazon Aurora? (Choose 2 answers)",
+    "options": [
+      "It is compatible with MySQL and PostgreSQL.",
+      "It is a NoSQL database service.",
+      "It automatically replicates data across 3 Availability Zones with 6 copies of data.",
+      "It supports only single-AZ deployments.",
+      "It requires manual patching and maintenance."
+    ],
+    "answer": [
+      "It is compatible with MySQL and PostgreSQL.",
+      "It automatically replicates data across 3 Availability Zones with 6 copies of data."
+    ],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "RDS",
+    "difficulty": "medium",
+    "explanation": "Aurora is MySQL and PostgreSQL compatible. It stores 6 copies of data across 3 AZs automatically. It's a managed relational database (not NoSQL), supports Multi-AZ, and is fully managed by AWS."
+  },
+  {
+    "id": 37,
+    "question": "An application needs to process messages in a FIFO order and ensure each message is processed exactly once. Which SQS queue type should be used?",
+    "options": [
+      "Standard Queue",
+      "FIFO Queue",
+      "Dead Letter Queue",
+      "Priority Queue"
+    ],
+    "answer": ["FIFO Queue"],
+    "multiSelect": false,
+    "topic": "SQS",
+    "difficulty": "easy",
+    "explanation": "SQS FIFO queues guarantee that messages are processed in the exact order they are sent and that each message is delivered exactly once. Standard queues offer best-effort ordering and at-least-once delivery."
+  },
+  {
+    "id": 38,
+    "question": "Which AWS service enables you to centrally manage and enforce policies across multiple AWS accounts?",
+    "options": [
+      "AWS IAM",
+      "AWS Organizations",
+      "AWS Config",
+      "AWS Control Tower"
+    ],
+    "answer": ["AWS Organizations"],
+    "multiSelect": false,
+    "topic": "IAM",
+    "difficulty": "medium",
+    "explanation": "AWS Organizations lets you centrally manage multiple AWS accounts. You can use Service Control Policies (SCPs) to enforce permission guardrails across all member accounts. Control Tower builds on Organizations but adds more governance features."
+  },
+  {
+    "id": 39,
+    "question": "A web application needs to store session data that requires sub-millisecond latency. Which AWS service is best suited for this?",
+    "options": [
+      "Amazon RDS",
+      "Amazon DynamoDB",
+      "Amazon ElastiCache",
+      "Amazon S3"
+    ],
+    "answer": ["Amazon ElastiCache"],
+    "multiSelect": false,
+    "topic": "ElastiCache",
+    "difficulty": "medium",
+    "explanation": "ElastiCache (Redis or Memcached) provides in-memory caching with sub-millisecond latency. It's ideal for session stores, caching, and real-time analytics. DynamoDB has single-digit millisecond latency but ElastiCache is faster for session data."
+  },
+  {
+    "id": 40,
+    "question": "Which AWS service can automatically detect and protect sensitive data (like PII) stored in Amazon S3?",
+    "options": [
+      "Amazon GuardDuty",
+      "Amazon Macie",
+      "AWS Shield",
+      "Amazon Inspector"
+    ],
+    "answer": ["Amazon Macie"],
+    "multiSelect": false,
+    "topic": "Security",
+    "difficulty": "medium",
+    "explanation": "Amazon Macie uses machine learning to automatically discover, classify, and protect sensitive data in S3. It can identify PII, financial data, and other sensitive information. GuardDuty is for threat detection, Shield for DDoS, Inspector for EC2 vulnerabilities."
+  },
+  {
+    "id": 41,
+    "question": "A company wants to analyze CloudTrail logs, VPC Flow Logs, and DNS logs to detect potential security threats across their AWS accounts. Which service should they use?",
+    "options": [
+      "Amazon Inspector",
+      "Amazon Macie",
+      "Amazon GuardDuty",
+      "AWS WAF"
+    ],
+    "answer": ["Amazon GuardDuty"],
+    "multiSelect": false,
+    "topic": "Security",
+    "difficulty": "medium",
+    "explanation": "GuardDuty is a threat detection service that continuously monitors CloudTrail logs, VPC Flow Logs, and DNS logs using machine learning and threat intelligence to identify malicious activity and unauthorized behavior."
+  },
+  {
+    "id": 42,
+    "question": "Which of the following are valid Amazon EC2 instance purchasing options? (Choose 2 answers)",
+    "options": [
+      "On-Demand Instances",
+      "Prepaid Instances",
+      "Spot Instances",
+      "Subscription Instances",
+      "Layaway Instances"
+    ],
+    "answer": [
+      "On-Demand Instances",
+      "Spot Instances"
+    ],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "EC2",
+    "difficulty": "easy",
+    "explanation": "EC2 purchasing options include On-Demand, Reserved Instances, Spot Instances, Savings Plans, Dedicated Hosts, and Dedicated Instances. There are no 'Prepaid', 'Subscription', or 'Layaway' instance types."
+  },
+  {
+    "id": 43,
+    "question": "An application requires a managed graph database for storing and querying highly connected data such as social networks and recommendation engines. Which AWS service is most appropriate?",
+    "options": [
+      "Amazon DynamoDB",
+      "Amazon Neptune",
+      "Amazon DocumentDB",
+      "Amazon Timestream"
+    ],
+    "answer": ["Amazon Neptune"],
+    "multiSelect": false,
+    "topic": "Database",
+    "difficulty": "medium",
+    "explanation": "Amazon Neptune is a fully managed graph database service optimized for storing and querying highly connected datasets. It supports both Property Graph and RDF models. DynamoDB is key-value/document, DocumentDB is MongoDB-compatible, Timestream is for time-series."
+  },
+  {
+    "id": 44,
+    "question": "Which Route 53 routing policy should be used to route traffic based on the geographic location of the user?",
+    "options": [
+      "Simple routing",
+      "Weighted routing",
+      "Latency-based routing",
+      "Geolocation routing"
+    ],
+    "answer": ["Geolocation routing"],
+    "multiSelect": false,
+    "topic": "Route 53",
+    "difficulty": "easy",
+    "explanation": "Geolocation routing lets you route traffic based on the geographic location of your users (i.e., the location that DNS queries originate from). This is useful for content localization, load distribution by region, and compliance restrictions."
+  },
+  {
+    "id": 45,
+    "question": "A company needs to share an Amazon Machine Image (AMI) with another AWS account. What is the correct approach?",
+    "options": [
+      "Copy the AMI to an S3 bucket and share the bucket",
+      "Modify the AMI permissions to include the target account ID",
+      "Create an IAM cross-account role for the target account",
+      "Export the AMI and send it physically to the other account"
+    ],
+    "answer": ["Modify the AMI permissions to include the target account ID"],
+    "multiSelect": false,
+    "topic": "EC2",
+    "difficulty": "medium",
+    "explanation": "You can share an AMI by modifying its launch permissions to include the AWS account ID you want to share with. The AMI can be shared as private (specific accounts) or public (all accounts)."
+  },
+  {
+    "id": 46,
+    "question": "What is the maximum number of VPCs you can create per AWS Region by default?",
+    "options": [
+      "1",
+      "5",
+      "10",
+      "20"
+    ],
+    "answer": ["5"],
+    "multiSelect": false,
+    "topic": "VPC",
+    "difficulty": "easy",
+    "explanation": "The default limit is 5 VPCs per Region. This is a soft limit that can be increased by contacting AWS Support."
+  },
+  {
+    "id": 47,
+    "question": "A company is running a three-tier web application and wants to restrict direct access to their database tier from the internet. Which approach should be taken?",
+    "options": [
+      "Place the database in a public subnet with a restrictive security group",
+      "Place the database in a private subnet",
+      "Use a NAT Gateway in front of the database",
+      "Attach an Internet Gateway directly to the database subnet"
+    ],
+    "answer": ["Place the database in a private subnet"],
+    "multiSelect": false,
+    "topic": "VPC",
+    "difficulty": "easy",
+    "explanation": "Placing the database in a private subnet ensures it has no direct route to the internet. The application tier in a public or private subnet can connect to the database, but internet users cannot reach the database directly."
+  },
+  {
+    "id": 48,
+    "question": "Which AWS service provides a fully managed data warehouse that can analyze data using standard SQL and existing business intelligence tools?",
+    "options": [
+      "Amazon RDS",
+      "Amazon Redshift",
+      "Amazon DynamoDB",
+      "Amazon Athena"
+    ],
+    "answer": ["Amazon Redshift"],
+    "multiSelect": false,
+    "topic": "Analytics",
+    "difficulty": "easy",
+    "explanation": "Amazon Redshift is a fully managed, petabyte-scale cloud data warehouse. It uses SQL to analyze structured and semi-structured data and integrates with popular BI tools like Tableau, Looker, and QuickSight."
+  },
+  {
+    "id": 49,
+    "question": "An architect wants to run SQL queries directly against data stored in Amazon S3 without loading it into a database. Which service should they use?",
+    "options": [
+      "Amazon Redshift",
+      "Amazon Athena",
+      "Amazon EMR",
+      "Amazon RDS"
+    ],
+    "answer": ["Amazon Athena"],
+    "multiSelect": false,
+    "topic": "Analytics",
+    "difficulty": "easy",
+    "explanation": "Amazon Athena is a serverless query service that lets you analyze data directly in S3 using standard SQL. There is no infrastructure to manage and you pay only for the queries you run."
+  },
+  {
+    "id": 50,
+    "question": "Which AWS service provides managed threat detection for protecting AWS accounts, workloads, and data stored in S3?",
+    "options": [
+      "AWS Shield",
+      "AWS WAF",
+      "Amazon GuardDuty",
+      "AWS Firewall Manager"
+    ],
+    "answer": ["Amazon GuardDuty"],
+    "multiSelect": false,
+    "topic": "Security",
+    "difficulty": "easy",
+    "explanation": "Amazon GuardDuty is a managed threat detection service that uses machine learning, anomaly detection, and integrated threat intelligence to identify and prioritize potential threats."
+  },
+  {
+    "id": 51,
+    "question": "A company needs to distribute incoming application traffic across multiple targets in multiple Availability Zones. The application uses HTTPS and requires path-based routing. Which ELB type should they choose?",
+    "options": [
+      "Classic Load Balancer",
+      "Network Load Balancer",
+      "Application Load Balancer",
+      "Gateway Load Balancer"
+    ],
+    "answer": ["Application Load Balancer"],
+    "multiSelect": false,
+    "topic": "ELB",
+    "difficulty": "easy",
+    "explanation": "Application Load Balancer (ALB) operates at Layer 7 and supports path-based routing, host-based routing, and HTTPS termination. NLB is Layer 4 and doesn't support path-based routing. Classic LB is legacy."
+  },
+  {
+    "id": 52,
+    "question": "Which of the following is a benefit of using Amazon CloudFront? (Choose 2 answers)",
+    "options": [
+      "Real-time data analytics",
+      "Caching content at edge locations for low latency",
+      "DDoS protection through AWS Shield integration",
+      "Relational database management",
+      "Serverless compute for API backends"
+    ],
+    "answer": [
+      "Caching content at edge locations for low latency",
+      "DDoS protection through AWS Shield integration"
+    ],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "CloudFront",
+    "difficulty": "easy",
+    "explanation": "CloudFront caches content at 450+ edge locations worldwide for low latency delivery. It also integrates with AWS Shield Standard (free) for DDoS protection. CloudFront is a CDN, not a database, analytics, or compute service."
+  },
+  {
+    "id": 53,
+    "question": "A company needs to automatically scale their DynamoDB table capacity based on actual traffic patterns. Which feature should they enable?",
+    "options": [
+      "DynamoDB Provisioned Capacity",
+      "DynamoDB Auto Scaling",
+      "DynamoDB On-Demand Capacity",
+      "DynamoDB Reserved Capacity"
+    ],
+    "answer": ["DynamoDB Auto Scaling"],
+    "multiSelect": false,
+    "topic": "DynamoDB",
+    "difficulty": "medium",
+    "explanation": "DynamoDB Auto Scaling adjusts provisioned throughput capacity in response to actual traffic patterns. On-Demand capacity is another option but charges per-request, which may be more expensive for predictable workloads. Auto Scaling is the best fit for automatically adjusting to traffic."
+  },
+  {
+    "id": 54,
+    "question": "Which AWS service provides a virtual network that closely resembles a traditional network in a data center, with the benefits of the scalable infrastructure of AWS?",
+    "options": [
+      "AWS Direct Connect",
+      "Amazon VPC",
+      "Amazon Route 53",
+      "AWS Transit Gateway"
+    ],
+    "answer": ["Amazon VPC"],
+    "multiSelect": false,
+    "topic": "VPC",
+    "difficulty": "easy",
+    "explanation": "Amazon VPC (Virtual Private Cloud) enables you to launch AWS resources in a logically isolated virtual network. You have full control over IP addressing, subnets, route tables, and network gateways."
+  },
+  {
+    "id": 55,
+    "question": "A company is running a legacy application that requires a fixed IP address for whitelisting by a partner company. The application runs behind a load balancer. Which ELB type should they use?",
+    "options": [
+      "Application Load Balancer",
+      "Classic Load Balancer",
+      "Network Load Balancer",
+      "Gateway Load Balancer"
+    ],
+    "answer": ["Network Load Balancer"],
+    "multiSelect": false,
+    "topic": "ELB",
+    "difficulty": "medium",
+    "explanation": "NLB provides a static IP address per AZ (or can use Elastic IPs). ALB does not support static IPs natively. NLB is the correct choice when IP whitelisting is required by partners or firewalls."
+  },
+  {
+    "id": 56,
+    "question": "An application writes data that will never be modified after creation. Which S3 feature should be used to prevent accidental or intentional deletion of this data?",
+    "options": [
+      "S3 Versioning",
+      "S3 Object Lock",
+      "S3 Lifecycle Policies",
+      "S3 Cross-Region Replication"
+    ],
+    "answer": ["S3 Object Lock"],
+    "multiSelect": false,
+    "topic": "S3",
+    "difficulty": "medium",
+    "explanation": "S3 Object Lock implements a Write Once Read Many (WORM) model, preventing objects from being deleted or overwritten for a fixed period or indefinitely. It's used for regulatory compliance and data protection."
+  },
+  {
+    "id": 57,
+    "question": "Which AWS service allows you to automate the creation of EBS snapshots and manage their lifecycle?",
+    "options": [
+      "AWS Backup",
+      "Amazon Data Lifecycle Manager (DLM)",
+      "AWS CloudFormation",
+      "AWS Systems Manager"
+    ],
+    "answer": ["Amazon Data Lifecycle Manager (DLM)"],
+    "multiSelect": false,
+    "topic": "EC2",
+    "difficulty": "medium",
+    "explanation": "Amazon Data Lifecycle Manager automates the creation, retention, and deletion of EBS snapshots and EBS-backed AMIs. It uses lifecycle policies to define the schedule and retention rules."
+  },
+  {
+    "id": 58,
+    "question": "An architect needs to design a serverless REST API backend. Which combination of AWS services should be used? (Choose 2 answers)",
+    "options": [
+      "Amazon EC2",
+      "Amazon API Gateway",
+      "AWS Lambda",
+      "Amazon ECS",
+      "Amazon CloudFront"
+    ],
+    "answer": [
+      "Amazon API Gateway",
+      "AWS Lambda"
+    ],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "Lambda",
+    "difficulty": "easy",
+    "explanation": "API Gateway provides the HTTP endpoint and routing. Lambda provides the serverless compute to handle the business logic. Together they form a fully serverless API — no servers to manage, with automatic scaling."
+  },
+  {
+    "id": 59,
+    "question": "Which service should be used to convert speech to text for building voice-enabled applications?",
+    "options": [
+      "Amazon Polly",
+      "Amazon Transcribe",
+      "Amazon Translate",
+      "Amazon Comprehend"
+    ],
+    "answer": ["Amazon Transcribe"],
+    "multiSelect": false,
+    "topic": "ML",
+    "difficulty": "easy",
+    "explanation": "Amazon Transcribe converts speech to text (speech-to-text / ASR). Amazon Polly does the opposite — converts text to speech. Translate handles language translation, and Comprehend performs natural language processing."
+  },
+  {
+    "id": 60,
+    "question": "A company has multiple AWS accounts and wants to consolidate billing while maintaining separate account boundaries. Which service enables this?",
+    "options": [
+      "AWS Budgets",
+      "AWS Cost Explorer",
+      "AWS Organizations with consolidated billing",
+      "AWS Billing Dashboard"
+    ],
+    "answer": ["AWS Organizations with consolidated billing"],
+    "multiSelect": false,
+    "topic": "IAM",
+    "difficulty": "easy",
+    "explanation": "AWS Organizations provides consolidated billing across all member accounts while maintaining separate account boundaries. It also enables volume pricing discounts across the organization."
+  },
+  {
+    "id": 61,
+    "question": "Which DynamoDB feature allows you to create a complete copy of a table for data analysis without impacting production performance?",
+    "options": [
+      "DynamoDB Streams",
+      "DynamoDB Global Tables",
+      "DynamoDB Export to S3",
+      "DynamoDB On-Demand Backup"
+    ],
+    "answer": ["DynamoDB Export to S3"],
+    "multiSelect": false,
+    "topic": "DynamoDB",
+    "difficulty": "medium",
+    "explanation": "DynamoDB Export to S3 lets you export table data to S3 without impacting read capacity or performance. The exported data can then be analyzed using Athena, Redshift Spectrum, or EMR."
+  },
+  {
+    "id": 62,
+    "question": "Which AWS service can be used to protect web applications from common web exploits such as SQL injection and cross-site scripting (XSS)?",
+    "options": [
+      "AWS Shield",
+      "AWS WAF",
+      "Amazon GuardDuty",
+      "AWS Firewall Manager"
+    ],
+    "answer": ["AWS WAF"],
+    "multiSelect": false,
+    "topic": "Security",
+    "difficulty": "easy",
+    "explanation": "AWS WAF (Web Application Firewall) protects web applications from common exploits like SQL injection, XSS, and other OWASP Top 10 threats. Shield protects against DDoS, GuardDuty detects threats, and Firewall Manager centrally manages firewall rules."
+  },
+  {
+    "id": 63,
+    "question": "A company is running a batch processing workload that can be interrupted. The workload is flexible about when it runs and can resume from checkpoints. Which EC2 pricing option provides the lowest cost?",
+    "options": [
+      "On-Demand Instances",
+      "Reserved Instances",
+      "Spot Instances",
+      "Dedicated Hosts"
+    ],
+    "answer": ["Spot Instances"],
+    "multiSelect": false,
+    "topic": "EC2",
+    "difficulty": "easy",
+    "explanation": "Spot Instances provide up to 90% discount compared to On-Demand pricing. They are ideal for fault-tolerant, flexible workloads like batch processing, data analysis, and CI/CD. Spot Instances can be interrupted with a 2-minute warning."
+  },
+  {
+    "id": 64,
+    "question": "Which of the following are features of AWS CloudFormation? (Choose 2 answers)",
+    "options": [
+      "Infrastructure as Code using JSON or YAML templates",
+      "Real-time application monitoring",
+      "Automatic rollback on deployment failure",
+      "Container orchestration",
+      "Database query optimization"
+    ],
+    "answer": [
+      "Infrastructure as Code using JSON or YAML templates",
+      "Automatic rollback on deployment failure"
+    ],
+    "multiSelect": true,
+    "selectCount": 2,
+    "topic": "Architecture",
+    "difficulty": "easy",
+    "explanation": "CloudFormation lets you model and provision AWS resources using JSON/YAML templates (Infrastructure as Code). It supports automatic rollback if stack creation fails. It doesn't do monitoring (CloudWatch), containers (ECS/EKS), or query optimization."
+  },
+  {
+    "id": 65,
+    "question": "A company needs a managed service to orchestrate complex workflows involving multiple AWS services, with built-in error handling and retry logic. Which service should they use?",
+    "options": [
+      "Amazon SQS",
+      "AWS Step Functions",
+      "Amazon EventBridge",
+      "AWS Batch"
+    ],
+    "answer": ["AWS Step Functions"],
+    "multiSelect": false,
+    "topic": "Architecture",
+    "difficulty": "medium",
+    "explanation": "AWS Step Functions is a serverless orchestration service that lets you build complex workflows by combining Lambda functions and other AWS services. It provides visual workflow design, built-in error handling, retry logic, and state management."
   }
 ]
   

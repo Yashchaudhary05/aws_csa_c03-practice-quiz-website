@@ -14,7 +14,7 @@ A modern, accessible, and feature-rich practice quiz web application for the **A
 - **🔍 Review Mode** — Browse all questions with correct answers and explanations
 
 ### Core Functionality
-- **20 AWS questions** covering S3, EC2, VPC, IAM, RDS, CloudFront, Route 53, ECS, Security, and more
+- **65 AWS questions** covering S3, EC2, VPC, IAM, RDS, CloudFront, Route 53, ECS, Lambda, DynamoDB, Security, Analytics, and more
 - **Multi-select support** — Questions requiring multiple answers use checkboxes with validation
 - **Question randomization** — Shuffled questions and options on every attempt
 - **Topic filtering** — Select specific AWS service areas to focus on
