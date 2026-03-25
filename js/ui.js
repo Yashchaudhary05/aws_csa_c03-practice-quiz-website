@@ -23,6 +23,22 @@ export function showScreen(screen) {
   if (focusTarget) setTimeout(() => focusTarget.focus({ preventScroll: true }), 100);
 }
 
+// ─── Skeleton Loading ──────────────────────────────────────────
+export function showSkeletonCards(container, count = 3) {
+  container.innerHTML = '';
+  for (let i = 0; i < count; i++) {
+    const card = document.createElement('div');
+    card.className = 'skeleton-card';
+    card.innerHTML = `
+      <div class="skeleton-line skeleton-icon"></div>
+      <div class="skeleton-line skeleton-title"></div>
+      <div class="skeleton-line skeleton-text"></div>
+      <div class="skeleton-line skeleton-short"></div>
+    `;
+    container.appendChild(card);
+  }
+}
+
 // ─── Exam Card Rendering ──────────────────────────────────────
 export function renderExamCards(exams, onSelect) {
   const container = document.getElementById('exam-cards');
