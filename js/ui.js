@@ -29,7 +29,7 @@ export function renderExamCards(exams, onSelect) {
     card.setAttribute('aria-label', `Select ${exam.title}`);
 
     card.innerHTML = `
-      <span class="exam-card-icon">${escapeHtml(exam.icon)}</span>
+      <span class="exam-card-icon" style="background: ${escapeHtml(exam.color)}15">${escapeHtml(exam.icon)}</span>
       <div class="exam-card-title">${escapeHtml(exam.shortTitle || exam.title)}</div>
       <div class="exam-card-desc">${escapeHtml(exam.description)}</div>
       <div class="exam-card-meta">

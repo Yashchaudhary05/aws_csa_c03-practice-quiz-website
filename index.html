@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Practice quizzes for AWS SAA-C03, AWS DVA-C02, Azure AZ-900 and more cloud certification exams.">
+    <meta name="description" content="Professional practice quizzes for AWS SAA-C03, Cisco CCNA, Salesforce AI Specialist and more certification exams.">
     <meta name="theme-color" content="#6c63ff">
-    <title>Cloud Certification Practice Quizzes</title>
+    <title>CloudQuiz — Certification Practice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☁️</text></svg>">
@@ -15,10 +18,13 @@
 
     <header class="app-header">
         <div class="header-left">
-            <button id="home-btn" class="btn btn-ghost" aria-label="Back to home" title="Home">☁️ CloudQuiz</button>
+            <button id="home-btn" class="btn btn-ghost brand-btn" aria-label="Back to home" title="Home">
+                <span class="brand-icon">☁️</span>
+                <span class="brand-text">CloudQuiz</span>
+            </button>
         </div>
         <div class="header-controls">
-            <button id="theme-toggle" class="btn btn-ghost" aria-label="Toggle dark/light mode" title="Toggle theme (T)">🌙</button>
+            <button id="theme-toggle" class="btn btn-ghost btn-theme" aria-label="Toggle dark/light mode" title="Toggle theme (T)">🌙</button>
         </div>
     </header>
 
@@ -26,8 +32,11 @@
         <!-- Start Screen -->
         <section id="start-screen" aria-label="Quiz setup">
             <div class="start-hero">
-                <h1 class="hero-title">Cloud Certification Practice</h1>
-                <p class="hero-subtitle">Master your cloud exams with interactive practice quizzes</p>
+                <div class="hero-glow" aria-hidden="true"></div>
+                <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+                <p class="hero-badge">✦ Free &amp; Open Source</p>
+                <h1 class="hero-title">Ace Your Next <span class="gradient-text">Certification</span></h1>
+                <p class="hero-subtitle">120 curated questions per exam &middot; Timed practice &middot; Detailed analytics</p>
             </div>
 
             <!-- Exam Selector -->
@@ -212,12 +221,13 @@
     </main>
 
     <footer class="app-footer">
-        <p>Cloud Certification Practice · <a href="https://github.com/Yashchaudhary05/aws_csa_c03-practice-quiz-website" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        <p>Built with ❤️ by <a href="https://github.com/Yashchaudhary05" target="_blank" rel="noopener noreferrer">Yash Chaudhary</a> · <a href="https://github.com/Yashchaudhary05/aws_csa_c03-practice-quiz-website" target="_blank" rel="noopener noreferrer">Star on GitHub ⭐</a></p>
     </footer>
 
     <!-- Exit Confirmation Modal -->
     <dialog id="exit-modal" class="modal">
         <div class="modal-content">
+            <div class="modal-icon">⚠️</div>
             <h3>Exit Quiz?</h3>
             <p>Your progress will be lost. Are you sure you want to exit?</p>
             <div class="modal-actions">
