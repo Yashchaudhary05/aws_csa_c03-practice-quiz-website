@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cloudquiz-v4';
+const CACHE_NAME = 'cloudquiz-v5';
 const ASSETS = [
   './',
   './index.html',
@@ -9,6 +9,9 @@ const ASSETS = [
   './js/timer.js',
   './js/ui.js',
   './js/utils.js',
+  './js/toast.js',
+  './js/confetti.js',
+  './js/spaced-repetition.js',
   './exams.json',
   './questions.json',
   './questions/ccna-200-301.json',

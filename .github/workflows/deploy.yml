@@ -21,7 +21,29 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Validate JSON
-        run: python3 -m json.tool questions.json > /dev/null
+        run: |
+          python3 -m json.tool questions.json > /dev/null
+          python3 -m json.tool exams.json > /dev/null
+          for f in questions/*.json; do
+            python3 -m json.tool "$f" > /dev/null
+            echo "✅ Valid: $f"
+          done
+
+      - name: Check duplicate question IDs
+        run: |
+          python3 -c "
+          import json, sys, glob
+          files = ['questions.json'] + glob.glob('questions/*.json')
+          for f in files:
+              with open(f) as fh:
+                  data = json.load(fh)
+              ids = [q['id'] for q in data]
+              dupes = [i for i in ids if ids.count(i) > 1]
+              if dupes:
+                  print(f'❌ Duplicate IDs in {f}: {set(dupes)}')
+                  sys.exit(1)
+              print(f'✅ No duplicates in {f} ({len(ids)} questions)')
+          "
 
       - name: Check HTML
         run: |
@@ -34,7 +56,7 @@ jobs:
 
       - name: Verify JS modules exist
         run: |
-          for file in js/app.js js/state.js js/quiz.js js/timer.js js/ui.js js/utils.js; do
+          for file in js/app.js js/state.js js/quiz.js js/timer.js js/ui.js js/utils.js js/toast.js js/confetti.js js/spaced-repetition.js; do
             if [ ! -f "$file" ]; then
               echo "❌ Missing: $file"
               exit 1

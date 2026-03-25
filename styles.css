@@ -272,6 +272,7 @@ body {
   padding: 28px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-align: left;
   position: relative; overflow: hidden;
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  transform-style: preserve-3d;
 }
 .exam-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -284,7 +285,7 @@ body {
   opacity: 0; transition: opacity 0.3s; pointer-events: none;
 }
 .exam-card:hover {
-  border-color: var(--exam-color, var(--accent)); transform: translateY(-6px);
+  border-color: var(--exam-color, var(--accent)); transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
   box-shadow: var(--shadow-lg), 0 0 40px rgba(108,99,255,0.08);
 }
 .exam-card:hover::before { opacity: 1; }
@@ -695,6 +696,10 @@ kbd {
   .results-actions .btn { width: 100%; }
   .result-banner h2 { font-size: 1.5rem; }
   .hero-glow { width: 280px; height: 280px; }
+  .toast-container { left: 16px; right: 16px; bottom: 16px; }
+  .toast { max-width: 100%; min-width: auto; }
+  .quiz-length-grid { justify-content: center; }
+  .quiz-length-pill { padding: 8px 16px; font-size: 0.82rem; min-width: 70px; }
 }
 
 /* ─── Print ──────────────────────────────────────────────────── */
@@ -704,8 +709,82 @@ kbd {
   .card { box-shadow: none; border: 1px solid #ccc; }
 }
 
+/* ─── Quiz Length Selector ────────────────────────────────────── */
+.quiz-length-selector { border: none; margin-bottom: 28px; }
+.quiz-length-selector legend { font-weight: 700; margin-bottom: 14px; font-size: 0.95rem; }
+.quiz-length-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.quiz-length-option { cursor: pointer; display: block; }
+.quiz-length-option input { display: none; }
+.quiz-length-pill {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 22px; border: 2px solid var(--border-color); border-radius: var(--radius-full);
+  font-size: 0.88rem; font-weight: 600; transition: all 0.25s; min-width: 80px;
+  background: var(--bg-elevated); color: var(--text-primary);
+}
+.quiz-length-option:hover .quiz-length-pill { border-color: var(--border-hover); background: var(--bg-hover); transform: translateY(-2px); }
+.quiz-length-option input:checked + .quiz-length-pill {
+  border-color: var(--accent); background: var(--bg-selected); color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), var(--shadow-glow); transform: translateY(-2px);
+}
+
+/* ─── Toast Notifications ────────────────────────────────────── */
+.toast-container {
+  position: fixed; bottom: 24px; right: 24px; z-index: 10000;
+  display: flex; flex-direction: column-reverse; gap: 10px; pointer-events: none;
+}
+.toast {
+  pointer-events: auto;
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 20px; border-radius: var(--radius-md);
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg); backdrop-filter: blur(12px);
+  font-size: 0.88rem; font-weight: 500; color: var(--text-primary);
+  animation: toastIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-width: 360px; min-width: 250px;
+}
+.toast.toast-out { animation: toastOut 0.3s ease forwards; }
+.toast-icon { font-size: 1.1rem; flex-shrink: 0; }
+.toast-message { flex: 1; line-height: 1.4; }
+.toast.toast-error { border-color: var(--incorrect-border); }
+.toast.toast-success { border-color: var(--correct-border); }
+.toast.toast-warning { border-color: rgba(245, 158, 11, 0.35); }
+
+@keyframes toastIn { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes toastOut { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(20px) scale(0.9); } }
+
+/* ─── Confetti Canvas ────────────────────────────────────────── */
+.confetti-canvas {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 9999;
+}
+
+/* ─── Skeleton Loading ───────────────────────────────────────── */
+.skeleton-card {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg); padding: 28px; overflow: hidden;
+}
+.skeleton-line {
+  height: 14px; border-radius: 8px; background: var(--bg-hover);
+  position: relative; overflow: hidden; margin-bottom: 12px;
+}
+.skeleton-line::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 0%, var(--bg-elevated) 50%, transparent 100%);
+  animation: shimmer 1.5s infinite;
+}
+.skeleton-line.skeleton-title { height: 20px; width: 60%; margin-bottom: 16px; }
+.skeleton-line.skeleton-text { width: 90%; }
+.skeleton-line.skeleton-short { width: 45%; }
+.skeleton-line.skeleton-icon {
+  width: 52px; height: 52px; border-radius: var(--radius-md); margin-bottom: 12px;
+}
+
+@keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
 /* ─── Reduced Motion ─────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   .hero-glow { animation: none !important; }
+  .exam-card:hover { transform: translateY(-6px) !important; }
 }

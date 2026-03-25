@@ -6,14 +6,21 @@ import { getState, setState, saveToStorage } from './state.js';
 import { recordAnswer, isCorrect, calculateScore, getAnalytics, toggleFlag } from './quiz.js';
 import { startTimer, stopTimer, updateTimerUI } from './timer.js';
 import { escapeHtml, formatTime, getTopics, shuffle, generateCSV, downloadFile, getDifficultyColor } from './utils.js';
+import { showToast } from './toast.js';
+import { fireConfetti } from './confetti.js';
+import { recordSRResults, getWeakTopics } from './spaced-repetition.js';
 
 // ─── Screen Management ────────────────────────────────────────
 export function showScreen(screen) {
   ['start-screen', 'quiz-screen', 'results-screen', 'error-screen'].forEach(id => {
     document.getElementById(id).classList.add('hidden');
   });
-  document.getElementById(`${screen}-screen`).classList.remove('hidden');
+  const target = document.getElementById(`${screen}-screen`);
+  target.classList.remove('hidden');
   setState({ screen });
+  // Focus management for accessibility
+  const focusTarget = target.querySelector('h1, h2, button, [tabindex]');
+  if (focusTarget) setTimeout(() => focusTarget.focus({ preventScroll: true }), 100);
 }
 
 // ─── Exam Card Rendering ──────────────────────────────────────
@@ -87,6 +94,9 @@ export function renderStartConfig(exam, questions) {
     label.appendChild(span);
     container.appendChild(label);
   });
+
+  // Populate quiz length options
+  renderQuizLengthOptions(exam, questions);
 }
 
 export function showExamSelector() {
@@ -94,6 +104,35 @@ export function showExamSelector() {
   const selectorEl = document.querySelector('.exam-selector-section');
   configEl.classList.add('hidden');
   selectorEl.classList.remove('hidden');
+}
+
+function renderQuizLengthOptions(exam, questions) {
+  const container = document.getElementById('quiz-length-options');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const total = questions.length;
+  const defaultLen = exam.quizLength || total;
+  const options = [15, 30, 65, total].filter((v, i, a) => v <= total && a.indexOf(v) === i);
+
+  options.forEach(len => {
+    const label = document.createElement('label');
+    label.className = 'quiz-length-option';
+
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'quiz-length';
+    input.value = len;
+    if (len === defaultLen) input.checked = true;
+
+    const pill = document.createElement('span');
+    pill.className = 'quiz-length-pill';
+    pill.textContent = len === total ? `All ${total}` : `${len} Qs`;
+
+    label.appendChild(input);
+    label.appendChild(pill);
+    container.appendChild(label);
+  });
 }
 
 // ─── Question Navigator ────────────────────────────────────────
@@ -108,7 +147,10 @@ export function renderNavigator() {
     btn.textContent = i + 1;
     btn.setAttribute('aria-label', `Go to question ${i + 1}`);
 
-    if (i === state.currentIndex) btn.classList.add('current');
+    if (i === state.currentIndex) {
+      btn.classList.add('current');
+      btn.setAttribute('aria-current', 'step');
+    }
     if (state.answers[q.id]) btn.classList.add('answered');
     if (state.flagged.has(q.id)) btn.classList.add('flagged');
 
@@ -533,7 +575,17 @@ export function renderResults() {
     reviewContainer.appendChild(item);
   });
 
+  // Record spaced repetition data
+  if (exam) {
+    recordSRResults(exam.id, state.filteredQuestions, state.answers, isCorrect);
+  }
+
   showScreen('results');
+
+  // Fire confetti if passed
+  if (passed) {
+    setTimeout(() => fireConfetti(), 300);
+  }
 }
 
 // ─── Export ─────────────────────────────────────────────────────

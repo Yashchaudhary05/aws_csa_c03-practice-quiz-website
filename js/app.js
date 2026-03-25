@@ -7,11 +7,13 @@ import { shuffle, getTopics } from './utils.js';
 import { startTimer, stopTimer, updateTimerUI } from './timer.js';
 import { calculateScore } from './quiz.js';
 import {
-  showScreen, renderExamCards, renderStartConfig, showExamSelector,
+  showScreen, renderExamCards, renderStartConfig, showExamSelector, showSkeletonCards,
   renderQuestion, renderResults,
   handleSubmit, handleNext, handlePrev, handleFlag, handleExport,
   setTimerVisibility, renderNavigator
 } from './ui.js';
+import { showToast } from './toast.js';
+import { prioritizeWeakQuestions } from './spaced-repetition.js';
 
 let allExams = [];
 let allQuestions = [];
@@ -34,14 +36,20 @@ async function loadQuestions(questionFile) {
 
 // ─── Select an Exam ────────────────────────────────────────────
 async function selectExam(exam) {
+  // Show skeleton loading while fetching
+  const configEl = document.getElementById('quiz-config');
+  const selectorEl = document.querySelector('.exam-selector-section');
+  const cardsContainer = document.getElementById('exam-cards');
+  showSkeletonCards(cardsContainer, 1);
+
   try {
     allQuestions = await loadQuestions(exam.questionFile);
     setState({ questions: allQuestions, currentExam: exam });
     renderStartConfig(exam, allQuestions);
   } catch (err) {
-    document.getElementById('error-message').textContent =
-      `Failed to load questions for ${exam.shortTitle}: ${err.message}`;
-    showScreen('error');
+    showToast(`Failed to load ${exam.shortTitle}: ${err.message}`, 'error');
+    renderExamCards(allExams, selectExam);
+    showExamSelector();
   }
 }
 
@@ -55,8 +63,7 @@ async function init() {
   try {
     allExams = await loadExams();
   } catch (err) {
-    document.getElementById('error-message').textContent =
-      `Failed to load exam list: ${err.message}`;
+    showToast('Failed to load exam list. Please refresh.', 'error', 5000);
     showScreen('error');
     bindGlobalEvents();
     return;
@@ -157,12 +164,16 @@ function startQuiz() {
   }
 
   // Shuffle questions and options, then take quizLength
-  filtered = shuffle(filtered).map(q => ({
+  // Prioritize weak questions (spaced repetition) before shuffling
+  const prioritized = prioritizeWeakQuestions(exam.id, filtered);
+  filtered = shuffle(prioritized).map(q => ({
     ...q,
     options: shuffle(q.options),
   }));
 
-  const quizLength = exam.quizLength || filtered.length;
+  // Use quiz length from selector or exam config
+  const lengthInput = document.querySelector('input[name="quiz-length"]:checked');
+  const quizLength = lengthInput ? parseInt(lengthInput.value, 10) : (exam.quizLength || filtered.length);
   if (filtered.length > quizLength) {
     filtered = filtered.slice(0, quizLength);
   }

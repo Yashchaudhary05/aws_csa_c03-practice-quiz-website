@@ -1,6 +1,11 @@
-# ☁️ AWS SAA-C03 Practice Quiz
+# ☁️ CloudQuiz — Certification Practice
 
-A modern, accessible, and feature-rich practice quiz web application for the **AWS Certified Solutions Architect – Associate (SAA-C03)** exam.
+A modern, accessible, and feature-rich practice quiz web application for professional certification exams.
+
+### Supported Exams
+- **☁️ AWS Solutions Architect Associate (SAA-C03)** — 120 questions · 65 min · 72% passing
+- **🌐 Cisco CCNA (200-301)** — 120 questions · 120 min · 80% passing
+- **🤖 Salesforce AI Specialist** — 120 questions · 90 min · 73% passing
 
 **[Live Demo →](https://yashchaudhary05.github.io/aws_csa_c03-practice-quiz-website/)**
 
@@ -9,15 +14,18 @@ A modern, accessible, and feature-rich practice quiz web application for the **A
 ## Features
 
 ### Quiz Modes
-- **📝 Exam Mode** — Timed (60 min), results shown at the end, simulates real exam conditions
+- **📝 Exam Mode** — Timed, results shown at the end, simulates real exam conditions
 - **📖 Practice Mode** — Untimed, instant feedback with explanations after each answer
 - **🔍 Review Mode** — Browse all questions with correct answers and explanations
 
 ### Core Functionality
-- **65 AWS questions** covering S3, EC2, VPC, IAM, RDS, CloudFront, Route 53, ECS, Lambda, DynamoDB, Security, Analytics, and more
+- **Multi-exam architecture** — Choose from 3 certification exams with dedicated question banks
+- **120 questions per exam** — Extensive coverage of each exam's domains
+- **Configurable quiz length** — Pick 15, 30, 65, or all 120 questions per session
+- **Spaced repetition** — Tracks weak areas across sessions and prioritizes missed questions
 - **Multi-select support** — Questions requiring multiple answers use checkboxes with validation
 - **Question randomization** — Shuffled questions and options on every attempt
-- **Topic filtering** — Select specific AWS service areas to focus on
+- **Topic filtering** — Select specific service/domain areas to focus on
 - **Question navigator** — Visual grid showing answered, unanswered, and flagged questions
 - **Flag/bookmark** — Mark questions for later review during the quiz
 - **Timer with warnings** — MM:SS display with color changes at 5min and 1min remaining
@@ -27,6 +35,11 @@ A modern, accessible, and feature-rich practice quiz web application for the **A
 ### User Experience
 - **Dark/Light theme** — Toggle with button or `T` key; preference persisted
 - **Keyboard shortcuts** — `Enter` submit, `←`/`→` navigate, `F` flag, `1-5` select options
+- **Toast notifications** — Non-blocking feedback messages for errors and warnings
+- **Confetti animation** — Celebration animation when you pass the exam
+- **Glassmorphism UI** — Premium glass-effect design with gradient accents
+- **Skeleton loading** — Shimmer placeholders while content loads
+- **Exam card tilt** — 3D hover micro-interactions on exam cards
 - **Smooth animations** — Fade-in cards, progress transitions, score ring animation
 - **Mobile responsive** — Optimized layout for phones, tablets, and desktops
 - **Skip navigation link** — Accessibility feature for keyboard/screen reader users
@@ -40,12 +53,13 @@ A modern, accessible, and feature-rich practice quiz web application for the **A
 
 ### Technical Quality
 - **Semantic HTML5** — `<main>`, `<section>`, `<article>`, `<nav>`, `<fieldset>`, `<legend>`
-- **ARIA attributes** — `role`, `aria-label`, `aria-live`, `aria-valuenow` throughout
-- **Content Security Policy** — CSP meta tag restricting script/style sources
+- **ARIA attributes** — `role`, `aria-label`, `aria-live`, `aria-current`, `aria-valuenow`
+- **Focus management** — Automatic focus on screen transitions for accessibility
 - **XSS prevention** — All user-facing content rendered via `textContent`, not `innerHTML`
 - **ES Modules** — Clean separation into state, quiz logic, timer, UI, and utilities
 - **PWA support** — Web app manifest and service worker for offline capability
 - **Reduced motion** — Respects `prefers-reduced-motion` media query
+- **CI/CD** — GitHub Actions with JSON validation and duplicate question ID detection
 - **Print styles** — Clean printable output hiding navigation controls
 
 ---
@@ -53,21 +67,28 @@ A modern, accessible, and feature-rich practice quiz web application for the **A
 ## Project Structure
 
 ```
-├── index.html          # Semantic HTML with ARIA attributes
-├── styles.css          # CSS custom properties, dark/light themes, responsive
-├── questions.json      # Question bank with explanations, topics, difficulty
+├── index.html                    # Semantic HTML with ARIA attributes
+├── styles.css                    # Glassmorphism design system, dark/light themes
+├── exams.json                    # Exam manifest (titles, config, question file paths)
+├── questions.json                # AWS SAA-C03 question bank (120 questions)
+├── questions/
+│   ├── ccna-200-301.json         # Cisco CCNA question bank (120 questions)
+│   └── salesforce-ai-specialist.json  # Salesforce AI question bank (120 questions)
 ├── js/
-│   ├── app.js          # Main entry point, initialization, event binding
-│   ├── state.js        # Centralized state management with localStorage
-│   ├── quiz.js         # Quiz logic, scoring, analytics
-│   ├── timer.js        # Countdown timer with visual warnings
-│   ├── ui.js           # All DOM rendering and screen management
-│   └── utils.js        # Shuffle, formatting, CSV export, helpers
-├── sw.js               # Service worker for offline caching
-├── manifest.json       # PWA manifest
+│   ├── app.js                    # Main entry point, initialization, event binding
+│   ├── state.js                  # Centralized state management with localStorage
+│   ├── quiz.js                   # Quiz logic, scoring, analytics
+│   ├── timer.js                  # Countdown timer with visual warnings
+│   ├── ui.js                     # All DOM rendering and screen management
+│   ├── utils.js                  # Shuffle, formatting, CSV export, helpers
+│   ├── toast.js                  # Toast notification system
+│   ├── confetti.js               # Confetti celebration animation
+│   └── spaced-repetition.js      # Weak area tracking and prioritization
+├── sw.js                         # Service worker for offline caching
+├── manifest.json                 # PWA manifest
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml  # GitHub Actions CI/CD pipeline
+│       └── deploy.yml            # CI/CD with JSON validation & dedup checks
 └── README.md
 ```
 

@@ -85,6 +85,11 @@
                     </div>
                 </fieldset>
 
+                <fieldset class="quiz-length-selector">
+                    <legend>Number of Questions</legend>
+                    <div id="quiz-length-options" class="quiz-length-grid"></div>
+                </fieldset>
+
                 <fieldset class="topic-filter">
                     <legend>Filter by Topic <small>(optional)</small></legend>
                     <div id="topic-checkboxes" class="topic-grid"></div>
@@ -236,6 +241,12 @@
             </div>
         </div>
     </dialog>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
 
     <script type="module" src="js/app.js"></script>
 </body>
